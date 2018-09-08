@@ -1,13 +1,97 @@
 version: 2
+
 jobs:
+  # The build job
   build:
+    working_directory: ~/bamboo-official
     docker:
-      - image: debian:stretch
+      - image: circleci/node:6.10-browsers
     steps:
+      # Checkout the code from the branch into the working_directory
       - checkout
+      # Log the current branch
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: Show current branch
+          command: echo ${CIRCLE_BRANCH}
+      # Restore local dependencies from cache
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+      # Install bamboo-official dependencies
       - run:
-          name: Print the Current Time
-          command: date
+          name: Install local dependencies
+          command: yarn install
+      # Cache local dependencies if they don't exist
+      - save_cache:
+          key: v1-dependencies-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+      # Lint the source code
+      - run:
+          name: Linting
+          command: yarn lint
+      # Build bamboo-official with different configuration based on
+      # the current branch
+      - run:
+          name: Building
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
+                yarn build
+            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+                yarn build
+            fi
+      # Cache the dist folder for the deploy job
+      - save_cache:
+          key: v1-public-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+          paths:
+            - public
+
+  # The deploy job
+  deploy:
+    working_directory: ~/bamboo-official
+    docker:
+      - image: circleci/node:6.10-browsers
+    steps:
+      # Log the current branch
+      - run:
+          name: Show current branch
+          command: echo ${CIRCLE_BRANCH}
+      # Restore cache from the build job which contains the
+      # dist folder that needs to be deployed
+      - restore_cache:
+          key: v1-public-{{ .Environment.CIRCLE_BRANCH }}-{{ .Environment.CIRCLE_SHA1 }}
+      # Install AWS cli
+      - run:
+          name: Install aws cli
+          command: sudo apt-get -y -qq install awscli
+      # Set the signature version for the S3 auth
+      - run:
+          name: Setting Signature Version 4 for S3 Request Authentication
+          command: aws configure set default.s3.signature_version s3v4
+      # Deploy to the S3 bucket corresponding to the current branch
+      - run:
+          name: Deploy to S3
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "staging" ]; then
+                aws --region eu-west-2 s3 sync public s3://bamboo-staging/ --delete
+            elif [ "${CIRCLE_BRANCH}" == "master" ]; then
+                aws --region eu-west-2 s3 sync public s3://bamboo-master/ --delete
+            fi
+
+workflows:
+  version: 2
+  # The build and deploy workflow
+  build_and_deploy:
+    jobs:
+      - build
+      # The deploy job will only run on the filtered branches and
+      # require the build job to be successful before it starts
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - staging
+                - master

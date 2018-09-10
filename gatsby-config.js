@@ -2,13 +2,13 @@
 
 module.exports = {
   siteMetadata: {
-    title: 'gatsby-starter-typescript-plus',
-    description: 'A starter kit for TypeScript-based Gatsby projects with sensible defaults.',
-    siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com',
+    title: 'BamBoo',
+    description: 'The official site for BamBoo restaurant and retailer.',
+    siteUrl: '',
     author: {
-      name: 'Resi Respati',
-      url: 'https://twitter.com/resir014',
-      email: 'resir014@gmail.com'
+      name: 'Phillip Parker',
+      url: 'https://phillipparker.io',
+      email: 'info@phillipparker.io'
     }
   },
   plugins: [

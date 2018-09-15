@@ -1,0 +1,7 @@
+{
+  "test": "Test",
+  "newtest": {
+    "this is a test": "another test"
+  },
+  "thirdtest": "test3"
+}

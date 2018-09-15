@@ -34,7 +34,7 @@ type StaticQueryProps = {
 export const Restaurant: React.SFC = ({ children }) => (
   <StaticQuery
     query={graphql`
-      query IndexLayoutQuery {
+      query SiteMetaQuery {
         site {
           siteMetadata {
             title

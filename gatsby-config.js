@@ -12,6 +12,7 @@ module.exports = {
     }
   },
   plugins: [
+    'gatsby-transformer-json',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -43,7 +44,6 @@ module.exports = {
         ]
       }
     },
-    'gatsby-transformer-json',
     {
       resolve: 'gatsby-plugin-canonical-urls',
       options: {

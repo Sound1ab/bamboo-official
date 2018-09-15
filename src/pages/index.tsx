@@ -30,8 +30,8 @@ const IndexPage = ({ data }: PageTemplateProps) => {
 }
 
 export const query = graphql`
-  query IndexQuery {
-    PagesJson {
+  query IndexPageQuery {
+    pagesJson {
       test
     }
   }

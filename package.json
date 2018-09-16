@@ -19,6 +19,11 @@
     "test": "jest --watchAll",
     "storybook": "start-storybook -p 9001 -c .storybook"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && yarn lint --fix"
+    }
+  },
   "engines": {
     "node": ">=8.0.0"
   },
@@ -88,11 +93,6 @@
     "tslint-config-prettier": "^1.14.0",
     "tslint-plugin-prettier": "^1.3.0",
     "tslint-react": "^3.6.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pretty-quick --staged"
-    }
   },
   "prettier": {
     "semi": false,

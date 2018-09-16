@@ -4,7 +4,7 @@
   "jsRules": {},
   "rules": {
     "no-var-requires": false,
-    "no-default-export": true,
+    "no-default-export": false,
     "interface-name": [true, "never-prefix"],
     "object-shorthand-properties-first": false,
     "array-type": false,

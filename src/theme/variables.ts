@@ -1,13 +1,13 @@
 import { FontType } from './types'
 
 export const colors = {
-  brand: '#e97f89',
   accent: '#35c2b4',
+  black: '#000',
+  brand: '#e97f89',
   ui: {
     offWhite: '#f5f5f5'
   },
-  white: '#fff',
-  black: '#000'
+  white: '#fff'
 }
 
 export const fontFamily: FontType[] = [
@@ -72,12 +72,13 @@ export const typography = {
   }
 }
 
+// tslint:disable-next-line
 export const spacing = {
-  xxl: 256,
-  xl: 128,
   l: 64,
   m: 32,
   s: 16,
+  xl: 128,
   xs: 8,
+  xxl: 256,
   xxs: 4
 }

@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
 import * as React from 'react'
-import { Container } from '../components/atoms'
+import { Button, Container } from '../components/atoms'
 import { Restaurant } from '../layouts'
 
 interface PageTemplateProps {
@@ -12,7 +12,6 @@ interface PageTemplateProps {
 }
 
 const IndexPage = ({ data }: PageTemplateProps) => {
-  console.log('data', data)
   return (
     <Restaurant>
       <Container>
@@ -24,6 +23,7 @@ const IndexPage = ({ data }: PageTemplateProps) => {
         <h6>Heading h6</h6>
         <p>Paragraph text</p>
         <p>Paragraph text</p>
+        <Button />
       </Container>
     </Restaurant>
   )

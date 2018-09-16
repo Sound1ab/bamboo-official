@@ -42,7 +42,8 @@ export const Restaurant: React.SFC = ({ children }) => (
         }
       }
     `}
-    render={(data: StaticQueryProps) => (
+  >
+    {(data: StaticQueryProps) => (
       <ThemeProvider>
         <Root>
           <Helmet
@@ -57,5 +58,5 @@ export const Restaurant: React.SFC = ({ children }) => (
         </Root>
       </ThemeProvider>
     )}
-  />
+  </StaticQuery>
 )

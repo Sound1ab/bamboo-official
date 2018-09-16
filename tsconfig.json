@@ -1,16 +1,15 @@
 {
   "compilerOptions": {
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "noImplicitAny": true,
     "module": "commonjs",
     "target": "esnext",
-    "jsx": "preserve",
+    "jsx": "react",
     "lib": ["dom", "es2015", "es2017"],
-    "strict": true,
-    "noEmit": true,
-    "esModuleInterop": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "removeComments": false,
-    "preserveConstEnums": true
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true
   },
+  "exclude": ["node_modules", "typings", "*.d.ts", "*.ts", "typings/browser.d.ts", "typings/browser"],
   "include": ["./src/**/*"]
 }

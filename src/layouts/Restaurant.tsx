@@ -1,8 +1,7 @@
 import * as React from 'react'
 import Helmet from 'react-helmet'
 import { StaticQuery, graphql } from 'gatsby'
-import { ThemeProvider } from 'emotion-theming'
-import { colors, typography, spacing } from '../theme'
+import { ThemeProvider } from '../components/atoms'
 import { Header } from '../components/molecules'
 import styled from 'react-emotion'
 import 'modern-normalize'
@@ -44,7 +43,7 @@ export const Restaurant: React.SFC = ({ children }) => (
       }
     `}
     render={(data: StaticQueryProps) => (
-      <ThemeProvider theme={{ colors, typography, spacing }}>
+      <ThemeProvider>
         <Root>
           <Helmet
             title={data.site.siteMetadata.title}

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 
-const StyledContainer = styled.div`
+const StyledContainer = styled('div')`
   position: relative;
   margin-left: auto;
   margin-right: auto;

@@ -10,14 +10,15 @@
   "license": "MIT",
   "main": "n/a",
   "scripts": {
-    "build": "gatsby build",
+    "build": "gatsby build && yarn storybook:build",
     "clean": "rimraf public",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "start": "gatsby develop",
     "lint": "tslint 'src/**/*.{ts,tsx}' --project tsconfig.json --format stylish",
     "lint:watch": "chokidar src/**/*.{ts,tsx} -c \"yarn lint\" --initial --verbose",
     "test": "jest --watchAll",
-    "storybook": "start-storybook -p 9001 -c .storybook"
+    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook:build": "build-storybook -c .storybook -o public/storybook"
   },
   "husky": {
     "hooks": {

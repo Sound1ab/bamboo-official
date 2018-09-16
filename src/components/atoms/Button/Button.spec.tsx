@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { render, cleanup } from '../../../test-utils'
+import { cleanup, render } from '../../../test-utils'
 import { Button } from './Button'
 
 afterEach(cleanup)

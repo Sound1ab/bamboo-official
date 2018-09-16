@@ -1,10 +1,10 @@
+import { graphql, StaticQuery } from 'gatsby'
+import 'modern-normalize'
 import * as React from 'react'
+import styled from 'react-emotion'
 import Helmet from 'react-helmet'
-import { StaticQuery, graphql } from 'gatsby'
 import { ThemeProvider } from '../components/atoms'
 import { Header } from '../components/molecules'
-import styled from 'react-emotion'
-import 'modern-normalize'
 import '../theme/normalize'
 
 const Root = styled.div`
@@ -21,7 +21,7 @@ const Main = styled.main`
   padding: ${({ theme }) => theme.spacing.m}px;
 `
 
-type StaticQueryProps = {
+interface StaticQueryProps {
   site: {
     siteMetadata: {
       title: string

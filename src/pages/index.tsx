@@ -1,7 +1,7 @@
-import * as React from 'react'
 import { graphql } from 'gatsby'
-import { Restaurant } from '../layouts'
+import * as React from 'react'
 import { Container } from '../components/atoms'
+import { Restaurant } from '../layouts'
 
 interface PageTemplateProps {
   data: {

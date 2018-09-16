@@ -1,7 +1,7 @@
+import { Link } from 'gatsby'
+import { transparentize } from 'polished'
 import * as React from 'react'
 import styled from 'react-emotion'
-import { transparentize } from 'polished'
-import { Link } from 'gatsby'
 import { Container } from '../atoms'
 
 const StyledHeader = styled.header`

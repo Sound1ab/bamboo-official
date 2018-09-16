@@ -1,13 +1,12 @@
 import { injectGlobal } from 'emotion'
-import { typography, fontFamily, colors, spacing } from './variables'
 import { FontType } from './types'
+import { colors, fontFamily, spacing, typography } from './variables'
 
 // tslint:disable-next-line:no-unused-expression
 injectGlobal`
  ${fontFamily.reduce(
-   (acc: string, font: FontType) =>
-     acc +
-     `
+   (acc: string, font: FontType) => `
+      ${acc}
       @font-face {
         font-family: '${font.fontFamily}';
 src:

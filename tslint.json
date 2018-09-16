@@ -1,8 +1,18 @@
 {
-  "rulesDirectory": ["tslint-plugin-prettier"],
-  "extends": ["tslint-config-blvd/react", "tslint-config-prettier"],
+  "defaultSeverity": "warning",
+  "extends": ["tslint:recommended", "tslint-config-airbnb", "tslint-react", "tslint-config-prettier"],
+  "jsRules": {},
   "rules": {
-    "prettier": true,
-    "interface-over-type-literal": false
-  }
+    "no-var-requires": false,
+    "no-default-export": true,
+    "interface-name": [true, "never-prefix"],
+    "object-shorthand-properties-first": false,
+    "array-type": false,
+    // This rule is here for now because of https://github.com/palantir/tslint-react/issues/120
+    "variable-name": [true, "ban-keywords", "check-format", "allow-pascal-case"],
+    "jsx-boolean-value": false,
+    "import-name": false,
+    "no-unused-variable": [false, "react"]
+  },
+  "rulesDirectory": []
 }

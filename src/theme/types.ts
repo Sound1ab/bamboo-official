@@ -1,4 +1,4 @@
-export type Theme = {
+export interface Theme {
   colors: {
     readonly brand: string
     readonly accent: string
@@ -69,7 +69,7 @@ export type Theme = {
   }
 }
 
-export type FontType = {
+export interface FontType {
   fontFamily: string
   fileName: string
   format: string

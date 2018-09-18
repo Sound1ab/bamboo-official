@@ -10,6 +10,6 @@
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true
   },
-  "exclude": ["node_modules", "typings", "*.d.ts", "*.ts", "typings/browser.d.ts", "typings/browser"],
+  "exclude": ["node_modules", "typings", "*.ts", "typings/browser.d.ts", "typings/browser"],
   "include": ["./src/**/*"]
 }

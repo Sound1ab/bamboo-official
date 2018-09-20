@@ -1,8 +1,8 @@
 import { graphql } from 'gatsby'
 import * as React from 'react'
+import { css } from 'react-emotion'
 import { Button, Container, Image } from '../components/atoms'
 import { Restaurant } from '../layouts'
-import { css } from 'react-emotion'
 
 interface PageTemplateProps {
   data: {

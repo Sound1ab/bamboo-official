@@ -1,7 +1,6 @@
 import { graphql } from 'gatsby'
 import * as React from 'react'
-import { css } from 'react-emotion'
-import { Button, Container, Image } from '../components/atoms'
+import { Button, Container } from '../components/atoms'
 import { Restaurant } from '../layouts'
 
 interface PageTemplateProps {
@@ -23,7 +22,7 @@ const IndexPage = ({ data }: PageTemplateProps) => {
         <h5>Heading h5</h5>
         <h6>Heading h6</h6>
         <p>Paragraph text</p>
-        <Image style={{ width: '200px', height: '200px' }} />
+        {/*<Image style={{ width: '200px', height: '200px' }} />*/}
         <p>Paragraph text</p>
         <Button />
       </Container>

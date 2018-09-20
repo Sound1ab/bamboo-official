@@ -11,7 +11,7 @@ injectGlobal`
         font-family: '${font.fontFamily}';
 src:
   local('${font.fileName}'),
-    url(${require(`./fonts/${font.fileName}-webfont.woff2`)}) format('${font.format}');
+    url(${require(`../assets/fonts/${font.fileName}-webfont.woff2`)}) format('${font.format}');
       }
     `,
    ''

@@ -5,8 +5,8 @@ const StyledContainer = styled('div')`
   position: relative;
   margin-left: auto;
   margin-right: auto;
-  width: auto;
   max-width: 1000px;
+  width: 100%;
 `
 
 interface ContainerProps {

@@ -16,6 +16,7 @@ export interface Theme {
     readonly s: number
     readonly xs: number
     readonly xxs: number
+    [key: number]: number
   }
   typography: {
     fontFamily: {
@@ -27,6 +28,7 @@ export interface Theme {
       readonly h6: string
       readonly p: string
       readonly sub: string
+      [key: string]: string
     }
     fontSize: {
       readonly h1: number
@@ -37,6 +39,7 @@ export interface Theme {
       readonly h6: number
       readonly p: number
       readonly sub: number
+      [key: number]: number
     }
     fontWeight: {
       readonly h1: number
@@ -47,6 +50,7 @@ export interface Theme {
       readonly h6: number
       readonly p: number
       readonly sub: number
+      [key: number]: number
     }
     letterSpacing: {
       readonly h1: number
@@ -57,6 +61,7 @@ export interface Theme {
       readonly h6: number
       readonly p: number
       readonly sub: number
+      [key: number]: number
     }
     lineHeight: {
       readonly h1: number
@@ -67,6 +72,7 @@ export interface Theme {
       readonly h6: number
       readonly p: number
       readonly sub: number
+      [key: number]: number
     }
   }
 }

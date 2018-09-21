@@ -18,7 +18,6 @@ const Main = styled.main`
   flex-direction: column;
   flex: 1;
   position: relative;
-  padding: ${({ theme }) => theme.spacing.m}px;
 `
 
 interface StaticQueryProps {
@@ -49,8 +48,14 @@ export const Restaurant: React.SFC = ({ children }) => (
           <Helmet
             title={data.site.siteMetadata.title}
             meta={[
-              { name: 'description', content: data.site.siteMetadata.description },
-              { name: 'keywords', content: 'gatsbyjs, gatsby, javascript, sample, something' }
+              {
+                name: 'description',
+                content: data.site.siteMetadata.description,
+              },
+              {
+                name: 'keywords',
+                content: 'gatsbyjs, gatsby, javascript, sample, something',
+              },
             ]}
           />
           <Header title={data.site.siteMetadata.title} />

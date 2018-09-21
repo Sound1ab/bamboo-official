@@ -5,9 +5,9 @@ export const colors = {
   black: '#000',
   brand: '#e97f89',
   ui: {
-    offWhite: '#f5f5f5'
+    offWhite: '#f5f5f5',
   },
-  white: '#fff'
+  white: '#fff',
 }
 
 export const fontFamily: FontType[] = [
@@ -16,7 +16,7 @@ export const fontFamily: FontType[] = [
   { fontFamily: 'Brandon Medium', fileName: 'brandon_med', format: 'woff2' },
   { fontFamily: 'Brandon Regular', fileName: 'brandon_reg', format: 'woff2' },
   { fontFamily: 'Brandon Light', fileName: 'brandon_light', format: 'woff2' },
-  { fontFamily: 'Brandon Thin', fileName: 'brandon_thin', format: 'woff2' }
+  { fontFamily: 'Brandon Thin', fileName: 'brandon_thin', format: 'woff2' },
 ]
 
 export const typography = {
@@ -24,11 +24,11 @@ export const typography = {
     h1: 'Brandon Bold',
     h2: 'Brandon Black',
     h3: 'Brandon Medium',
-    h4: 'Brandon Regular',
+    h4: 'Brandon Black',
     h5: 'Brandon Light',
     h6: 'Brandon Thin',
     p: 'Brandon Regular',
-    sub: 'Brandon Bold'
+    sub: 'Brandon Bold',
   },
   fontSize: {
     h1: 65,
@@ -38,7 +38,7 @@ export const typography = {
     h5: 18,
     h6: 16,
     p: 12,
-    sub: 7
+    sub: 7,
   },
   fontWeight: {
     h1: 900,
@@ -48,7 +48,7 @@ export const typography = {
     h5: 500,
     h6: 500,
     p: 500,
-    sub: 500
+    sub: 500,
   },
   letterSpacing: {
     h1: 0.3,
@@ -58,7 +58,7 @@ export const typography = {
     h5: 0,
     h6: 0,
     p: 0,
-    sub: 0
+    sub: 0,
   },
   lineHeight: {
     h1: 1.05,
@@ -68,8 +68,8 @@ export const typography = {
     h5: 1,
     h6: 1,
     p: 1,
-    sub: 1
-  }
+    sub: 1,
+  },
 }
 
 // tslint:disable-next-line
@@ -80,5 +80,5 @@ export const spacing = {
   xl: 128,
   xs: 8,
   xxl: 256,
-  xxs: 4
+  xxs: 4,
 }

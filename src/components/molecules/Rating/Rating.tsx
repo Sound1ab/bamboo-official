@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { colors, styled, spacing } from '../../../theme'
-import { Lemon, Heading, Button } from '../../atoms'
 import { css } from 'react-emotion'
+import { colors, spacing, styled } from '../../../theme'
+import { Button, Heading, Lemon } from '../../atoms'
 
 const Wrapper = styled('div')`
   display: flex;
@@ -28,10 +28,10 @@ interface State {
 
 export class Rating extends React.Component<Prop, State> {
   public static defaultProps = {
+    handleSubmitRating: (): null => null,
     max: 5,
     min: 0,
     ratings: 85,
-    handleSubmitRating: (): null => null,
   }
 
   public state = {

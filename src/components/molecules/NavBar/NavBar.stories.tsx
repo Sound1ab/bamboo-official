@@ -1,8 +1,9 @@
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
 import { css } from 'react-emotion'
-import { styled } from '../../../theme'
-import { Container } from '../../atoms'
+import { colors, styled } from '../../../theme'
+import { Container, Heading } from '../../atoms'
+import { BurgerMenu } from '../../molecules/BurgerMenu'
 import { NavBar } from './NavBar'
 
 const LargeContainer = styled('div')`
@@ -22,7 +23,42 @@ const ScrollContainer = styled('div')`
 storiesOf('NavBar', module).add('Primary', () => {
   return (
     <LargeContainer>
-      <NavBar />
+      <NavBar>
+        {(isMenuOpen, closeBurgerMenuClick) => (
+          <BurgerMenu isOpen={isMenuOpen} close={closeBurgerMenuClick}>
+            <div>
+              <Heading
+                type="h6"
+                color={colors.white}
+                textTransform="uppercase"
+                button
+              >
+                Find us
+              </Heading>
+            </div>
+            <div>
+              <Heading
+                type="h6"
+                color={colors.white}
+                textTransform="uppercase"
+                button
+              >
+                Products
+              </Heading>
+            </div>
+            <div>
+              <Heading
+                type="h6"
+                color={colors.white}
+                textTransform="uppercase"
+                button
+              >
+                Restaurant
+              </Heading>
+            </div>
+          </BurgerMenu>
+        )}
+      </NavBar>
       <Container
         className={css`
           background-color: white;

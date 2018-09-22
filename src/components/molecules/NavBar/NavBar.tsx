@@ -61,46 +61,59 @@ const LogoWrapper = styled('div')`
   }
 `
 
+interface Props {
+  children?: (isMenuOpen: boolean, closeBurgerMenuClick: () => void) => void
+}
+
 interface State {
   isMenuOpen: boolean
 }
 
-export class NavBar extends React.Component<{}, State> {
+export class NavBar extends React.Component<Props, State> {
   public state = {
     isMenuOpen: false,
   }
 
   public render() {
     return (
-      <FlexContainer>
-        <LeftColumn>
-          <MobileButton onClick={this.handleBurgerMenuClick}>
-            <Menu fill={colors.black} width={'28px'} height={'28px'} />
-          </MobileButton>
-          <DesktopHeading type="h4" textTransform="uppercase" button>
-            Products
-          </DesktopHeading>
-        </LeftColumn>
-        <CenterColumn>
-          <LogoWrapper>
-            <Logo fill={colors.black} />
-          </LogoWrapper>
-        </CenterColumn>
-        <RightColumn>
-          <DesktopHeading type="h4" textTransform="lowercase" button>
-            find us
-          </DesktopHeading>
-          <button>
-            <ShoppingCart fill={colors.black} width="28px" height="28px" />
-          </button>
-        </RightColumn>
-      </FlexContainer>
+      <React.Fragment>
+        {this.props.children(this.state.isMenuOpen, this.closeBurgerMenuClick)}
+        <FlexContainer>
+          <LeftColumn>
+            <MobileButton onClick={this.openBurgerMenuClick}>
+              <Menu fill={colors.black} width={'28px'} height={'28px'} />
+            </MobileButton>
+            <DesktopHeading type="h4" textTransform="uppercase" button>
+              Products
+            </DesktopHeading>
+          </LeftColumn>
+          <CenterColumn>
+            <LogoWrapper>
+              <Logo fill={colors.black} />
+            </LogoWrapper>
+          </CenterColumn>
+          <RightColumn>
+            <DesktopHeading type="h4" textTransform="lowercase" button>
+              find us
+            </DesktopHeading>
+            <button>
+              <ShoppingCart fill={colors.black} width="28px" height="28px" />
+            </button>
+          </RightColumn>
+        </FlexContainer>
+      </React.Fragment>
     )
   }
 
-  private handleBurgerMenuClick = () => {
+  private openBurgerMenuClick = () => {
     this.setState({
-      isMenuOpen: !this.state.isMenuOpen,
+      isMenuOpen: true,
+    })
+  }
+
+  private closeBurgerMenuClick = () => {
+    this.setState({
+      isMenuOpen: false,
     })
   }
 }

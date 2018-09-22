@@ -19,10 +19,12 @@ const ScrollContainer = styled('div')`
   height: 1000px;
 `
 
+const close = (): null => null
+
 storiesOf('BurgerMenu', module).add('Primary', () => {
   return (
     <LargeContainer id="outer-container">
-      <BurgerMenu isOpen={true}>
+      <BurgerMenu isOpen={true} close={close}>
         <div>
           <Heading
             type="h6"

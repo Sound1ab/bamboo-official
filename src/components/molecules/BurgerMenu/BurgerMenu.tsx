@@ -1,7 +1,8 @@
 import * as React from 'react'
 import { slide as Menu } from 'react-burger-menu'
 import { colors, spacing, styled } from '../../../theme'
-import { Close, Logo, ShoppingCart } from '../../atoms/SvgIcon'
+import { Close, Logo, ShoppingCart } from '../../atoms'
+import { MediaQuery } from '../../utility/MediaQuery'
 
 const styles = {
   bmBurgerBars: {},
@@ -47,6 +48,11 @@ const BaseButton = styled('button')`
   width: auto !important;
 `
 
+const LeftButton = styled(BaseButton)`
+  top: ${spacing.xs}px;
+  left: ${spacing.xs}px;
+`
+
 const CenterButton = styled(BaseButton)`
   top: 0;
   left: 50%;
@@ -61,27 +67,40 @@ const RightButton = styled(BaseButton)`
 interface Props {
   children?: React.ReactNode
   isOpen?: boolean
-  width?: string
+  width?: number
+  close: () => void
 }
 
 export const BurgerMenu = ({
   children,
   isOpen = false,
-  width = '375px',
+  width = 375,
+  close,
 }: Props) => (
-  <Menu
-    styles={styles}
-    width={width}
-    isOpen={isOpen}
-    customBurgerIcon={false}
-    customCrossIcon={<Close fill={colors.white} width="28px" height="28px" />}
+  <MediaQuery
+    matchStyles={{ width: '100%' }}
+    nonMatchStyles={{ width: `${width}px` }}
+    maxWidth={width}
   >
-    <CenterButton>
-      <Logo fill={colors.white} width="60px" height="60px" />
-    </CenterButton>
-    <RightButton>
-      <ShoppingCart fill={colors.white} width="22px" height="22px" />
-    </RightButton>
-    {children}
-  </Menu>
+    {mediaStyles => (
+      <Menu
+        styles={styles}
+        width={mediaStyles.width}
+        isOpen={isOpen}
+        customBurgerIcon={false}
+        customCrossIcon={false}
+      >
+        <LeftButton onClick={close}>
+          <Close fill={colors.white} width="28px" height="28px" />
+        </LeftButton>
+        <CenterButton>
+          <Logo fill={colors.white} width="60px" height="60px" />
+        </CenterButton>
+        <RightButton>
+          <ShoppingCart fill={colors.white} width="22px" height="22px" />
+        </RightButton>
+        {children}
+      </Menu>
+    )}
+  </MediaQuery>
 )

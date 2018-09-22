@@ -1,8 +1,7 @@
 import * as React from 'react'
 import { css } from 'react-emotion'
 import { colors, styled } from '../../../theme'
-import { Container, Heading, Logo, ShoppingCart } from '../../atoms'
-import { MediaQuery } from '../../utility'
+import { Container, Heading, Logo, Menu, ShoppingCart } from '../../atoms'
 
 const FlexContainer = styled(Container)`
   z-index: 10;
@@ -39,34 +38,69 @@ const RightColumn = styled('div')`
   }
 `
 
-export const NavBar = () => (
-  <FlexContainer>
-    <LeftColumn>
-      <Heading type="h4" textTransform="uppercase" button>
-        Products
-      </Heading>
-    </LeftColumn>
-    <CenterColumn>
-      <MediaQuery
-        matchStyles={{ width: '80px', height: '80px' }}
-        nonMatchStyles={{ width: '124px', height: '124px' }}
-      >
-        {styles => (
-          <Logo
-            fill={colors.black}
-            width={styles.width}
-            height={styles.height}
-          />
-        )}
-      </MediaQuery>
-    </CenterColumn>
-    <RightColumn>
-      <Heading type="h4" textTransform="lowercase" button>
-        find us
-      </Heading>
-      <button>
-        <ShoppingCart fill={colors.black} width="28px" height="28px" />
-      </button>
-    </RightColumn>
-  </FlexContainer>
-)
+const MobileButton = styled('button')`
+  display: none;
+  @media (max-width: 420px) {
+    display: block;
+  }
+`
+
+const DesktopHeading = styled(Heading)`
+  display: block;
+  @media (max-width: 420px) {
+    display: none;
+  }
+`
+
+const LogoWrapper = styled('div')`
+  width: 80px;
+  height: 80px;
+  @media (min-width: 420px) {
+    width: 124px;
+    height: 124px;
+  }
+`
+
+interface State {
+  isMenuOpen: boolean
+}
+
+export class NavBar extends React.Component<{}, State> {
+  public state = {
+    isMenuOpen: false,
+  }
+
+  public render() {
+    return (
+      <FlexContainer>
+        <LeftColumn>
+          <MobileButton onClick={this.handleBurgerMenuClick}>
+            <Menu fill={colors.black} width={'28px'} height={'28px'} />
+          </MobileButton>
+          <DesktopHeading type="h4" textTransform="uppercase" button>
+            Products
+          </DesktopHeading>
+        </LeftColumn>
+        <CenterColumn>
+          <LogoWrapper>
+            <Logo fill={colors.black} />
+          </LogoWrapper>
+        </CenterColumn>
+        <RightColumn>
+          <DesktopHeading type="h4" textTransform="lowercase" button>
+            find us
+          </DesktopHeading>
+          <button>
+            <ShoppingCart fill={colors.black} width="28px" height="28px" />
+          </button>
+        </RightColumn>
+      </FlexContainer>
+    )
+  }
+
+  private handleBurgerMenuClick = () => {
+    this.setState({
+      isMenuOpen: !this.state.isMenuOpen,
+    })
+  }
+}

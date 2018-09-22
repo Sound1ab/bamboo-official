@@ -3,7 +3,6 @@ import styled from 'react-emotion'
 
 export const Wrapper = styled('div')`
   position: absolute;
-  padding: 8px;
   width: 100%;
   height: 100%;
   display: flex;

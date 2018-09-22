@@ -21,7 +21,8 @@ const fluidQuery = graphql`
   }
 `
 
-const findImage = (data: any, image: string) => data.imgAll.edges.find((node: any) => node.node.name === image)
+const findImage = (data: any, image: string) =>
+  data.imgAll.edges.find((node: any) => node.node.name === image)
 
 interface PropTypes {
   style?: {}
@@ -30,7 +31,12 @@ interface PropTypes {
   alt?: string
 }
 
-export const Image = ({ style = {}, image = 'ProductThree02', title = '', alt = '' }: PropTypes) => (
+export const Image = ({
+  style = {},
+  image = 'ProductThree02',
+  title = '',
+  alt = '',
+}: PropTypes) => (
   <StaticQuery query={fluidQuery}>
     {(data: any) => (
       <Img

@@ -7,7 +7,15 @@ interface PropTypes {
 }
 
 export const KaleidoscopeWithLogo = (props: PropTypes) => (
-  <svg id="Layer_1" xmlnsXlink="http://www.w3.org/1999/xlink" x={0} y={0} viewBox="0 0 1863.5 1863.5" xmlSpace="preserve" {...props}>
+  <svg
+    id="Layer_1"
+    xmlnsXlink="http://www.w3.org/1999/xlink"
+    x={0}
+    y={0}
+    viewBox="0 0 1863.5 1863.5"
+    xmlSpace="preserve"
+    {...props}
+  >
     <defs>
       <path id="SVGID_1_" d="M0 22.8h1863.5v1824.1H0z" />
     </defs>

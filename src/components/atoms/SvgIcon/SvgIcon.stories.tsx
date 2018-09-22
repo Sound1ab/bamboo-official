@@ -27,7 +27,7 @@ import {
   Shell,
   ShoppingCart,
   Strawberry,
-  Twitter
+  Twitter,
 } from '../../atoms'
 
 storiesOf('SvgIcon', module)

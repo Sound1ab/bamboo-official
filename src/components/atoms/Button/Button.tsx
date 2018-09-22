@@ -12,7 +12,6 @@ const Base = styled('button')`
 
 const Primary = styled(Base)`
   background-color: ${({ theme }) => theme.colors.brand};
-  border: none;
   color: white;
   &:hover {
     background-color: ${({ theme }) => theme.colors.accent};
@@ -22,7 +21,6 @@ const Primary = styled(Base)`
 const Secondary = styled(Base)`
   background-color: ${({ theme }) => theme.colors.black};
   box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.75);
-  border: none;
   color: white;
   &:hover {
     background-color: transparent;
@@ -44,7 +42,10 @@ interface PropTypes {
   variant?: 'primary' | 'secondary' | 'number'
 }
 
-export const Button: React.SFC<PropTypes> = ({ children = 'Button text', variant = 'primary' }) => {
+export const Button: React.SFC<PropTypes> = ({
+  children = 'Button text',
+  variant = 'primary',
+}) => {
   let component
   switch (variant) {
     case 'primary':

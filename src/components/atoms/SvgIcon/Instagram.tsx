@@ -7,7 +7,14 @@ interface PropTypes {
 }
 
 export const Instagram = (props: PropTypes) => (
-  <svg id="Layer_1" x={0} y={0} viewBox="0 0 169.1 169.1" xmlSpace="preserve" {...props}>
+  <svg
+    id="Layer_1"
+    x={0}
+    y={0}
+    viewBox="0 0 169.1 169.1"
+    xmlSpace="preserve"
+    {...props}
+  >
     <path
       className="st0"
       d="M122.4 0H46.7C20.9 0 0 20.9 0 46.7v75.8c0 25.7 20.9 46.7 46.7 46.7h75.8c25.7 0 46.7-20.9 46.7-46.7V46.7C169.1 20.9 148.1 0 122.4 0zm31.7 122.4c0 17.5-14.2 31.7-31.7 31.7H46.7c-17.5 0-31.7-14.2-31.7-31.7V46.7C15 29.2 29.2 15 46.7 15h75.8c17.5 0 31.7 14.2 31.7 31.7l-.1 75.7z"

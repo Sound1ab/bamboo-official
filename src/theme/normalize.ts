@@ -145,4 +145,11 @@ src:
       }
     }
   }
+  
+  button {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    margin: 0;
+  }
 `

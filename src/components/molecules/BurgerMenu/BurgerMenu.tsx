@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { slide as Menu } from 'react-burger-menu'
-import { styled, colors, spacing } from '../../../theme/index'
-import { Close, Logo, ShoppingCart } from '../../atoms/SvgIcon/index'
+import { colors, spacing, styled } from '../../../theme'
+import { Close, Logo, ShoppingCart } from '../../atoms/SvgIcon'
 
 const styles = {
   bmBurgerBars: {},

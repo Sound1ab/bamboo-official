@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { styled, colors } from '../../../theme'
+import { colors, styled } from '../../../theme'
 
 type headingType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 type textTransformType = 'lowercase' | 'uppercase' | 'none'

@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
 import { css } from 'react-emotion'
-import { styled, colors } from '../../../theme/index'
-import { Container, Heading } from '../../atoms/index'
+import { colors, styled } from '../../../theme'
+import { Container, Heading } from '../../atoms'
 import { BurgerMenu } from './BurgerMenu'
 
 const LargeContainer = styled('div')`

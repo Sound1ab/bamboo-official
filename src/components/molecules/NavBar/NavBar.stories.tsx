@@ -1,9 +1,9 @@
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
 import { css } from 'react-emotion'
+import { styled } from '../../../theme'
 import { Container } from '../../atoms'
 import { NavBar } from './NavBar'
-import { styled } from '../../../theme'
 
 const LargeContainer = styled('div')`
   position: relative;

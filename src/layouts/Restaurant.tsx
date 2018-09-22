@@ -49,12 +49,12 @@ export const Restaurant: React.SFC = ({ children }) => (
             title={data.site.siteMetadata.title}
             meta={[
               {
-                name: 'description',
                 content: data.site.siteMetadata.description,
+                name: 'description',
               },
               {
-                name: 'keywords',
                 content: 'gatsbyjs, gatsby, javascript, sample, something',
+                name: 'keywords',
               },
             ]}
           />

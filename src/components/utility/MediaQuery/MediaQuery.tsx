@@ -1,13 +1,13 @@
 import * as React from 'react'
 
-type styles = {
+interface Styles {
   [propName: string]: any
 }
 
 interface PropTypes {
-  children: <T extends styles>(styles: T) => React.ReactNode
-  matchStyles: styles
-  nonMatchStyles: styles
+  children: <T extends Styles>(styles: T) => React.ReactNode
+  matchStyles: Styles
+  nonMatchStyles: Styles
   maxWidth: number
 }
 
@@ -18,8 +18,8 @@ interface StateTypes {
 export class MediaQuery extends React.Component<PropTypes, StateTypes> {
   public static defaultProps = {
     matchStyles: {},
-    nonMatchStyles: {},
     maxWidth: 700,
+    nonMatchStyles: {},
   }
 
   public state = {

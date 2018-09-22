@@ -2,11 +2,11 @@ import * as React from 'react'
 import { styled } from '../../../theme'
 
 type headingType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-type textTransform = 'lowercase' | 'uppercase' | 'none'
+type textTransformType = 'lowercase' | 'uppercase' | 'none'
 
 const Component = (
   heading: headingType,
-  textTransform: textTransform,
+  textTransform: textTransformType,
   marginBottom: boolean,
 ) => styled(heading as any)`
   text-transform: ${textTransform};
@@ -24,7 +24,7 @@ interface PropTypes {
   type?: headingType
   props?: {}
   children: React.ReactNode
-  textTransform?: textTransform
+  textTransform?: textTransformType
   marginBottom?: boolean
   button?: boolean
 }

@@ -22,12 +22,12 @@ const RightControls = ({ nextSlide }: { nextSlide: any }) => (
   </Button>
 )
 
-interface PropTypes {}
+const BottomControls = () => <div />
 
-export const Slider = (props: PropTypes) => (
+export const Slider = () => (
   <Carousel
     wrapAround
-    renderBottomCenterControls={() => <div />}
+    renderBottomCenterControls={BottomControls}
     renderCenterLeftControls={LeftControls}
     renderCenterRightControls={RightControls}
   >

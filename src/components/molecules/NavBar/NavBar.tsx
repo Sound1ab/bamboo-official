@@ -1,8 +1,8 @@
 import * as React from 'react'
+import { css } from 'react-emotion'
+import { colors, styled } from '../../../theme'
 import { Container, Heading, Logo, ShoppingCart } from '../../atoms'
 import { MediaQuery } from '../../utility'
-import { colors, styled } from '../../../theme'
-import { css } from 'react-emotion'
 
 const FlexContainer = styled(Container)`
   z-index: 10;

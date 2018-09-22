@@ -19,6 +19,17 @@ export const fontFamily: FontType[] = [
   { fontFamily: 'Brandon Thin', fileName: 'brandon_thin', format: 'woff2' },
 ]
 
+// tslint:disable-next-line
+export const spacing = {
+  l: 64,
+  m: 32,
+  s: 16,
+  xl: 128,
+  xs: 8,
+  xxl: 256,
+  xxs: 4,
+}
+
 export const typography = {
   fontFamily: {
     h1: 'Brandon Bold',
@@ -70,15 +81,12 @@ export const typography = {
     p: 1,
     sub: 1,
   },
-}
-
-// tslint:disable-next-line
-export const spacing = {
-  l: 64,
-  m: 32,
-  s: 16,
-  xl: 128,
-  xs: 8,
-  xxl: 256,
-  xxs: 4,
+  marginBottom: {
+    h1: spacing.s,
+    h2: spacing.s,
+    h3: spacing.s,
+    h4: spacing.s,
+    h5: spacing.s,
+    h6: spacing.xs,
+  },
 }

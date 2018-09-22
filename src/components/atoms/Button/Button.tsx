@@ -2,11 +2,9 @@ import * as React from 'react'
 import { styled } from '../../../theme'
 
 const Base = styled('button')`
-  font-family: ${({ theme }) => theme.typography.fontFamily.h3};
-  font-size: ${({ theme }) => theme.typography.fontSize.h3}px;
   padding: ${({ theme }) => `${theme.spacing.xs}px ${theme.spacing.m}px`};
   text-transform: lowercase;
-  min-width: ${({ theme }) => theme.spacing.l * 3}px;
+  min-width: ${({ theme }) => theme.spacing.m * 4}px;
   margin-bottom: ${({ theme }) => theme.spacing.xs}px;
 `
 
@@ -39,23 +37,25 @@ const Figure = styled(Secondary)`
 
 interface PropTypes {
   children?: React.ReactNode
-  variant?: 'primary' | 'secondary' | 'number'
+  type?: 'primary' | 'secondary' | 'number'
+  onClick?: (event: React.MouseEvent<HTMLElement>) => void
 }
 
 export const Button: React.SFC<PropTypes> = ({
   children = 'Button text',
-  variant = 'primary',
+  type = 'primary',
+  onClick,
 }) => {
   let component
-  switch (variant) {
+  switch (type) {
     case 'primary':
-      component = <Primary>{children}</Primary>
+      component = <Primary onClick={onClick}>{children}</Primary>
       break
     case 'secondary':
-      component = <Secondary>{children}</Secondary>
+      component = <Secondary onClick={onClick}>{children}</Secondary>
       break
     case 'number':
-      component = <Figure>{children}</Figure>
+      component = <Figure onClick={onClick}>{children}</Figure>
       break
   }
   return component

@@ -74,6 +74,15 @@ export interface Theme {
       readonly sub: number
       [key: number]: number
     }
+    marginBottom: {
+      readonly h1: number
+      readonly h2: number
+      readonly h3: number
+      readonly h4: number
+      readonly h5: number
+      readonly h6: number
+      [key: number]: number
+    }
   }
 }
 

@@ -1,16 +1,14 @@
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
-import { css } from 'react-emotion'
 import { colors, styled } from '../../../theme'
 import { Container, Heading } from '../../atoms'
-import { BurgerMenu } from '../../molecules/BurgerMenu'
+import { BurgerMenu } from '../BurgerMenu'
 import { NavBar } from './NavBar'
 
 const LargeContainer = styled('div')`
   position: relative;
   width: 100%;
   height: 100%;
-  background-color: ${({ theme }) => theme.colors.accent};
   overflow: scroll;
 `
 
@@ -59,11 +57,7 @@ storiesOf('NavBar', module).add('Primary', () => {
           </BurgerMenu>
         )}
       </NavBar>
-      <Container
-        className={css`
-          background-color: white;
-        `}
-      >
+      <Container>
         <ScrollContainer>
           <p>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec

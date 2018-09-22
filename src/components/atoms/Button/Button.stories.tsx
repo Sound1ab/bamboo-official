@@ -1,32 +1,57 @@
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
-import { Button } from './Button'
+import { colors } from '../../../theme'
+import { Button, Heading } from '../../atoms'
 
 storiesOf('Button', module)
   .add('Primary', () => {
     return (
       <React.Fragment>
-        <Button variant="primary">Normal button</Button>
-        <Button variant="primary">A button with way too long text</Button>
-        <Button variant="primary">min width</Button>
+        <Button type="primary">
+          <Heading type="h3" color={colors.white} textTransform="lowercase">
+            Normal button
+          </Heading>
+        </Button>
+        <Button type="primary">
+          <Heading type="h3" color={colors.white} textTransform="lowercase">
+            A button with way too long text
+          </Heading>
+        </Button>
+        <Button type="primary">
+          <Heading type="h3" color={colors.white} textTransform="lowercase">
+            min width
+          </Heading>
+        </Button>
       </React.Fragment>
     )
   })
   .add('Secondary', () => {
     return (
       <React.Fragment>
-        <Button variant="secondary">Normal button</Button>
-        <Button variant="secondary">A button with way too long text</Button>
-        <Button variant="secondary">min width</Button>
+        <Button type="secondary">
+          <Heading type="h3" color={colors.white} textTransform="lowercase">
+            Normal button
+          </Heading>
+        </Button>
+        <Button type="secondary">
+          <Heading type="h3" color={colors.white} textTransform="lowercase">
+            A button with way too long text
+          </Heading>
+        </Button>
+        <Button type="secondary">
+          <Heading type="h3" color={colors.white} textTransform="lowercase">
+            min width
+          </Heading>
+        </Button>
       </React.Fragment>
     )
   })
   .add('Number', () => {
     return (
       <React.Fragment>
-        <Button variant="number">1</Button>
-        <Button variant="number">2</Button>
-        <Button variant="number">3</Button>
+        <Button type="number">1</Button>
+        <Button type="number">2</Button>
+        <Button type="number">3</Button>
       </React.Fragment>
     )
   })

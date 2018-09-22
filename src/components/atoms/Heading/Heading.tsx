@@ -18,7 +18,8 @@ const Component = (
   font-weight: ${({ theme }) => theme.typography.fontWeight[heading]};
   letter-spacing: ${({ theme }) => theme.typography.letterSpacing[heading]}px;
   line-height: ${({ theme }) => theme.typography.lineHeight[heading]};
-  margin-bottom: ${({ theme }) => (marginBottom ? theme.spacing.s : 0)}px;
+  margin-bottom: ${({ theme }) =>
+    marginBottom ? theme.typography.marginBottom[heading] : 0}px;
   color: ${color};
 `
 

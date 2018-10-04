@@ -1,17 +1,16 @@
 import * as React from 'react'
 import { css } from 'react-emotion'
 import { colors, styled } from '../../../theme'
-import { Container, Heading, Logo, Menu, ShoppingCart } from '../../atoms'
+import { Heading, Logo, Menu, page, ShoppingCart, sticky } from '../../atoms'
 
-const FlexContainer = styled(Container)`
-  z-index: 10;
-  position: sticky;
+const FlexContainer = styled('nav')`
+  ${page};
+  ${sticky};
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  top: 0;
-`.withComponent('nav')
+`
 
 const columnBase = css`
   flex: 1 1;

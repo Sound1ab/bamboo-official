@@ -1,61 +1,83 @@
 import * as React from 'react'
-import { styled } from '../../../theme'
+import { css, cx } from 'react-emotion'
+import { colors, spacing, styled, typography } from '../../../theme'
 
-const Base = styled('button')`
-  padding: ${({ theme }) => `${theme.spacing.xs}px ${theme.spacing.m}px`};
-  text-transform: lowercase;
-  min-width: ${({ theme }) => theme.spacing.m * 4}px;
-  margin-bottom: ${({ theme }) => theme.spacing.xs}px;
-`
-
-const Primary = styled(Base)`
+const Primary = (doublePadding: boolean, marginBottom: boolean) => styled(
+  'button',
+)`
   background-color: ${({ theme }) => theme.colors.brand};
   color: white;
+  margin-bottom: ${({ theme }) => (marginBottom ? theme.spacing.xs : 0)}px;
+  padding: ${({ theme }) =>
+    `${doublePadding ? theme.spacing.s : theme.spacing.xs}px ${spacing.m}`}px;
+  text-transform: lowercase;
+  min-width: ${({ theme }) => theme.spacing.m * 4}px;
   &:hover {
     background-color: ${({ theme }) => theme.colors.accent};
   }
 `
 
-const Secondary = styled(Base)`
-  background-color: ${({ theme }) => theme.colors.black};
+const Secondary = css`
   box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.75);
-  color: white;
-  &:hover {
-    background-color: transparent;
+  background-color: transparent;
+  color: black;
+  & * {
     color: black;
+  }
+  &:hover {
+    background-color: ${colors.black};
+    color: white;
+    & * {
+      color: white;
+    }
   }
 `
 
-const Figure = styled(Secondary)`
-  font-family: ${({ theme }) => theme.typography.fontFamily.h3};
-  font-size: ${({ theme }) => theme.typography.fontSize.p}px;
+const Figure = css`
+  font-family: ${typography.fontFamily.h3};
+  font-size: ${typography.fontSize.p}px;
   padding: 0;
   min-width: 0;
-  width: ${({ theme }) => theme.spacing.m}px;
-  height: ${({ theme }) => theme.spacing.m}px;
+  width: ${spacing.m}px;
+  height: ${spacing.m}px;
 `
 
 interface PropTypes {
   children?: React.ReactNode
   type?: 'primary' | 'secondary' | 'number'
+  doublePadding?: boolean
   onClick?: (event: React.MouseEvent<HTMLElement>) => void
+  marginBottom?: boolean
 }
 
 export const Button: React.SFC<PropTypes> = ({
   children = 'Button text',
   type = 'primary',
+  doublePadding = false,
+  marginBottom = false,
   onClick,
 }) => {
   let component
+  const PrimaryComponent = React.createElement(
+    Primary(doublePadding, marginBottom),
+    {
+      onClick,
+    },
+    children,
+  )
   switch (type) {
     case 'primary':
-      component = <Primary onClick={onClick}>{children}</Primary>
+      component = PrimaryComponent
       break
     case 'secondary':
-      component = <Secondary onClick={onClick}>{children}</Secondary>
+      component = React.cloneElement(PrimaryComponent, {
+        className: Secondary,
+      })
       break
     case 'number':
-      component = <Figure onClick={onClick}>{children}</Figure>
+      component = React.cloneElement(PrimaryComponent, {
+        className: cx(Secondary, Figure),
+      })
       break
   }
   return component

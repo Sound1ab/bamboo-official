@@ -7,19 +7,24 @@ storiesOf('Button', module)
   .add('Primary', () => {
     return (
       <React.Fragment>
-        <Button type="primary">
+        <Button type="primary" marginBottom>
           <Heading type="h3" color={colors.white} textTransform="lowercase">
             Normal button
           </Heading>
         </Button>
-        <Button type="primary">
+        <Button type="primary" marginBottom>
           <Heading type="h3" color={colors.white} textTransform="lowercase">
             A button with way too long text
           </Heading>
         </Button>
-        <Button type="primary">
+        <Button type="primary" marginBottom>
           <Heading type="h3" color={colors.white} textTransform="lowercase">
             min width
+          </Heading>
+        </Button>
+        <Button type="primary" doublePadding marginBottom>
+          <Heading type="h3" color={colors.white} textTransform="lowercase">
+            double padding
           </Heading>
         </Button>
       </React.Fragment>
@@ -28,18 +33,18 @@ storiesOf('Button', module)
   .add('Secondary', () => {
     return (
       <React.Fragment>
-        <Button type="secondary">
-          <Heading type="h3" color={colors.white} textTransform="lowercase">
+        <Button type="secondary" marginBottom>
+          <Heading type="h3" textTransform="lowercase">
             Normal button
           </Heading>
         </Button>
-        <Button type="secondary">
-          <Heading type="h3" color={colors.white} textTransform="lowercase">
+        <Button type="secondary" marginBottom>
+          <Heading type="h3" textTransform="lowercase">
             A button with way too long text
           </Heading>
         </Button>
-        <Button type="secondary">
-          <Heading type="h3" color={colors.white} textTransform="lowercase">
+        <Button type="secondary" marginBottom>
+          <Heading type="h3" textTransform="lowercase">
             min width
           </Heading>
         </Button>
@@ -49,9 +54,15 @@ storiesOf('Button', module)
   .add('Number', () => {
     return (
       <React.Fragment>
-        <Button type="number">1</Button>
-        <Button type="number">2</Button>
-        <Button type="number">3</Button>
+        <Button type="number" marginBottom>
+          1
+        </Button>
+        <Button type="number" marginBottom>
+          2
+        </Button>
+        <Button type="number" marginBottom>
+          3
+        </Button>
       </React.Fragment>
     )
   })

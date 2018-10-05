@@ -1,8 +1,8 @@
 import * as React from 'react'
-import * as ReactModal from 'react-modal'
-import { Close } from '../SvgIcon'
 import styled, { css } from 'react-emotion'
+import * as ReactModal from 'react-modal'
 import { colors, spacing } from '../../../theme'
+import { Close } from '../SvgIcon'
 
 ReactModal.setAppElement('#root')
 

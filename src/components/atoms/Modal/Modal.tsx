@@ -7,6 +7,10 @@ import { Close } from '../SvgIcon'
 ReactModal.setAppElement('#root')
 
 const modalStyles = {
+  afterOpen: css`
+    opacity: 1;
+    transition: all 150ms;
+  `,
   base: css`
     position: absolute;
     top: 50%;
@@ -20,10 +24,6 @@ const modalStyles = {
     min-height: ${spacing.xl * 2}px;
     width: 80%;
     opacity: 0;
-  `,
-  afterOpen: css`
-    opacity: 1;
-    transition: all 150ms;
   `,
   beforeClose: css`
     opacity: 0;

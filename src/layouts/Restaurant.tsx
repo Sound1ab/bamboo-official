@@ -7,13 +7,13 @@ import { ThemeProvider } from '../components/atoms'
 import { Header } from '../components/molecules'
 import '../theme/normalize'
 
-const Root = styled.div`
+const Root = styled('div')`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 `
 
-const Main = styled.main`
+const Main = styled('main')`
   display: flex;
   flex-direction: column;
   flex: 1;

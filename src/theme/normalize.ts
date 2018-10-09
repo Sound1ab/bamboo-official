@@ -46,8 +46,8 @@ src:
   }
 
   a {
-    color: ${colors.brand};
-    text-decoration: none;
+    color: ${colors.black};
+    text-decoration: underline;
 
     &:hover,
     &:focus {

@@ -24,7 +24,7 @@ export const page = css`
   width: 90%;
 `
 
-export const Container = styled('div')`
+export const Container = styled('section')`
   ${relative};
   ${page};
 `

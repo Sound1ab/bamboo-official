@@ -7,10 +7,6 @@ import { Close } from '../SvgIcon'
 ReactModal.setAppElement('#root')
 
 const modalStyles = {
-  afterOpen: css`
-    opacity: 1;
-    transition: all 150ms;
-  `,
   base: css`
     position: absolute;
     top: 50%;
@@ -24,6 +20,11 @@ const modalStyles = {
     min-height: ${spacing.xl * 2}px;
     width: 80%;
     opacity: 0;
+  `,
+  // tslint:disable-next-line
+  afterOpen: css`
+    opacity: 1;
+    transition: opacity 150ms;
   `,
   beforeClose: css`
     opacity: 0;
@@ -54,27 +55,35 @@ interface Props {
   contentLabel?: string
   modalChildren?: React.ComponentType
   children?: (open: () => void) => any
+  role?: string
 }
 
 export class Modal extends React.Component<Props> {
   public static defaultProps = {
     contentLabel: 'Modal',
+    role: 'Dialog',
   }
 
   public state = {
-    isOpen: true,
+    isOpen: false,
   }
 
   public render() {
-    const { contentLabel, modalChildren, children } = this.props
+    const { contentLabel, modalChildren, children, role } = this.props
     return (
       <React.Fragment>
         <ReactModal
           overlayClassName={portalStyles}
-          className={modalStyles as any}
+          className={modalStyles}
           isOpen={this.state.isOpen}
           contentLabel={contentLabel}
           closeTimeoutMS={150}
+          role={role}
+          onRequestClose={this.close()}
+          shouldCloseOnOverlayClick
+          shouldFocusAfterRender
+          shouldCloseOnEsc
+          shouldReturnFocusAfterClose
         >
           <RightButton onClick={this.close()}>
             <Close fill={colors.black} width="28px" height="28px" />

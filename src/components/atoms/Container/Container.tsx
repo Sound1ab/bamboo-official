@@ -1,6 +1,5 @@
 import * as React from 'react'
 import styled, { css } from 'react-emotion'
-import { spacing } from '../../../theme'
 
 export const relative = css`
   position: relative;
@@ -16,11 +15,17 @@ export const sticky = css`
   z-index: 10;
 `
 
+export const fixed = css`
+  position: fixed;
+  top: 0;
+  z-index: 10;
+`
+
 export const page = css`
   margin-left: auto;
   margin-right: auto;
   max-width: 1000px;
-  padding: ${spacing.xs}px 0;
+  padding: 0 0;
   width: 90%;
 `
 

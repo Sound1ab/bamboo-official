@@ -1,15 +1,18 @@
 import * as React from 'react'
 import { css } from 'react-emotion'
 import { colors, styled } from '../../../theme'
-import { Heading, Logo, Menu, page, ShoppingCart, sticky } from '../../atoms'
+import { Heading, Logo, Menu, ShoppingCart } from '../../atoms'
+import { fixed, sticky, page } from '../../atoms/Container'
 
-const FlexContainer = styled('nav')`
-  ${page};
-  ${sticky};
+const FlexContainer = styled('nav')<{ isSticky: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  left: 0;
+  right: 0;
+  ${page};
+  ${({ isSticky }) => (isSticky ? sticky : fixed)};
 `
 
 const columnBase = css`
@@ -62,6 +65,8 @@ const LogoWrapper = styled('div')`
 
 interface Props {
   children?: (isMenuOpen: boolean, closeBurgerMenuClick: () => void) => void
+  isSticky?: boolean
+  isLight?: boolean
 }
 
 interface State {
@@ -69,6 +74,11 @@ interface State {
 }
 
 export class NavBar extends React.Component<Props, State> {
+  public static defaultProps = {
+    isSticky: false,
+    isLight: true,
+  }
+
   public state = {
     isMenuOpen: false,
   }
@@ -77,26 +87,44 @@ export class NavBar extends React.Component<Props, State> {
     return (
       <React.Fragment>
         {this.props.children(this.state.isMenuOpen, this.closeBurgerMenuClick)}
-        <FlexContainer>
+        <FlexContainer isSticky={this.props.isSticky}>
           <LeftColumn>
             <MobileButton onClick={this.openBurgerMenuClick}>
-              <Menu fill={colors.black} width={'28px'} height={'28px'} />
+              <Menu
+                fill={this.props.isLight ? colors.white : colors.black}
+                width={'28px'}
+                height={'28px'}
+              />
             </MobileButton>
-            <DesktopHeading type="h4" textTransform="uppercase" button>
+            <DesktopHeading
+              type="h4"
+              textTransform="uppercase"
+              button
+              color={this.props.isLight ? colors.white : colors.black}
+            >
               Products
             </DesktopHeading>
           </LeftColumn>
           <CenterColumn>
             <LogoWrapper>
-              <Logo fill={colors.black} />
+              <Logo fill={this.props.isLight ? colors.white : colors.black} />
             </LogoWrapper>
           </CenterColumn>
           <RightColumn>
-            <DesktopHeading type="h4" textTransform="lowercase" button>
+            <DesktopHeading
+              type="h4"
+              textTransform="lowercase"
+              button
+              color={this.props.isLight ? colors.white : colors.black}
+            >
               find us
             </DesktopHeading>
             <button>
-              <ShoppingCart fill={colors.black} width="28px" height="28px" />
+              <ShoppingCart
+                fill={this.props.isLight ? colors.white : colors.black}
+                width="28px"
+                height="28px"
+              />
             </button>
           </RightColumn>
         </FlexContainer>

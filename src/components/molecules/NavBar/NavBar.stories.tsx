@@ -18,61 +18,91 @@ const ScrollContainer = styled('div')`
   height: 1000px;
 `
 
-storiesOf('NavBar', module).add('Primary', () => {
-  return (
-    <LargeContainer>
-      <NavBar>
-        {(isMenuOpen, closeBurgerMenuClick) => (
-          <BurgerMenu isOpen={isMenuOpen} close={closeBurgerMenuClick}>
-            <div>
-              <Heading
-                type="h6"
-                color={colors.white}
-                textTransform="uppercase"
-                button
-              >
-                Find us
-              </Heading>
-            </div>
-            <div>
-              <Heading
-                type="h6"
-                color={colors.white}
-                textTransform="uppercase"
-                button
-              >
-                Products
-              </Heading>
-            </div>
-            <div>
-              <Heading
-                type="h6"
-                color={colors.white}
-                textTransform="uppercase"
-                button
-              >
-                Restaurant
-              </Heading>
-            </div>
-          </BurgerMenu>
-        )}
-      </NavBar>
-      <Container>
-        <ScrollContainer>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-            sagittis diam vitae diam bibendum feugiat. Quisque mauris lacus,
-            varius iaculis tempor eget, efficitur et felis. Aenean ac lectus
-            felis. Vestibulum eget sollicitudin arcu. Integer eget arcu
-            lobortis, hendrerit felis vel, posuere nulla. Maecenas molestie ante
-            at sapien eleifend maximus. Maecenas lacinia arcu urna, et varius
-            odio scelerisque id. Etiam viverra sapien felis, non volutpat sapien
-            lobortis aliquet. Etiam vulputate, odio eget eleifend semper, felis
-            nibh iaculis ipsum, nec dapibus libero lectus auctor nisl. Nullam
-            tristique ante mauris, sit amet molestie quam accumsan euismod.{' '}
-          </p>
-        </ScrollContainer>
-      </Container>
-    </LargeContainer>
-  )
-})
+const Nav = ({ isSticky = false }) => (
+  <NavBar isSticky={isSticky}>
+    {(isMenuOpen, closeBurgerMenuClick) => (
+      <BurgerMenu isOpen={isMenuOpen} close={closeBurgerMenuClick}>
+        <div>
+          <Heading
+            type="h6"
+            color={colors.white}
+            textTransform="uppercase"
+            button
+          >
+            Find us
+          </Heading>
+        </div>
+        <div>
+          <Heading
+            type="h6"
+            color={colors.white}
+            textTransform="uppercase"
+            button
+          >
+            Products
+          </Heading>
+        </div>
+        <div>
+          <Heading
+            type="h6"
+            color={colors.white}
+            textTransform="uppercase"
+            button
+          >
+            Restaurant
+          </Heading>
+        </div>
+      </BurgerMenu>
+    )}
+  </NavBar>
+)
+
+storiesOf('NavBar', module)
+  .add('Fixed', () => {
+    return (
+      <LargeContainer>
+        <Nav />
+        <Container>
+          <ScrollContainer>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+              sagittis diam vitae diam bibendum feugiat. Quisque mauris lacus,
+              varius iaculis tempor eget, efficitur et felis. Aenean ac lectus
+              felis. Vestibulum eget sollicitudin arcu. Integer eget arcu
+              lobortis, hendrerit felis vel, posuere nulla. Maecenas molestie
+              ante at sapien eleifend maximus. Maecenas lacinia arcu urna, et
+              varius odio scelerisque id. Etiam viverra sapien felis, non
+              volutpat sapien lobortis aliquet. Etiam vulputate, odio eget
+              eleifend semper, felis nibh iaculis ipsum, nec dapibus libero
+              lectus auctor nisl. Nullam tristique ante mauris, sit amet
+              molestie quam accumsan euismod.{' '}
+            </p>
+          </ScrollContainer>
+        </Container>
+      </LargeContainer>
+    )
+  })
+  .add('Sticky', () => {
+    return (
+      <LargeContainer>
+        <Nav isSticky />
+        <Container>
+          <ScrollContainer>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+              sagittis diam vitae diam bibendum feugiat. Quisque mauris lacus,
+              varius iaculis tempor eget, efficitur et felis. Aenean ac lectus
+              felis. Vestibulum eget sollicitudin arcu. Integer eget arcu
+              lobortis, hendrerit felis vel, posuere nulla. Maecenas molestie
+              ante at sapien eleifend maximus. Maecenas lacinia arcu urna, et
+              varius odio scelerisque id. Etiam viverra sapien felis, non
+              volutpat sapien lobortis aliquet. Etiam vulputate, odio eget
+              eleifend semper, felis nibh iaculis ipsum, nec dapibus libero
+              lectus auctor nisl. Nullam tristique ante mauris, sit amet
+              molestie quam accumsan euismod.{' '}
+            </p>
+          </ScrollContainer>
+        </Container>
+      </LargeContainer>
+    )
+  })

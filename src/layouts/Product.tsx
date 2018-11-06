@@ -4,9 +4,9 @@ import * as React from 'react'
 import styled from 'react-emotion'
 import Helmet from 'react-helmet'
 import { Heading, ThemeProvider } from '../components/atoms'
-import { NavBar, BurgerMenu } from '../components/molecules'
-import '../theme/normalize'
+import { BurgerMenu, NavBar } from '../components/molecules'
 import { colors } from '../theme'
+import '../theme/normalize'
 
 const Root = styled('div')`
   display: flex;

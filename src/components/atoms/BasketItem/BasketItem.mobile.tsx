@@ -86,12 +86,12 @@ interface State {
 export class BasketItemMobile extends React.Component<Props, State> {
   public static defaultProps = {
     id: '1234',
-    productName: 'Product name',
-    price: 0,
-    quantity: 0,
     onAdd: (): null => null,
-    onSubtract: (): null => null,
     onDelete: (): null => null,
+    onSubtract: (): null => null,
+    price: 0,
+    productName: 'Product name',
+    quantity: 0,
   }
 
   public state = {

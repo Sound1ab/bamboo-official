@@ -2,7 +2,7 @@ import * as React from 'react'
 import { css } from 'react-emotion'
 import { colors, styled } from '../../../theme'
 import { Heading, Logo, Menu, ShoppingCart } from '../../atoms'
-import { fixed, sticky, page } from '../../atoms/Container'
+import { fixed, page, sticky } from '../../atoms/Container'
 
 const FlexContainer = styled('nav')<{ isSticky: boolean }>`
   display: flex;
@@ -65,8 +65,8 @@ const LogoWrapper = styled('div')`
 
 interface Props {
   children?: (isMenuOpen: boolean, closeBurgerMenuClick: () => void) => void
-  isSticky?: boolean
   isLight?: boolean
+  isSticky?: boolean
 }
 
 interface State {
@@ -75,8 +75,8 @@ interface State {
 
 export class NavBar extends React.Component<Props, State> {
   public static defaultProps = {
-    isSticky: false,
     isLight: true,
+    isSticky: false,
   }
 
   public state = {

@@ -11,12 +11,14 @@ const Component = (
   textAlign: textAlignType,
   marginBottom: boolean,
   color: string,
+  fontFamily: string,
 ) => styled(heading as any)`
   text-transform: ${textTransform};
   text-align: ${textAlign};
   margin-top: 0;
   text-rendering: optimizeLegibility;
-  font-family: ${({ theme }) => theme.typography.fontFamily[heading]};
+  font-family: ${({ theme }) =>
+    theme.typography.fontFamily[fontFamily || heading]};
   font-size: ${({ theme }) => theme.typography.fontSize[heading]}px;
   font-weight: ${({ theme }) => theme.typography.fontWeight[heading]};
   letter-spacing: ${({ theme }) => theme.typography.letterSpacing[heading]}px;
@@ -37,6 +39,7 @@ interface PropTypes {
   className?: string
   color?: string
   onClick?: () => void
+  fontFamily?: string
 }
 
 export const Heading = ({
@@ -50,9 +53,10 @@ export const Heading = ({
   className = '',
   color = colors.black,
   onClick,
+  fontFamily,
 }: PropTypes) => {
   const HeadingComponent = React.createElement(
-    Component(type, textTransform, textAlign, marginBottom, color),
+    Component(type, textTransform, textAlign, marginBottom, color, fontFamily),
     { className },
     children,
   )

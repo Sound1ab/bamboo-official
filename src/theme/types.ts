@@ -1,3 +1,8 @@
+interface Screen {
+  vertical: number
+  horizontal: number
+}
+
 export interface Theme {
   colors: {
     readonly brand: string
@@ -7,6 +12,15 @@ export interface Theme {
     }
     readonly white: string
     readonly black: string
+  }
+  padding: {
+    readonly xxl: Screen
+    readonly xl: Screen
+    readonly l: Screen
+    readonly m: Screen
+    readonly s: Screen
+    readonly xs: Screen
+    readonly none: Screen
   }
   spacing: {
     readonly xxl: number

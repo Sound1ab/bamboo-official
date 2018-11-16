@@ -1,6 +1,6 @@
 import { injectGlobal } from 'emotion'
 import { FontType } from './types'
-import { colors, fontFamily, spacing, typography } from './variables'
+import { colors, fontFamily, typography } from './variables'
 
 // tslint:disable-next-line:no-unused-expression
 injectGlobal`

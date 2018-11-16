@@ -29,9 +29,12 @@ export const page = css`
   width: 90%;
 `
 
-export const Container = styled('section')`
+export const Container = styled('section')<{
+  textAlign?: string
+}>`
   ${relative};
   ${page};
+  ${({ textAlign = 'left' }) => `text-align: ${textAlign}`};
 `
 
 export const StickyContainer = styled('div')`

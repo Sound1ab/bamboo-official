@@ -4,7 +4,7 @@ import * as React from 'react'
 import styled from 'react-emotion'
 import Helmet from 'react-helmet'
 import { Heading, ThemeProvider } from '../components/atoms'
-import { BurgerMenu, NavBar } from '../components/molecules'
+import { BurgerMenu, NavBar, Footer } from '../components/molecules'
 import { colors } from '../theme'
 import '../theme/normalize'
 
@@ -96,6 +96,7 @@ export const Product: React.SFC = ({ children }) => (
             )}
           </NavBar>
           <Main>{children}</Main>
+          <Footer />
         </Root>
       </ThemeProvider>
     )}

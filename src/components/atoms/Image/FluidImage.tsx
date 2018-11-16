@@ -29,23 +29,29 @@ interface PropTypes {
   image?: string
   title?: string
   alt?: string
+  children?: string
 }
 
-export const Image = ({
+export const FluidImage = ({
   style = {},
   image = 'ProductThree02',
   title = '',
   alt = '',
+  children,
 }: PropTypes) => (
-  <StaticQuery query={fluidQuery}>
-    {(data: any) => (
-      <Img
-        style={style}
-        fluid={findImage(data, image).node.childImageSharp.fluid}
-        backgroundColor={colors.accent}
-        title={title}
-        alt={alt}
-      />
-    )}
-  </StaticQuery>
+  <div>
+    <StaticQuery query={fluidQuery}>
+      {(data: any) => (
+        <Img
+          style={style}
+          fluid={findImage(data, image).node.childImageSharp.fluid}
+          backgroundColor={colors.accent}
+          title={title}
+          alt={alt}
+        >
+          {children}
+        </Img>
+      )}
+    </StaticQuery>
+  </div>
 )

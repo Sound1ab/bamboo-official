@@ -76,7 +76,7 @@ export const typography = {
     h2: 1,
     h3: 1,
     h4: 1,
-    h5: 1,
+    h5: 1.5,
     h6: 1,
     p: 1,
     sub: 1,
@@ -88,5 +88,36 @@ export const typography = {
     h4: spacing.s,
     h5: spacing.s,
     h6: spacing.xs,
+  },
+}
+
+export const padding = {
+  xxl: {
+    vertical: spacing.l + spacing.m,
+    horizontal: spacing.xl + spacing.m,
+  },
+  xl: {
+    vertical: spacing.l,
+    horizontal: spacing.xl + spacing.m,
+  },
+  l: {
+    vertical: spacing.l,
+    horizontal: spacing.xl + spacing.m,
+  },
+  m: {
+    vertical: spacing.m,
+    horizontal: spacing.l + spacing.s,
+  },
+  s: {
+    vertical: spacing.s,
+    horizontal: 0,
+  },
+  xs: {
+    vertical: spacing.s,
+    horizontal: 0,
+  },
+  none: {
+    vertical: 0,
+    horizontal: 0,
   },
 }

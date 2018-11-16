@@ -11,6 +11,8 @@ const TopBorderContainer = styled(Container)`
   justify-content: space-between;
 `
 
+const FooterWrapper = TopBorderContainer.withComponent('footer')
+
 const SpacedWrapper = styled('div')`
   * + * {
     margin-left: ${spacing.s}px;
@@ -22,7 +24,7 @@ const UppercaseParagraph = styled('p')`
 `
 
 export const Footer = () => (
-  <TopBorderContainer>
+  <FooterWrapper>
     <UppercaseParagraph>© Bam • Boo 2018</UppercaseParagraph>
     <SpacedWrapper>
       <Twitter fill={colors.black} width="14px" height="14px" />
@@ -36,5 +38,5 @@ export const Footer = () => (
         </UppercaseParagraph>
       )}
     </MediaQuery>
-  </TopBorderContainer>
+  </FooterWrapper>
 )

@@ -4,7 +4,7 @@ import * as React from 'react'
 import styled from 'react-emotion'
 import Helmet from 'react-helmet'
 import { Heading, ThemeProvider } from '../components/atoms'
-import { BurgerMenu, NavBar, Footer } from '../components/molecules'
+import { BurgerMenu, Footer, NavBar } from '../components/molecules'
 import { colors } from '../theme'
 import '../theme/normalize'
 

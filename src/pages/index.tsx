@@ -3,9 +3,9 @@ import * as React from 'react'
 import styled, { css } from 'react-emotion'
 import { Container, Heading, Lemon, Slide } from '../components/atoms'
 import { FluidImage } from '../components/atoms/Image'
-import { Product } from '../layouts'
-import { colors, spacing, padding } from '../theme'
 import { Slider } from '../components/atoms/Slider'
+import { Product } from '../layouts'
+import { colors, padding, spacing } from '../theme'
 
 interface PageTemplateProps {
   data: {

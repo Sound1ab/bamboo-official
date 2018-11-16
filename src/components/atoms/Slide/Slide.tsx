@@ -1,7 +1,7 @@
 import * as React from 'react'
 import { css } from 'react-emotion'
-import { FluidImage, Heading } from '../../atoms'
 import { spacing } from '../../../theme'
+import { FluidImage, Heading } from '../../atoms'
 
 interface Props {
   image: string

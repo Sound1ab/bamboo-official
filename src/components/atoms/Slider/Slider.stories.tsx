@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
 import styled from 'react-emotion'
-import { Slider } from './Slider'
 import { Heading } from '../Heading'
+import { Slider } from './Slider'
 
 const SubtextWrapper = styled('div')`
   display: flex;

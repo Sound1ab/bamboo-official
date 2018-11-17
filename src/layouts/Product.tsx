@@ -1,104 +1,220 @@
-import { graphql, StaticQuery } from 'gatsby'
-import 'modern-normalize'
 import * as React from 'react'
-import styled from 'react-emotion'
-import Helmet from 'react-helmet'
-import { Heading, ThemeProvider } from '../components/atoms'
-import { BurgerMenu, Footer, NavBar } from '../components/molecules'
-import { colors } from '../theme'
-import '../theme/normalize'
+import { css } from 'react-emotion'
+import { Generic } from './Generic'
+import { StickyBuyer } from '../components/molecules'
+import {
+  FluidImage,
+  Container,
+  Heading,
+  sticky,
+  Ricebowl,
+} from '../components/atoms'
+import { ImageTextContainer } from '../components/atoms/Container'
+import { colors, spacing } from '../theme'
+import { MediaQuery } from '../components/utility'
 
-const Root = styled('div')`
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-`
-
-const Main = styled('main')`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  position: relative;
-`
-
-interface StaticQueryProps {
-  site: {
-    siteMetadata: {
-      title: string
-      description: string
-    }
-  }
+interface Props {
+  navbarIsSticky?: boolean
 }
 
-export const Product: React.SFC = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteMetaQuery {
-        site {
-          siteMetadata {
-            title
-            description
-          }
-        }
-      }
-    `}
-  >
-    {(data: StaticQueryProps) => (
-      <ThemeProvider>
-        <Root>
-          <Helmet
-            title={data.site.siteMetadata.title}
-            meta={[
-              {
-                content: data.site.siteMetadata.description,
-                name: 'description',
-              },
-              {
-                content: 'gatsbyjs, gatsby, javascript, sample, something',
-                name: 'keywords',
-              },
-            ]}
-          />
-          <NavBar>
-            {(isMenuOpen, closeBurgerMenuClick) => (
-              <BurgerMenu isOpen={isMenuOpen} close={closeBurgerMenuClick}>
-                <div>
-                  <Heading
-                    type="h6"
-                    color={colors.white}
-                    textTransform="uppercase"
-                    button
+const MAX_WIDTH_MEDIA = 600
+
+export const Product = ({ navbarIsSticky = true }: Props) => (
+  <Generic navbarIsSticky={navbarIsSticky}>
+    <MediaQuery maxWidth={MAX_WIDTH_MEDIA}>
+      {(_, isMatchMedia) => (
+        <React.Fragment>
+          {isMatchMedia && (
+            <Container>
+              <Heading type="h2" marginBottom>
+                Baam Boom Sauce
+              </Heading>
+              <Heading type="h4" marginBottom>
+                £8.90
+              </Heading>
+            </Container>
+          )}
+          <Container
+            className={css`
+              display: flex;
+              justify-content: space-between;
+              align-items: stretch;
+            `}
+            marginBottom
+          >
+            <div
+              className={css`
+                flex: 1;
+              `}
+            >
+              <FluidImage
+                style={{ width: '100%', height: '480px' }}
+                image="bambooproductcover2"
+                title="product homepage banner"
+                alt="product homepage banner"
+              />
+              {isMatchMedia && <StickyBuyer isStatic hasNoProductInformation />}
+              {!isMatchMedia && (
+                <React.Fragment>
+                  <div
+                    className={css`
+                      padding: ${spacing.m}px;
+                      text-align: center;
+                    `}
                   >
-                    Find us
-                  </Heading>
+                    <Ricebowl fill={colors.black} width="80px" height="80px" />
+                  </div>
+                  <ImageTextContainer
+                    firstChild={
+                      <FluidImage
+                        style={{ width: '100%', height: '320px' }}
+                        image="bambooproductcover2"
+                        title="product homepage banner"
+                        alt="product homepage banner"
+                      />
+                    }
+                    secondChild={
+                      <div>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec sagittis diam vitae diam bibendum feugiat. Quisque
+                        mauris lacus, varius iaculis tempor eget, efficitur et
+                        felis. Aenean ac lectus felis. Vestibulum eget
+                        sollicitudin arcu. Integer eget arcu lobortis, hendrerit
+                        felis vel, posuere nulla.
+                      </div>
+                    }
+                    marginBottom
+                  />
+                  <ImageTextContainer
+                    secondChild={
+                      <FluidImage
+                        style={{ width: '100%', height: '240px' }}
+                        image="bambooproductcover2"
+                        title="product homepage banner"
+                        alt="product homepage banner"
+                      />
+                    }
+                    firstChild={
+                      <div>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                        Donec sagittis diam vitae diam bibendum feugiat. Quisque
+                        mauris lacus, varius iaculis tempor eget, efficitur et
+                        felis. Aenean ac lectus felis. Vestibulum eget
+                        sollicitudin arcu. Integer eget arcu lobortis, hendrerit
+                        felis vel, posuere nulla.
+                      </div>
+                    }
+                  />
+                </React.Fragment>
+              )}
+            </div>
+            {!isMatchMedia && (
+              <div
+                className={css`
+                  flex: 0 0 ${spacing.xl * 2 + spacing.s}px;
+                  margin-left: ${spacing.m}px;
+                `}
+              >
+                <div
+                  className={css`
+                    ${sticky};
+                    top: 124px;
+                  `}
+                >
+                  <StickyBuyer isStatic />
                 </div>
-                <div>
-                  <Heading
-                    type="h6"
-                    color={colors.white}
-                    textTransform="uppercase"
-                    button
-                  >
-                    Products
-                  </Heading>
-                </div>
-                <div>
-                  <Heading
-                    type="h6"
-                    color={colors.white}
-                    textTransform="uppercase"
-                    button
-                  >
-                    Restaurant
-                  </Heading>
-                </div>
-              </BurgerMenu>
+              </div>
             )}
-          </NavBar>
-          <Main>{children}</Main>
-          <Footer />
-        </Root>
-      </ThemeProvider>
-    )}
-  </StaticQuery>
+          </Container>
+          <Container>
+            <div
+              className={css`
+                padding: ${spacing.m}px;
+                text-align: center;
+              `}
+            >
+              <Ricebowl fill={colors.black} width="80px" height="80px" />
+            </div>
+          </Container>
+          <Container
+            className={css`
+              display: flex;
+              flex-wrap: nowrap;
+              & > div {
+                flex: 1;
+              }
+              & > div:not(:last-child) {
+                margin: 0 ${spacing.m}px 0 0;
+              }
+              @media (max-width: ${MAX_WIDTH_MEDIA}px) {
+                flex-wrap: wrap;
+                & > div {
+                  flex: 1 1 100%;
+                }
+                & > div:not(:last-child) {
+                  margin: 0 0 ${spacing.m}px 0;
+                }
+              }
+            `}
+            marginBottom
+          >
+            <div>
+              <FluidImage
+                style={{ width: '100%', height: '240px' }}
+                image="bambooproductcover2"
+                title="product homepage banner"
+                alt="product homepage banner"
+              />
+              <div
+                className={css`
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top: ${spacing.xs}px;
+                `}
+              >
+                <span>Heading left</span>
+                <span>Heading right</span>
+              </div>
+            </div>
+            <div>
+              <FluidImage
+                style={{ width: '100%', height: '240px' }}
+                image="bambooproductcover2"
+                title="product homepage banner"
+                alt="product homepage banner"
+              />
+              <div
+                className={css`
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top: ${spacing.xs}px;
+                `}
+              >
+                <span>Heading left</span>
+                <span>Heading right</span>
+              </div>
+            </div>
+            <div>
+              <FluidImage
+                style={{ width: '100%', height: '240px' }}
+                image="bambooproductcover2"
+                title="product homepage banner"
+                alt="product homepage banner"
+              />
+              <div
+                className={css`
+                  display: flex;
+                  justify-content: space-between;
+                  margin-top: ${spacing.xs}px;
+                `}
+              >
+                <span>Heading left</span>
+                <span>Heading right</span>
+              </div>
+            </div>
+          </Container>
+        </React.Fragment>
+      )}
+    </MediaQuery>
+  </Generic>
 )

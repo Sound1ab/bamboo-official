@@ -1,3 +1,6 @@
 export * from './NavBar'
 export * from './BurgerMenu'
 export * from './Footer'
+export * from './Basket'
+export * from './Rating'
+export * from './StickyBuyer'

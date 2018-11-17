@@ -61,6 +61,7 @@
     "react-helmet": "^5.2.0",
     "react-inlinesvg": "^0.8.1",
     "react-modal": "^3.6.1",
+    "react-sticky": "^6.0.3",
     "typescript": "^3.0.3"
   },
   "devDependencies": {

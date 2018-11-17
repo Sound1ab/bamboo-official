@@ -27,6 +27,7 @@ src:
   *::before,
   *::after {
     box-sizing: inherit;
+    //box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.75);
   }
 
   html {

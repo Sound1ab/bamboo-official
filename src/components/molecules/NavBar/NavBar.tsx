@@ -75,7 +75,7 @@ interface State {
 
 export class NavBar extends React.Component<Props, State> {
   public static defaultProps = {
-    isLight: true,
+    isLight: false,
     isSticky: false,
   }
 

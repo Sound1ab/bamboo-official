@@ -4,7 +4,7 @@ import styled, { css } from 'react-emotion'
 import { Container, Heading, Lemon, Slide } from '../components/atoms'
 import { FluidImage } from '../components/atoms/Image'
 import { Slider } from '../components/atoms/Slider'
-import { Product } from '../layouts'
+import { Generic } from '../layouts'
 import { colors, padding, spacing } from '../theme'
 
 interface PageTemplateProps {
@@ -27,7 +27,7 @@ const HomepageContainer = styled(Container)`
 
 const IndexPage = ({ data }: PageTemplateProps) => {
   return (
-    <Product>
+    <Generic navbarIsLight={true}>
       <FluidImage
         style={{ width: '100%', height: '560px' }}
         image="bambooproductcover2"
@@ -77,7 +77,7 @@ const IndexPage = ({ data }: PageTemplateProps) => {
           <Slide image="ProductFive01" headingLeft="test" headingRight="test" />
         </Slider>
       </HomepageContainer>
-    </Product>
+    </Generic>
   )
 }
 

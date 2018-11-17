@@ -18,9 +18,9 @@ export const Slide = ({ image, headingLeft, headingRight }: Props) => (
   >
     <FluidImage
       style={{
-        width: '100%',
         height: spacing.xl * 3,
         margin: 'auto',
+        width: '100%',
       }}
       image={image}
       title="product homepage banner"

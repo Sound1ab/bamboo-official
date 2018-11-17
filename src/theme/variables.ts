@@ -92,32 +92,32 @@ export const typography = {
 }
 
 export const padding = {
-  xxl: {
-    vertical: spacing.l + spacing.m,
-    horizontal: spacing.xl + spacing.m,
-  },
-  xl: {
-    vertical: spacing.l,
-    horizontal: spacing.xl + spacing.m,
-  },
   l: {
-    vertical: spacing.l,
     horizontal: spacing.xl + spacing.m,
+    vertical: spacing.l,
   },
   m: {
-    vertical: spacing.m,
     horizontal: spacing.l + spacing.s,
-  },
-  s: {
-    vertical: spacing.s,
-    horizontal: 0,
-  },
-  xs: {
-    vertical: spacing.s,
-    horizontal: 0,
+    vertical: spacing.m,
   },
   none: {
-    vertical: 0,
     horizontal: 0,
+    vertical: 0,
+  },
+  s: {
+    horizontal: 0,
+    vertical: spacing.s,
+  },
+  xl: {
+    horizontal: spacing.xl + spacing.m,
+    vertical: spacing.l,
+  },
+  xs: {
+    horizontal: 0,
+    vertical: spacing.s,
+  },
+  xxl: {
+    horizontal: spacing.xl + spacing.m,
+    vertical: spacing.l + spacing.m,
   },
 }

@@ -1,17 +1,17 @@
 import * as React from 'react'
 import { css } from 'react-emotion'
-import { Generic } from './Generic'
-import { StickyBuyer } from '../components/molecules'
 import {
-  FluidImage,
   Container,
+  FluidImage,
   Heading,
-  sticky,
   Ricebowl,
+  sticky,
 } from '../components/atoms'
 import { ImageTextContainer } from '../components/atoms/Container'
-import { colors, spacing } from '../theme'
+import { StickyBuyer } from '../components/molecules'
 import { MediaQuery } from '../components/utility'
+import { colors, spacing } from '../theme'
+import { Generic } from './Generic'
 
 interface Props {
   navbarIsSticky?: boolean

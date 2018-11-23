@@ -1,7 +1,8 @@
 import * as React from 'react'
 import styled from 'react-emotion'
 import { colors, spacing } from '../../../theme'
-import { Button, Heading, StickyContainer } from '../../atoms'
+import { Button, CartContext, Heading, StickyContainer } from '../../atoms'
+import { QuantityChooser } from '../../utility'
 import { Rating } from '../index'
 
 const Wrapper = styled(StickyContainer)<{ isStatic: boolean }>`
@@ -12,56 +13,89 @@ const Wrapper = styled(StickyContainer)<{ isStatic: boolean }>`
 
 const ButtonWrapper = styled('div')`
   & * + * {
-    margin-left: ${spacing.xxs}px;
+    padding-left: ${spacing.xxs}px;
   }
 `
 
 interface Prop {
+  reviews?: { review: string; score: number }[]
+  heading: string
+  productId: string
+  description: string
+  price: number
   hasNoProductInformation?: boolean
   isStatic?: boolean
-  quantity?: number
 }
 
 export const StickyBuyer = ({
+  reviews,
+  heading,
+  description,
+  productId,
+  price,
   hasNoProductInformation = false,
   isStatic = false,
-  quantity = 5,
 }: Prop) => (
   <Wrapper isStatic={isStatic}>
     {!hasNoProductInformation && (
       <React.Fragment>
         <Heading type="h2" marginBottom>
-          Baam Boom Sauce
+          {heading}
         </Heading>
         <Heading type="h4" marginBottom>
-          £8.90
+          £{price}
         </Heading>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-          sagittis diam vitae diam bibendum feugiat. Quisque mauris lacus,
-          varius iaculis tempor eget, efficitur et felis. Aenean ac lectus
-          felis. Vestibulum eget sollicitudin arcu. Integer eget arcu lobortis,
-          hendrerit felis vel, posuere nulla.
-        </p>
+        <p>{description}</p>
       </React.Fragment>
     )}
     <Heading type="h6" marginBottom>
       quantity
     </Heading>
-    <ButtonWrapper>
-      {Array(quantity)
-        .fill(1, 0)
-        .map((_, i) => (
-          <Button type="number" marginBottom>
-            {i + 1}
-          </Button>
-        ))}
-    </ButtonWrapper>
-    <Button type="primary" doublePadding marginBottom>
-      <Heading type="h3" color={colors.white} textTransform="lowercase">
-        Add to basket
-      </Heading>
-    </Button>
-    <Rating />
+    <QuantityChooser>
+      {({ handleMouseEnter, handleMouseLeave, handleClick, pickColor, selectedValue }) => (
+        <React.Fragment>
+          <ButtonWrapper>
+            {Array(5)
+              .fill(1, 0)
+              .map((_, i) => (
+                <span
+                  key={i}
+                  onMouseEnter={handleMouseEnter.bind(this, i)}
+                  onMouseLeave={handleMouseLeave.bind(this, null)}
+                  onClick={handleClick.bind(this, i)}
+                >
+                  <Button
+                    type="number"
+                    marginBottom
+                    fill={pickColor(i, 'black', 'black', 'transparent')}
+                    color={pickColor(i, 'white', 'white', 'black')}
+                  >
+                    {i + 1}
+                  </Button>
+                </span>
+              ))}
+          </ButtonWrapper>
+          <CartContext.Consumer>
+            {({ replaceInCart }) => (
+              <Button
+                onClick={replaceInCart.bind(null, {
+                  id: productId,
+                  price,
+                  quantity: selectedValue + 1,
+                })}
+                type="primary"
+                doublePadding
+                marginBottom
+              >
+                <Heading type="h3" color={colors.white} textTransform="lowercase">
+                  Add to basket
+                </Heading>
+              </Button>
+            )}
+          </CartContext.Consumer>
+        </React.Fragment>
+      )}
+    </QuantityChooser>
+    <Rating reviews={reviews} />
   </Wrapper>
 )

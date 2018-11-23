@@ -11,7 +11,7 @@ const fluidQuery = graphql`
           name
           childImageSharp {
             fluid(maxWidth: 1250) {
-              ...GatsbyImageSharpFluid_withWebp
+              ...GatsbyImageSharpFluid_withWebp_tracedSVG
               originalName
             }
           }
@@ -21,8 +21,7 @@ const fluidQuery = graphql`
   }
 `
 
-const findImage = (data: any, image: string) =>
-  data.imgAll.edges.find((node: any) => node.node.name === image)
+const findImage = (data: any, image: string) => data.imgAll.edges.find((node: any) => node.node.name === image)
 
 interface PropTypes {
   style?: {}
@@ -32,23 +31,11 @@ interface PropTypes {
   children?: string
 }
 
-export const FluidImage = ({
-  style = {},
-  image = 'ProductThree02',
-  title = '',
-  alt = '',
-  children,
-}: PropTypes) => (
+export const FluidImage = ({ style = {}, image = 'ProductThree02', title = '', alt = '', children }: PropTypes) => (
   <div>
     <StaticQuery query={fluidQuery}>
       {(data: any) => (
-        <Img
-          style={style}
-          fluid={findImage(data, image).node.childImageSharp.fluid}
-          backgroundColor={colors.accent}
-          title={title}
-          alt={alt}
-        >
+        <Img style={style} fluid={findImage(data, image).node.childImageSharp.fluid} title={title} alt={alt}>
           {children}
         </Img>
       )}

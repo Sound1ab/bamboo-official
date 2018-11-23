@@ -2,14 +2,11 @@ import * as React from 'react'
 import { css, cx } from 'react-emotion'
 import { colors, spacing, styled, typography } from '../../../theme'
 
-const Primary = (doublePadding: boolean, marginBottom: boolean) => styled(
-  'button',
-)`
+const Primary = (doublePadding: boolean, marginBottom: boolean) => styled('button')`
   background-color: ${({ theme }) => theme.colors.brand};
   color: white;
   margin-bottom: ${({ theme }) => (marginBottom ? theme.spacing.xs : 0)}px;
-  padding: ${({ theme }) =>
-    `${doublePadding ? theme.spacing.s : theme.spacing.xs}px ${spacing.m}`}px;
+  padding: ${({ theme }) => `${doublePadding ? theme.spacing.s : theme.spacing.xs}px ${spacing.m}`}px;
   text-transform: lowercase;
   min-width: ${({ theme }) => theme.spacing.m * 4}px;
   &:hover {
@@ -48,6 +45,8 @@ interface PropTypes {
   doublePadding?: boolean
   onClick?: (event: React.MouseEvent<HTMLElement>) => void
   marginBottom?: boolean
+  fill?: string
+  color?: string
 }
 
 export const Button: React.SFC<PropTypes> = ({
@@ -56,6 +55,8 @@ export const Button: React.SFC<PropTypes> = ({
   doublePadding = false,
   marginBottom = false,
   onClick,
+  fill,
+  color,
 }) => {
   let component
   const PrimaryComponent = React.createElement(
@@ -77,6 +78,7 @@ export const Button: React.SFC<PropTypes> = ({
     case 'number':
       component = React.cloneElement(PrimaryComponent, {
         className: cx(Secondary, Figure),
+        style: { backgroundColor: fill ? fill : 'transparent', color },
       })
       break
   }

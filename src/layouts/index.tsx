@@ -1,2 +1,2 @@
 export * from './Generic'
-export * from './Product'
+export * from '../templates/Product'

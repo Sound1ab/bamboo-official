@@ -1,6 +1,8 @@
+import { Link } from 'gatsby'
 import * as React from 'react'
 import { css } from 'react-emotion'
 import { styled } from '../../../theme'
+import * as Cart from '../Cart'
 import { Heading } from '../Heading'
 
 const Wrapper = styled('div')`
@@ -73,10 +75,11 @@ interface Props {
   id?: string
   productName?: string
   price?: number
+  slug?: string
   quantity?: number
-  onAdd?: (id: string) => void
-  onSubtract?: (id: string) => void
-  onDelete?: (id: string) => void
+  onAdd?: Cart.FullItem
+  onSubtract?: Cart.FullItem
+  onDelete?: Cart.PartialItem
 }
 
 interface State {
@@ -85,12 +88,9 @@ interface State {
 
 export class BasketItemMobile extends React.Component<Props, State> {
   public static defaultProps = {
-    id: '1234',
     onAdd: (): null => null,
     onDelete: (): null => null,
     onSubtract: (): null => null,
-    price: 0,
-    productName: 'Product name',
     quantity: 0,
   }
 
@@ -99,27 +99,21 @@ export class BasketItemMobile extends React.Component<Props, State> {
   }
 
   public render() {
-    const {
-      id,
-      productName,
-      price,
-      quantity,
-      onAdd,
-      onSubtract,
-      onDelete,
-    } = this.props
+    const { id, productName, price, quantity, onAdd, onSubtract, onDelete, slug } = this.props
     return (
       <Wrapper>
         <ImageChild>
           <ImagePlaceholder />
         </ImageChild>
         <DetailChild>
-          <Heading type="h6" marginBottom>
-            {productName}
-          </Heading>
+          <Link to={`/products/${slug}`}>
+            <Heading type="h6" marginBottom>
+              {productName}
+            </Heading>
+          </Link>
           <p>{`(x${quantity})`}</p>
           {this.state.isEditing && (
-            <Delete href="javascript:" onClick={onDelete.bind(null, id)}>
+            <Delete href="javascript:" onClick={onDelete.bind(null, { id })}>
               delete
             </Delete>
           )}
@@ -129,15 +123,15 @@ export class BasketItemMobile extends React.Component<Props, State> {
             £{`${price.toFixed(2)}`}
           </Heading>
           <a href="javascript:" onClick={this.toggleEdit()}>
-            {this.state.isEditing ? 'cancel' : 'edit'}
+            <span>{this.state.isEditing ? 'cancel' : 'edit'}</span>
           </a>
           {this.state.isEditing && (
             <QuantityChild>
-              <Subtract type="h6" onClick={onSubtract.bind(null, id)} button>
+              <Subtract type="h6" onClick={onSubtract.bind(null, { id, quantity: 1, price })} button>
                 -
               </Subtract>
               <Heading type="h6">{quantity}</Heading>
-              <Add type="h6" onClick={onAdd.bind(null, id)} button>
+              <Add type="h6" onClick={onAdd.bind(null, { id, quantity: 1, price })} button>
                 +
               </Add>
             </QuantityChild>

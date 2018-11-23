@@ -24,16 +24,13 @@ const RightControls = ({ nextSlide }: { nextSlide: any }) => (
 
 const BottomControls = () => <div />
 
-export const Slider = ({
-  children,
-}: {
-  children: JSX.Element | JSX.Element[]
-}) => (
+export const Slider = ({ children }: { children: JSX.Element | JSX.Element[] }) => (
   <Carousel
     wrapAround
     renderBottomCenterControls={BottomControls}
     renderCenterLeftControls={LeftControls}
     renderCenterRightControls={RightControls}
+    heightMode="current"
   >
     {children}
   </Carousel>

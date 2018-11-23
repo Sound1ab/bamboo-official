@@ -11,9 +11,7 @@ injectGlobal`
         font-family: '${font.fontFamily}';
 src:
   local('${font.fileName}'),
-    url(${require(`../assets/fonts/${font.fileName}-webfont.woff2`)}) format('${
-     font.format
-   }');
+    url(${require(`../assets/fonts/${font.fileName}-webfont.woff2`)}) format('${font.format}');
       }
     `,
    '',
@@ -48,12 +46,16 @@ src:
 
   a {
     color: ${colors.black};
-    text-decoration: underline;
+    text-decoration: none;
 
     &:hover,
     &:focus {
-      text-decoration: underline;
+      text-decoration: none;
     }
+  }
+  
+  a span {
+    text-decoration: underline;
   }
 
   img {
@@ -133,6 +135,8 @@ src:
     border: 0;
     border-top: 1px solid ${colors.black};
   }
+  
+  textarea, select, input, button { outline: none; }
 
   blockquote {
     margin: .8rem 0;

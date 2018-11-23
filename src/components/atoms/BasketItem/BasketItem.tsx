@@ -1,33 +1,42 @@
 import * as React from 'react'
 import { BasketItemDesktop, BasketItemMobile } from '../../atoms'
 import { MediaQuery } from '../../utility'
+import * as Cart from '../Cart'
 
 interface Props {
-  id?: string
-  productName?: string
-  price?: number
+  id: string
+  productName: string
+  price: number
+  slug: string
   quantity?: number
-  onAdd?: (id: string) => void
-  onSubtract?: (id: string) => void
-  onDelete?: (id: string) => void
+  onAdd?: Cart.FullItem
+  onSubtract?: Cart.FullItem
+  onDelete?: Cart.PartialItem
 }
 
 export const BasketItem = ({
-  productName = 'Product name',
-  id = '1234',
-  price = 0.0,
-  quantity = 0,
+  id,
   onAdd = (): null => null,
-  onSubtract = (): null => null,
+  quantity = 0,
   onDelete = (): null => null,
+  onSubtract = (): null => null,
+  price,
+  productName,
+  slug,
 }: Props) => {
   return (
     <MediaQuery>
       {(_, isMatchMedia) =>
-        React.createElement(
-          isMatchMedia ? BasketItemMobile : BasketItemDesktop,
-          { id, productName, price, quantity, onAdd, onSubtract, onDelete },
-        )
+        React.createElement(isMatchMedia ? BasketItemMobile : BasketItemDesktop, {
+          id,
+          onAdd,
+          onDelete,
+          onSubtract,
+          price,
+          productName,
+          quantity,
+          slug,
+        })
       }
     </MediaQuery>
   )

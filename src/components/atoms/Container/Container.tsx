@@ -38,20 +38,32 @@ export const Container = styled('section')<{
   ${relative};
   ${page};
   ${({ textAlign = 'left' }) => `text-align: ${textAlign}`};
-  ${({ isContainerSticky }) =>
-    isContainerSticky && `padding-right: ${spacing.xl * 2 + spacing.s}px;`};
-  ${({ marginBottom = false }) =>
-    marginBottom && `margin-bottom: ${spacing.s}px`};
+  ${({ isContainerSticky }) => isContainerSticky && `padding-right: ${spacing.xl * 2 + spacing.s}px;`};
+  ${({ marginBottom = false }) => marginBottom && `margin-bottom: ${spacing.s}px`};
 `
+
+const firstChildElement = ({ firstChild }: { firstChild: any }) => <div key="firstChild">{firstChild}</div>
+const secondChildElement = ({ secondChild }: { secondChild: any }) => (
+  <div
+    key="secondChild"
+    className={css`
+      margin-left: ${spacing.xs}px;
+    `}
+  >
+    {secondChild}
+  </div>
+)
 
 export const ImageTextContainer = ({
   firstChild,
   secondChild,
   marginBottom = false,
+  reverse = false,
 }: {
   firstChild: any
   secondChild: any
   marginBottom?: boolean
+  reverse?: boolean
 }) => (
   <div
     className={css`
@@ -64,14 +76,9 @@ export const ImageTextContainer = ({
       }
     `}
   >
-    <div>{firstChild}</div>
-    <div
-      className={css`
-        margin-left: ${spacing.xs}px;
-      `}
-    >
-      {secondChild}
-    </div>
+    {reverse
+      ? [firstChildElement({ firstChild }), secondChildElement({ secondChild })]
+      : [secondChildElement({ secondChild }), firstChildElement({ firstChild })]}
   </div>
 )
 

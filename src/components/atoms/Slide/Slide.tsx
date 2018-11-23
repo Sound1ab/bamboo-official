@@ -1,12 +1,16 @@
+import Img from 'gatsby-image'
 import * as React from 'react'
 import { css } from 'react-emotion'
-import { spacing } from '../../../theme'
-import { FluidImage, Heading } from '../../atoms'
+import { Heading } from '../Heading'
 
 interface Props {
-  image: string
+  image: any
   headingLeft: string
   headingRight: string
+}
+
+const resizeEvent = () => {
+  window.dispatchEvent(new Event('resize'))
 }
 
 export const Slide = ({ image, headingLeft, headingRight }: Props) => (
@@ -16,16 +20,7 @@ export const Slide = ({ image, headingLeft, headingRight }: Props) => (
       margin: auto;
     `}
   >
-    <FluidImage
-      style={{
-        height: spacing.xl * 3,
-        margin: 'auto',
-        width: '100%',
-      }}
-      image={image}
-      title="product homepage banner"
-      alt="product homepage banner"
-    />
+    <Img fluid={image} onLoad={resizeEvent} />
     <div
       className={css`
         display: flex;

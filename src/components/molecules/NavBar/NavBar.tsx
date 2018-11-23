@@ -1,3 +1,4 @@
+import { Link } from 'gatsby'
 import * as React from 'react'
 import { css } from 'react-emotion'
 import { colors, styled } from '../../../theme'
@@ -13,6 +14,7 @@ const FlexContainer = styled('nav')<{ isSticky: boolean }>`
   right: 0;
   ${page};
   ${({ isSticky }) => (isSticky ? sticky : fixed)};
+  z-index: 11;
 `
 
 const columnBase = css`
@@ -90,20 +92,18 @@ export class NavBar extends React.Component<Props, State> {
         <FlexContainer isSticky={this.props.isSticky}>
           <LeftColumn>
             <MobileButton onClick={this.openBurgerMenuClick}>
-              <Menu
-                fill={this.props.isLight ? colors.white : colors.black}
-                width={'28px'}
-                height={'28px'}
-              />
+              <Menu fill={this.props.isLight ? colors.white : colors.black} width={'28px'} height={'28px'} />
             </MobileButton>
-            <DesktopHeading
-              type="h4"
-              textTransform="uppercase"
-              button
-              color={this.props.isLight ? colors.white : colors.black}
-            >
-              Products
-            </DesktopHeading>
+            <Link to="/products/">
+              <DesktopHeading
+                type="h4"
+                textTransform="uppercase"
+                button
+                color={this.props.isLight ? colors.white : colors.black}
+              >
+                Products
+              </DesktopHeading>
+            </Link>
           </LeftColumn>
           <CenterColumn>
             <LogoWrapper>
@@ -119,13 +119,11 @@ export class NavBar extends React.Component<Props, State> {
             >
               find us
             </DesktopHeading>
-            <button>
-              <ShoppingCart
-                fill={this.props.isLight ? colors.white : colors.black}
-                width="28px"
-                height="28px"
-              />
-            </button>
+            <Link to="/basket/">
+              <button>
+                <ShoppingCart fill={this.props.isLight ? colors.white : colors.black} width="28px" height="28px" />
+              </button>
+            </Link>
           </RightColumn>
         </FlexContainer>
       </React.Fragment>

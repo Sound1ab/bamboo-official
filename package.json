@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "classnames": "^2.2.6",
+    "dotenv": "^6.1.0",
     "emotion": "^9.2.8",
     "emotion-server": "^9.2.8",
     "emotion-theming": "^9.2.6",
@@ -45,6 +46,7 @@
     "gatsby-remark-prismjs": "^3.0.0-rc.2",
     "gatsby-remark-responsive-iframe": "^2.0.0-rc.1",
     "gatsby-remark-smartypants": "^2.0.0-rc.1",
+    "gatsby-source-contentful": "^2.0.14",
     "gatsby-source-filesystem": "^2.0.1-rc.1",
     "gatsby-transformer-json": "^2.1.1-rc.1",
     "gatsby-transformer-remark": "^2.1.1-rc.1",
@@ -115,7 +117,8 @@
     "semi": false,
     "tabWidth": 2,
     "singleQuote": true,
-    "trailingComma": "all"
+    "trailingComma": "all",
+    "printWidth": 120
   },
   "jest": {
     "roots": [

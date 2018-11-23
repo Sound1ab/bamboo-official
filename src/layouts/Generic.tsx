@@ -4,6 +4,7 @@ import * as React from 'react'
 import styled from 'react-emotion'
 import Helmet from 'react-helmet'
 import { Heading, ThemeProvider } from '../components/atoms'
+import * as Cart from '../components/atoms/Cart'
 import { BurgerMenu, Footer, NavBar } from '../components/molecules'
 import { colors } from '../theme'
 import '../theme/normalize'
@@ -36,11 +37,7 @@ interface StaticQueryProps {
   }
 }
 
-export const Generic = ({
-  children,
-  navbarIsSticky = false,
-  navbarIsLight = false,
-}: Props) => (
+export const Generic = ({ children, navbarIsSticky = false, navbarIsLight = false }: Props) => (
   <StaticQuery
     query={graphql`
       query SiteMetaQuery {
@@ -69,43 +66,34 @@ export const Generic = ({
               },
             ]}
           />
-          <NavBar isSticky={navbarIsSticky} isLight={navbarIsLight}>
-            {(isMenuOpen, closeBurgerMenuClick) => (
-              <BurgerMenu isOpen={isMenuOpen} close={closeBurgerMenuClick}>
-                <div>
-                  <Heading
-                    type="h6"
-                    color={colors.white}
-                    textTransform="uppercase"
-                    button
-                  >
-                    Find us
-                  </Heading>
-                </div>
-                <div>
-                  <Heading
-                    type="h6"
-                    color={colors.white}
-                    textTransform="uppercase"
-                    button
-                  >
-                    Products
-                  </Heading>
-                </div>
-                <div>
-                  <Heading
-                    type="h6"
-                    color={colors.white}
-                    textTransform="uppercase"
-                    button
-                  >
-                    Restaurant
-                  </Heading>
-                </div>
-              </BurgerMenu>
+          <Cart.Cart>
+            {() => (
+              <React.Fragment>
+                <NavBar isSticky={navbarIsSticky} isLight={navbarIsLight}>
+                  {(isMenuOpen, closeBurgerMenuClick) => (
+                    <BurgerMenu isOpen={isMenuOpen} close={closeBurgerMenuClick}>
+                      <div>
+                        <Heading type="h6" color={colors.white} textTransform="uppercase" button>
+                          Find us
+                        </Heading>
+                      </div>
+                      <div>
+                        <Heading type="h6" color={colors.white} textTransform="uppercase" button>
+                          Products
+                        </Heading>
+                      </div>
+                      <div>
+                        <Heading type="h6" color={colors.white} textTransform="uppercase" button>
+                          Restaurant
+                        </Heading>
+                      </div>
+                    </BurgerMenu>
+                  )}
+                </NavBar>
+                <Main>{children}</Main>
+              </React.Fragment>
             )}
-          </NavBar>
-          <Main>{children}</Main>
+          </Cart.Cart>
           <Footer />
         </Root>
       </ThemeProvider>

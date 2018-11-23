@@ -1,6 +1,8 @@
+import { Link } from 'gatsby'
 import * as React from 'react'
 import { css } from 'react-emotion'
 import { styled } from '../../../theme'
+import * as Cart from '../Cart'
 import { Heading } from '../Heading'
 
 const Wrapper = styled('div')`
@@ -40,6 +42,8 @@ const DetailChild = styled('div')`
 const QuantityChild = styled('div')`
   ${childBase};
   flex: 2 1;
+  flex-direction: row;
+  align-items: flex-start;
 `
 
 const PriceChild = styled('div')`
@@ -48,37 +52,33 @@ const PriceChild = styled('div')`
   justify-content: flex-end;
 `
 
-const headingBase = css`
-  display: inline-flex;
-`
-
 const Add = styled(Heading)`
-  ${headingBase};
   margin-left: ${({ theme }) => theme.spacing.m}px;
 `
 
 const Subtract = styled(Heading)`
-  ${headingBase};
   margin-right: ${({ theme }) => theme.spacing.m}px;
 `
 
 interface Props {
   id?: string
   productName?: string
+  slug?: string
   price?: number
   quantity?: number
-  onAdd?: (id: string) => void
-  onSubtract?: (id: string) => void
-  onDelete?: (id: string) => void
+  onAdd?: Cart.FullItem
+  onSubtract?: Cart.FullItem
+  onDelete?: Cart.PartialItem
 }
 
 export const BasketItemDesktop = ({
-  id = '1234',
-  productName = 'Product name',
-  price = 0.0,
-  quantity = 0,
+  id,
   onAdd = (): null => null,
   onSubtract = (): null => null,
+  productName,
+  price,
+  quantity = 0,
+  slug,
 }: Props) => {
   return (
     <Wrapper>
@@ -86,17 +86,19 @@ export const BasketItemDesktop = ({
         <ImagePlaceholder />
       </ImageChild>
       <DetailChild>
-        <Heading type="h6" marginBottom>
-          {productName}
-        </Heading>
+        <Link to={`/products/${slug}`}>
+          <Heading type="h6" marginBottom>
+            {productName}
+          </Heading>
+        </Link>
         <p>{`(x${quantity})`}</p>
       </DetailChild>
       <QuantityChild>
-        <Subtract type="h6" onClick={onSubtract.bind(null, id)} button>
+        <Subtract type="h6" onClick={onSubtract.bind(null, { id, quantity: 1, price })} button>
           -
         </Subtract>
         <Heading type="h6">{quantity}</Heading>
-        <Add type="h6" onClick={onAdd.bind(null, id)} button>
+        <Add type="h6" onClick={onAdd.bind(null, { id, quantity: 1, price })} button>
           +
         </Add>
       </QuantityChild>

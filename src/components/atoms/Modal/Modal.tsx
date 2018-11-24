@@ -4,7 +4,7 @@ import * as ReactModal from 'react-modal'
 import { colors, spacing } from '../../../theme'
 import { Close } from '../SvgIcon'
 
-ReactModal.setAppElement('#root')
+ReactModal.setAppElement('#___gatsby')
 
 const modalStyles = {
   base: css`
@@ -53,7 +53,7 @@ const RightButton = styled('button')`
 
 interface Props {
   contentLabel?: string
-  modalChildren?: React.ComponentType
+  modalChildren?: React.ComponentType | Element | JSX.Element
   children?: (open: () => void) => any
   role?: string
 }
@@ -88,7 +88,6 @@ export class Modal extends React.Component<Props> {
           <RightButton onClick={this.close()}>
             <Close fill={colors.black} width="28px" height="28px" />
           </RightButton>
-          <p>hello</p>
           {modalChildren}
         </ReactModal>
         {children && children(this.open())}

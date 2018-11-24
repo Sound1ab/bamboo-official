@@ -34,12 +34,14 @@ export const Container = styled('section')<{
   textAlign?: string
   isContainerSticky?: boolean
   marginBottom?: boolean
+  marginTop?: boolean
 }>`
   ${relative};
   ${page};
   ${({ textAlign = 'left' }) => `text-align: ${textAlign}`};
   ${({ isContainerSticky }) => isContainerSticky && `padding-right: ${spacing.xl * 2 + spacing.s}px;`};
   ${({ marginBottom = false }) => marginBottom && `margin-bottom: ${spacing.s}px`};
+  ${({ marginTop = false }) => marginTop && `margin-top: ${spacing.s}px`};
 `
 
 const firstChildElement = ({ firstChild }: { firstChild: any }) => <div key="firstChild">{firstChild}</div>

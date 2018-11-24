@@ -1,8 +1,9 @@
 import { Link } from 'gatsby'
 import * as React from 'react'
 import { css } from 'react-emotion'
+import { FindUs } from '../../../modals'
 import { colors, styled } from '../../../theme'
-import { Heading, Logo, Menu, ShoppingCart } from '../../atoms'
+import { Heading, Logo, Menu, Modal, ShoppingCart } from '../../atoms'
 import { fixed, page, sticky } from '../../atoms/Container'
 
 const FlexContainer = styled('nav')<{ isSticky: boolean }>`
@@ -111,14 +112,20 @@ export class NavBar extends React.Component<Props, State> {
             </LogoWrapper>
           </CenterColumn>
           <RightColumn>
-            <DesktopHeading
-              type="h4"
-              textTransform="lowercase"
-              button
-              color={this.props.isLight ? colors.white : colors.black}
-            >
-              find us
-            </DesktopHeading>
+            <Modal modalChildren={<FindUs />}>
+              {open => (
+                <button onClick={open}>
+                  <DesktopHeading
+                    type="h4"
+                    textTransform="lowercase"
+                    button
+                    color={this.props.isLight ? colors.white : colors.black}
+                  >
+                    find us
+                  </DesktopHeading>
+                </button>
+              )}
+            </Modal>
             <Link to="/basket/">
               <button>
                 <ShoppingCart fill={this.props.isLight ? colors.white : colors.black} width="28px" height="28px" />

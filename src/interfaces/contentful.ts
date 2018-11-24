@@ -1,4 +1,4 @@
-export interface ContentProduct {
+export interface ContentfulProduct {
   id: string
   slug: string
   quantity: number
@@ -30,7 +30,7 @@ export interface ContentProduct {
   ]
 }
 
-export interface AllContentProduct {
+export interface AllContentfulProduct {
   edges: {
     node: {
       id: string
@@ -50,7 +50,7 @@ export interface AllContentProduct {
   }[]
 }
 
-export interface AllContentSocial {
+export interface AllContentfulSocial {
   edges: {
     node: {
       name: string
@@ -59,8 +59,9 @@ export interface AllContentSocial {
   }[]
 }
 
-export interface AllContentPage {
+export interface ContentfulPage {
   slug: string
+  title: string
   description: {
     content: {
       content: {

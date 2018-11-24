@@ -2,7 +2,7 @@ import { graphql } from 'gatsby'
 import * as React from 'react'
 import { BasketItem, Button, Container, Heading } from '../components/atoms'
 import * as Cart from '../components/atoms/Cart'
-import { AllContentProduct } from '../interfaces/contentful'
+import { AllContentfulProduct } from '../interfaces/contentful'
 import { Generic } from '../layouts'
 import { styled } from '../theme'
 
@@ -21,7 +21,7 @@ const CheckoutWrapper = styled('div')`
 
 interface Props {
   data: {
-    allContentfulProduct: AllContentProduct
+    allContentfulProduct: AllContentfulProduct
   }
 }
 
@@ -73,31 +73,7 @@ const Basket = (props: Props) => (
 export const query = graphql`
   query BasketPageQuery {
     allContentfulProduct {
-      edges {
-        node {
-          id
-          productName {
-            internal {
-              content
-            }
-          }
-          price
-          slug
-          image {
-            fluid(maxWidth: 200) {
-              src
-              base64
-              tracedSVG
-              aspectRatio
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
-              sizes
-            }
-          }
-        }
-      }
+      ...allContentfulProduct
     }
   }
 `

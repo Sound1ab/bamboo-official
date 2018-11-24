@@ -1,7 +1,7 @@
-import { graphql, StaticQuery } from 'gatsby'
+import { graphql, Link, StaticQuery } from 'gatsby'
 import * as React from 'react'
 import styled from 'react-emotion'
-import { AllContentSocial } from '../../../interfaces/contentful'
+import { AllContentfulSocial } from '../../../interfaces/contentful'
 import { colors, spacing } from '../../../theme'
 import { Container, Facebook, Instagram, Twitter } from '../../atoms'
 import { MediaQuery } from '../../utility'
@@ -9,12 +9,7 @@ import { MediaQuery } from '../../utility'
 const query = graphql`
   query footerQuery {
     allContentfulSocial {
-      edges {
-        node {
-          name
-          link
-        }
-      }
+      ...allContentfulSocial
     }
   }
 `
@@ -39,10 +34,10 @@ const UppercaseParagraph = styled('p')`
 `
 
 interface Data {
-  allContentfulSocial: AllContentSocial
+  allContentfulSocial: AllContentfulSocial
 }
 
-const findEdge = ({ edges }: AllContentSocial, name: string) => edges.find(({ node }) => node.name === name)
+const findEdge = ({ edges }: AllContentfulSocial, name: string) => edges.find(({ node }) => node.name === name)
 
 export const Footer = () => (
   <FooterWrapper>
@@ -76,7 +71,11 @@ export const Footer = () => (
       </StaticQuery>
     </SpacedWrapper>
     <MediaQuery maxWidth={400}>
-      {(_, isMatchMedia) => <UppercaseParagraph>{isMatchMedia ? 'T+Cs' : 'Terms and Conditions'}</UppercaseParagraph>}
+      {(_, isMatchMedia) => (
+        <Link to="/terms-and-conditions">
+          <UppercaseParagraph>{isMatchMedia ? 'T+Cs' : 'Terms and Conditions'}</UppercaseParagraph>
+        </Link>
+      )}
     </MediaQuery>
   </FooterWrapper>
 )

@@ -6,23 +6,25 @@ import { ImageTextContainer } from '../components/atoms/Container'
 import { Container, Heading, Ricebowl, sticky } from '../components/atoms/index'
 import { StickyBuyer } from '../components/molecules'
 import { MediaQuery } from '../components/utility'
-import { AllContentProduct, ContentProduct } from '../interfaces/contentful'
+import { AllContentfulProduct, ContentfulProduct } from '../interfaces/contentful'
 import { Generic } from '../layouts'
 import { colors, spacing } from '../theme'
 
 interface Props {
   navbarIsSticky?: boolean
   data: {
-    contentfulProduct: ContentProduct
-    allContentfulProduct: AllContentProduct
+    contentfulProduct: ContentfulProduct
+    allContentfulProduct: AllContentfulProduct
   }
 }
 
-const MAX_WIDTH_MEDIA = 600
+enum mediaQuery {
+  MAX_WIDTH = 600,
+}
 
 const Product = ({ navbarIsSticky = true, data: { contentfulProduct, allContentfulProduct } }: Props) => (
   <Generic navbarIsSticky={navbarIsSticky}>
-    <MediaQuery maxWidth={MAX_WIDTH_MEDIA}>
+    <MediaQuery maxWidth={mediaQuery.MAX_WIDTH}>
       {(_, isMatchMedia) => (
         <React.Fragment>
           {isMatchMedia && (
@@ -127,7 +129,7 @@ const Product = ({ navbarIsSticky = true, data: { contentfulProduct, allContentf
               & > div:not(:last-child) {
                 margin: 0 ${spacing.m}px 0 0;
               }
-              @media (max-width: ${MAX_WIDTH_MEDIA}px) {
+              @media (max-width: ${mediaQuery.MAX_WIDTH}px) {
                 flex-wrap: wrap;
                 & > div {
                   flex: 1 1 100%;
@@ -167,67 +169,13 @@ const Product = ({ navbarIsSticky = true, data: { contentfulProduct, allContentf
 
 export default Product
 
-export const pageQuery = graphql`
+export const productQuery = graphql`
   query($id: String!) {
     contentfulProduct(id: { eq: $id }) {
-      id
-      slug
-      quantity
-      price
-      moreInformation {
-        description
-        image {
-          fluid(maxWidth: 1250) {
-            src
-            base64
-            tracedSVG
-            aspectRatio
-            src
-            srcSet
-            srcWebp
-            srcSetWebp
-            sizes
-          }
-        }
-      }
-      reviews {
-        review
-        score
-      }
-      productName {
-        internal {
-          content
-        }
-      }
-      productDescription {
-        internal {
-          content
-        }
-      }
-      image {
-        fluid(maxWidth: 1250) {
-          ...GatsbyContentfulFluid_tracedSVG
-        }
-      }
+      ...contentfulProduct
     }
     allContentfulProduct(limit: 3, sort: { fields: [createdAt], order: DESC }) {
-      edges {
-        node {
-          id
-          productName {
-            internal {
-              content
-            }
-          }
-          price
-          slug
-          image {
-            fluid(maxWidth: 1250) {
-              ...GatsbyContentfulFluid_tracedSVG
-            }
-          }
-        }
-      }
+      ...allContentfulProduct
     }
   }
 `

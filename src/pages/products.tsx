@@ -1,16 +1,17 @@
 import { graphql, Link } from 'gatsby'
+import Img from 'gatsby-image'
 import * as React from 'react'
 import styled, { css } from 'react-emotion'
 import { Container, Heading, Lemon, Slide } from '../components/atoms'
-import { FluidImage } from '../components/atoms/Image'
 import { Slider } from '../components/atoms/Slider'
-import { AllContentProduct } from '../interfaces/contentful'
+import { AllContentPage, AllContentProduct } from '../interfaces/contentful'
 import { Generic } from '../layouts'
 import { colors, padding, spacing } from '../theme'
 
 interface Props {
   data: {
     allContentfulProduct: AllContentProduct
+    contentfulPage: AllContentPage
   }
 }
 
@@ -24,28 +25,31 @@ const HomepageContainer = styled(Container)`
   }
 `
 
-const ProductsPage = ({ data: { allContentfulProduct } }: Props) => {
+const ProductsPage = ({ data: { allContentfulProduct, contentfulPage } }: Props) => {
+  console.log('contentfulPage', contentfulPage)
   return (
     <Generic navbarIsLight={true}>
-      <FluidImage
+      <Img
         style={{ width: '100%', height: '560px' }}
-        image="bambooproductcover2"
-        title="product homepage banner"
-        alt="product homepage banner"
+        fluid={contentfulPage.banner.fluid}
+        title="BamBoo products"
+        alt="BamBoo products"
       />
       <HomepageContainer textAlign="center">
-        <Heading type="h5" textAlign="center" marginBottom>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed ultrices tellus, a consectetur nibh.
-          Quisque eget tristique nunc.
-        </Heading>
-        <Heading type="h5" textAlign="center" fontFamily="Brandon Medium" marginBottom>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed ultrices tellus, a consectetur nibh.
-          Quisque eget tristique nunc. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed ultrices
-          tellus, a consectetur nibh. Quisque eget tristique nunc.
-        </Heading>
-        <Heading type="h5" textAlign="center" fontFamily="Brandon Medium" marginBottom>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit!
-        </Heading>
+        {contentfulPage.description.content.map(({ content }) => {
+          const [copy] = content
+          const { marks, value } = copy
+          const isBold = marks.find(mark => mark.type === 'bold')
+          return isBold ? (
+            <Heading type="h5" textAlign="center" marginBottom>
+              {value}
+            </Heading>
+          ) : (
+            <Heading type="h5" textAlign="center" fontFamily="Brandon Medium" marginBottom>
+              {value}
+            </Heading>
+          )
+        })}
         <div
           className={css`
             padding: ${spacing.m}px ${spacing.m}px 0 ${spacing.m}px;
@@ -54,11 +58,11 @@ const ProductsPage = ({ data: { allContentfulProduct } }: Props) => {
           <Lemon fill={colors.black} width="80px" height="80px" />
         </div>
       </HomepageContainer>
-      <FluidImage
+      <Img
         style={{ width: '100%', height: '240px' }}
-        image="bamboo-twocats2"
-        title="product homepage banner"
-        alt="product homepage banner"
+        fluid={contentfulPage.secondaryBanner.fluid}
+        title="BamBoo products"
+        alt="BamBoo products"
       />
       <HomepageContainer>
         <Slider>
@@ -75,6 +79,31 @@ const ProductsPage = ({ data: { allContentfulProduct } }: Props) => {
 
 export const query = graphql`
   query ProductsPageQuery {
+    contentfulPage(slug: { eq: "products" }) {
+      slug
+      description {
+        nodeType
+        content {
+          content {
+            marks {
+              type
+            }
+            value
+            nodeType
+          }
+        }
+      }
+      banner {
+        fluid(maxWidth: 1250) {
+          ...GatsbyContentfulFluid_tracedSVG
+        }
+      }
+      secondaryBanner {
+        fluid(maxWidth: 1250) {
+          ...GatsbyContentfulFluid_tracedSVG
+        }
+      }
+    }
     allContentfulProduct {
       edges {
         node {

@@ -49,3 +49,30 @@ export interface AllContentProduct {
     }
   }[]
 }
+
+export interface AllContentSocial {
+  edges: {
+    node: {
+      name: string
+      link: string
+    }
+  }[]
+}
+
+export interface AllContentPage {
+  slug: string
+  description: {
+    content: {
+      content: {
+        marks: { type: string }[]
+        value: string
+      }[]
+    }[]
+  }
+  banner: {
+    fluid: object
+  }
+  secondaryBanner: {
+    fluid: object
+  }
+}

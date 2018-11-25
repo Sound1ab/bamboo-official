@@ -13,11 +13,12 @@
     "build": "gatsby build && yarn storybook:build",
     "clean": "rimraf public",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public",
+    "develop": "gatsby develop",
     "start": "concurrently \"gatsby develop\" \"yarn storybook\" \"lint:watch\"",
     "lint": "tslint 'src/**/*.{ts,tsx}' --project tsconfig.json --format stylish",
     "lint:watch": "chokidar src/**/*.{ts,tsx} -c \"yarn lint\" --initial --verbose",
     "test": "jest --watchAll",
-    "storybook": "start-storybook -p 9001 -c .storybook",
+    "storybook": "STORYBOOK_MODAL=STORYBOOK start-storybook -p 9001 -c .storybook",
     "storybook:build": "build-storybook -c .storybook -o public/storybook"
   },
   "husky": {

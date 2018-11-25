@@ -4,7 +4,9 @@ import * as ReactModal from 'react-modal'
 import { colors, spacing } from '../../../theme'
 import { Close } from '../SvgIcon'
 
-ReactModal.setAppElement('#___gatsby')
+const root = process.env.STORYBOOK_MODAL === 'STORYBOOK' ? '#root' : '#___gatsby'
+
+ReactModal.setAppElement(root)
 
 const modalStyles = {
   base: css`

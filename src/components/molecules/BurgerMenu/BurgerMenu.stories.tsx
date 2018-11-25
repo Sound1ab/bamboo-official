@@ -18,32 +18,17 @@ storiesOf('BurgerMenu', module).add('Primary', () => {
     <LargeContainer>
       <BurgerMenu isOpen={true} close={close}>
         <div>
-          <Heading
-            type="h6"
-            color={colors.white}
-            textTransform="uppercase"
-            button
-          >
+          <Heading type="h6" color={colors.white} textTransform="uppercase" button>
             Find us
           </Heading>
         </div>
         <div>
-          <Heading
-            type="h6"
-            color={colors.white}
-            textTransform="uppercase"
-            button
-          >
+          <Heading type="h6" color={colors.white} textTransform="uppercase" button>
             Products
           </Heading>
         </div>
         <div>
-          <Heading
-            type="h6"
-            color={colors.white}
-            textTransform="uppercase"
-            button
-          >
+          <Heading type="h6" color={colors.white} textTransform="uppercase" button>
             Restaurant
           </Heading>
         </div>

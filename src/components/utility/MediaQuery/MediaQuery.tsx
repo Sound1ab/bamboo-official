@@ -5,10 +5,7 @@ interface Styles {
 }
 
 interface PropTypes {
-  children: <T extends Styles>(
-    styles: T,
-    isMatchMedia: boolean,
-  ) => React.ReactNode
+  children: <T extends Styles>(styles: T, isMatchMedia: boolean) => React.ReactNode
   matchStyles: Styles
   nonMatchStyles: Styles
   maxWidth: number
@@ -36,9 +33,7 @@ export class MediaQuery extends React.Component<PropTypes, StateTypes> {
   }
 
   public render() {
-    const matchedStyle = this.state.isMatchMedia
-      ? this.props.matchStyles
-      : this.props.nonMatchStyles
+    const matchedStyle = this.state.isMatchMedia ? this.props.matchStyles : this.props.nonMatchStyles
     return this.props.children(matchedStyle, this.state.isMatchMedia)
   }
 

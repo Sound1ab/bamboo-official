@@ -7,7 +7,5 @@ interface PropTypes {
 }
 
 export const ThemeProvider = ({ children }: PropTypes) => (
-  <EmotionThemeProvider theme={{ colors, typography, spacing }}>
-    {children}
-  </EmotionThemeProvider>
+  <EmotionThemeProvider theme={{ colors, typography, spacing }}>{children}</EmotionThemeProvider>
 )

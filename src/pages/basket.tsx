@@ -46,6 +46,7 @@ const Basket = (props: Props) => (
                   productName={item.node.productName.internal.content}
                   quantity={quantity}
                   slug={item.node.slug}
+                  image={item.node.image[0].fluid}
                   onAdd={addToCart}
                   onSubtract={subtractFromCart}
                   onDelete={deleteFromCart}

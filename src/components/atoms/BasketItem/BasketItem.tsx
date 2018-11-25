@@ -9,6 +9,7 @@ interface Props {
   price: number
   slug: string
   quantity?: number
+  image?: any
   onAdd?: Cart.FullItem
   onSubtract?: Cart.FullItem
   onDelete?: Cart.PartialItem
@@ -23,6 +24,7 @@ export const BasketItem = ({
   price,
   productName,
   slug,
+  image,
 }: Props) => {
   return (
     <MediaQuery>
@@ -36,6 +38,7 @@ export const BasketItem = ({
           productName,
           quantity,
           slug,
+          image,
         })
       }
     </MediaQuery>

@@ -1,4 +1,5 @@
 import { Link } from 'gatsby'
+import Img from 'gatsby-image'
 import * as React from 'react'
 import { css } from 'react-emotion'
 import { styled } from '../../../theme'
@@ -30,7 +31,7 @@ const ImagePlaceholder = styled('div')`
   position: relative;
   width: ${({ theme }) => theme.spacing.l}px;
   height: ${({ theme }) => theme.spacing.m * 3}px;
-  background-color: lightgray;
+  background-color: white;
 `
 
 const DetailChild = styled('div')`
@@ -80,6 +81,7 @@ interface Props {
   onAdd?: Cart.FullItem
   onSubtract?: Cart.FullItem
   onDelete?: Cart.PartialItem
+  image?: any
 }
 
 interface State {
@@ -99,11 +101,13 @@ export class BasketItemMobile extends React.Component<Props, State> {
   }
 
   public render() {
-    const { id, productName, price, quantity, onAdd, onSubtract, onDelete, slug } = this.props
+    const { id, productName, price, quantity, onAdd, onSubtract, onDelete, slug, image } = this.props
     return (
       <Wrapper>
         <ImageChild>
-          <ImagePlaceholder />
+          <ImagePlaceholder>
+            <Img fluid={image} style={{ width: '100%', height: '100%' }} imgStyle={{ objectFit: 'contain' }} />
+          </ImagePlaceholder>
         </ImageChild>
         <DetailChild>
           <Link to={`/products/${slug}`}>

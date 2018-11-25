@@ -32,7 +32,7 @@ const Basket = (props: Props) => (
         Your Basket
       </Heading>
       <Cart.CartContext.Consumer>
-        {({ cartItems, deleteFromCart, subtractFromCart, addToCart, cartTotal }) => (
+        {({ cartItems, deleteFromCart, subtractFromCart, addToCart, cartTotal, checkout }) => (
           <React.Fragment>
             {cartItems.map(({ id, quantity }) => {
               const [item] = props.data.allContentfulProduct.edges.filter(
@@ -53,13 +53,10 @@ const Basket = (props: Props) => (
               )
             })}
             <PriceWrapper>
-              <Heading type="h6" marginBottom>
-                VAT: £5.56
-              </Heading>
-              <Heading type="h6">total incl. VAT: £{cartTotal().toFixed(2)}</Heading>
+              <Heading type="h6">Total: £{cartTotal().prettyTotal}</Heading>
             </PriceWrapper>
             <CheckoutWrapper>
-              <Button type="secondary" doublePadding>
+              <Button onClick={checkout} type="secondary" doublePadding>
                 <Heading type="h4">check out</Heading>
               </Button>
             </CheckoutWrapper>

@@ -6246,6 +6246,10 @@ gatsby-plugin-sharp@^2.0.0-rc.3, gatsby-plugin-sharp@^2.0.13:
     sharp "^0.21.0"
     svgo "^0.7.2"
 
+gatsby-plugin-stripe-checkout@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-stripe-checkout/-/gatsby-plugin-stripe-checkout-1.0.9.tgz#45887794b280dbcdce2246079f6b5863d5ceab81"
+
 gatsby-plugin-typescript@^2.0.0-rc.3:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-typescript/-/gatsby-plugin-typescript-2.0.1.tgz#dddc7d299da4d2517b82dbac2bc000f098478f59"

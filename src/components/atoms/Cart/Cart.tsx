@@ -8,6 +8,7 @@ export interface Item {
 
 export type FullItem = (item: Item) => void
 export type PartialItem = (partialItem: { id: string }) => void
+export type CartTotal = () => { inflatedTotal: number; prettyTotal: number }
 
 interface RenderProps {
   cartItems: Item[]
@@ -15,7 +16,8 @@ interface RenderProps {
   subtractFromCart: FullItem
   replaceInCart: FullItem
   deleteFromCart: PartialItem
-  cartTotal: () => number
+  cartTotal: CartTotal
+  checkout: () => void
 }
 
 interface Props {
@@ -26,7 +28,9 @@ interface State {
   items: Item[]
 }
 
-const LOCAL_STORAGE_KEY = 'bamboo::cart'
+enum LOCAL_STORAGE {
+  KEY = 'bamboo::cart',
+}
 
 export const CartContext = React.createContext({} as RenderProps)
 
@@ -38,19 +42,15 @@ export class Cart extends React.Component<Props, State> {
     items: [],
   }
 
+  private stripeHandler: any
+
   public componentDidMount() {
-    const persistedItems = localStorage.getItem(LOCAL_STORAGE_KEY)
-    if (!persistedItems) {
-      return
-    }
-    this.setState({
-      items: JSON.parse(persistedItems),
-    })
+    this.configureStripe()
+    this.loadCart()
   }
 
   public componentWillUnmount() {
-    const persistedItems = JSON.stringify(this.state.items)
-    localStorage.setItem(LOCAL_STORAGE_KEY, persistedItems)
+    this.saveCart()
   }
 
   public replaceInCart = ({ id, price, quantity }: Item) => {
@@ -99,10 +99,24 @@ export class Cart extends React.Component<Props, State> {
     })
   }
 
-  public cartTotal = () => {
+  public cartTotal: CartTotal = () => {
     const { items } = this.state
     const inflatedTotal = items.reduce((total, item) => total + item.price * item.quantity * 100, 0)
-    return inflatedTotal / 100
+    return {
+      inflatedTotal,
+      prettyTotal: Number((inflatedTotal / 100).toFixed(2)),
+    }
+  }
+
+  public checkout = () => {
+    this.stripeHandler.open({
+      amount: this.cartTotal().inflatedTotal,
+      name: 'Bam Boo',
+      token: (token: object) => {
+        // console.log('sending token to server', token)
+        return token
+      },
+    })
   }
 
   public render() {
@@ -114,6 +128,7 @@ export class Cart extends React.Component<Props, State> {
           addToCart: this.addToCart,
           cartItems: items,
           cartTotal: this.cartTotal,
+          checkout: this.checkout,
           deleteFromCart: this.deleteFromCart,
           replaceInCart: this.replaceInCart,
           subtractFromCart: this.subtractFromCart,
@@ -122,5 +137,32 @@ export class Cart extends React.Component<Props, State> {
         {children({ cartItems: items })}
       </CartContext.Provider>
     )
+  }
+
+  private loadCart = () => {
+    const persistedItems = localStorage.getItem(LOCAL_STORAGE.KEY)
+    if (!persistedItems) {
+      return
+    }
+    this.setState({
+      items: JSON.parse(persistedItems),
+    })
+  }
+
+  private saveCart = () => {
+    const persistedItems = JSON.stringify(this.state.items)
+    localStorage.setItem(LOCAL_STORAGE.KEY, persistedItems)
+  }
+
+  private configureStripe = () => {
+    this.stripeHandler = (window as any).StripeCheckout.configure({
+      // You’ll need to add your own Stripe public key to the `checkout.js` file.
+      // key: 'pk_test_STRIPE_PUBLISHABLE_KEY',
+      key: 'pk_test_9L63TDVY2WFCZK16HMjpDGiB',
+      locale: 'auto',
+      closed: (event: any) => {
+        return event
+      },
+    })
   }
 }

@@ -15,6 +15,13 @@ module.exports = {
     },
   },
   plugins: [
+    'gatsby-plugin-stripe-checkout',
+    'gatsby-transformer-json',
+    'gatsby-plugin-emotion',
+    'gatsby-plugin-typescript',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-react-helmet',
     {
       resolve: `gatsby-source-contentful`,
       options: {
@@ -23,7 +30,6 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
       },
     },
-    'gatsby-transformer-json',
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -68,10 +74,5 @@ module.exports = {
         siteUrl: 'https://gatsby-starter-typescript-plus.netlify.com',
       },
     },
-    'gatsby-plugin-emotion',
-    'gatsby-plugin-typescript',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
-    'gatsby-plugin-react-helmet',
   ],
 }

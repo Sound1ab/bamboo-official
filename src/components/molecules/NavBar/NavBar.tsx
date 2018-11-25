@@ -151,7 +151,7 @@ export class NavBar extends React.Component<Props, State> {
                       color: ${this.props.isLight ? colors.white : colors.black};
                     `}
                   >
-                    {numberOfItemsInCart}
+                    {numberOfItemsInCart ? numberOfItemsInCart : ''}
                   </span>
                 </div>
               )}

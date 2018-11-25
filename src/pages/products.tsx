@@ -84,7 +84,11 @@ const ProductsPage = ({ data: { allContentfulProduct, contentfulPage } }: Props)
       <Slider>
         {allContentfulProduct.edges.map(({ node }) => (
           <Link to={`/products/${node.slug}`}>
-            <Slide image={node.image[0].fluid} headingLeft="test" headingRight="test" />
+            <Slide
+              image={node.image[0].fluid}
+              headingLeft={node.productName.internal.content}
+              headingRight={node.price}
+            />
           </Link>
         ))}
       </Slider>

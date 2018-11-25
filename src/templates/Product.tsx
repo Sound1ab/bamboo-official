@@ -174,7 +174,7 @@ export const productQuery = graphql`
     contentfulProduct(id: { eq: $id }) {
       ...contentfulProduct
     }
-    allContentfulProduct(limit: 3, sort: { fields: [createdAt], order: DESC }) {
+    allContentfulProduct(limit: 4, sort: { fields: [createdAt], order: DESC }) {
       ...allContentfulProduct
     }
   }

@@ -118,3 +118,6 @@ $RECYCLE.BIN/
 .vscode/
 
 .idea/
+
+.env.development
+.env.production

@@ -5,7 +5,7 @@ import Img from 'gatsby-image'
 import * as React from 'react'
 import * as ReactDOMServer from 'react-dom/server'
 import styled, { css } from 'react-emotion'
-import { Container, Heading, Lemon, Slide, ThemeProvider } from '../components/atoms'
+import { Container, Heading, Lemon, Slide, ThemeProvider, ChopstickSushi, Beatroot, Leaf } from '../components/atoms'
 import { Slider } from '../components/atoms/Slider'
 import { AllContentfulProduct, ContentfulPage } from '../interfaces/contentful'
 import { Generic } from '../layouts'
@@ -51,8 +51,24 @@ const options = {
   },
 }
 
+const ArtContainer = styled('div')<{ top?: number; left?: number; right?: number }>`
+  position: absolute;
+  ${({ top }) => `top: ${top}px`};
+  ${({ left }) => `left: ${left}px`};
+  ${({ right }) => `right: ${right}px`};
+`
+
 const ProductsPage = ({ data: { allContentfulProduct, contentfulPage } }: Props) => (
   <Generic navbarIsLight={true}>
+    <ArtContainer top={900} left={0}>
+      <ChopstickSushi fill={colors.black} width="250px" height="250px" />
+    </ArtContainer>
+    <ArtContainer top={550} right={0}>
+      <Beatroot fill={colors.black} width="150px" height="150px" />
+    </ArtContainer>
+    <ArtContainer top={1200} right={0}>
+      <Leaf fill={colors.black} width="100px" height="100px" />
+    </ArtContainer>
     <Img
       style={{ width: '100%', height: '560px' }}
       fluid={contentfulPage.banner.fluid}

@@ -1,4 +1,5 @@
 import { graphql, Link, StaticQuery } from 'gatsby'
+import 'modern-normalize'
 import * as React from 'react'
 import styled from 'react-emotion'
 import Helmet from 'react-helmet'
@@ -6,7 +7,6 @@ import { Heading, ThemeProvider } from '../components/atoms'
 import * as Cart from '../components/atoms/Cart'
 import { BurgerMenu, Footer, NavBar } from '../components/molecules'
 import { colors } from '../theme'
-import 'modern-normalize'
 import '../theme/normalize'
 
 const Root = styled('div')`

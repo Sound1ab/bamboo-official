@@ -1,92 +1,36 @@
-import { graphql } from 'gatsby'
 import * as React from 'react'
-import styled, { css } from 'react-emotion'
-import { Container, Heading, Lemon, Slide } from '../components/atoms'
-import { FluidImage } from '../components/atoms/Image'
-import { Slider } from '../components/atoms/Slider'
-import { Generic } from '../layouts'
-import { colors, padding, spacing } from '../theme'
+import { Link } from 'gatsby'
+import styled from 'react-emotion'
+import { KaleidoscopeWithLogo } from '../components/atoms'
+import { ThemeProvider } from '../components/atoms'
+import { colors } from '../theme'
 
-interface PageTemplateProps {
-  data: {
-    PagesJson: {
-      test: string
-    }
-  }
-}
-
-const HomepageContainer = styled(Container)`
-  padding: ${padding.xxl.vertical}px ${padding.xxl.horizontal}px;
-  @media (max-width: 800px) {
-    padding: ${padding.m.vertical}px ${padding.m.horizontal}px;
-  }
-  @media (max-width: 400px) {
-    padding: ${padding.s.vertical}px ${padding.s.horizontal}px;
-  }
+const Wrapper = styled('div')`
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: ${({ theme }) => theme.colors.black};
 `
 
-const IndexPage = ({ data }: PageTemplateProps) => {
+const FixedKaleidoscope = styled(KaleidoscopeWithLogo)`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 1500px;
+  height: 1500px;
+`
+
+const IndexPage = () => {
   return (
-    <Generic navbarIsLight={true}>
-      <FluidImage
-        style={{ width: '100%', height: '560px' }}
-        image="bambooproductcover2"
-        title="product homepage banner"
-        alt="product homepage banner"
-      />
-      <HomepageContainer textAlign="center">
-        <Heading type="h5" textAlign="center" marginBottom>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed
-          ultrices tellus, a consectetur nibh. Quisque eget tristique nunc.
-        </Heading>
-        <Heading
-          type="h5"
-          textAlign="center"
-          fontFamily="Brandon Medium"
-          marginBottom
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed
-          ultrices tellus, a consectetur nibh. Quisque eget tristique nunc.
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sed
-          ultrices tellus, a consectetur nibh. Quisque eget tristique nunc.
-        </Heading>
-        <Heading
-          type="h5"
-          textAlign="center"
-          fontFamily="Brandon Medium"
-          marginBottom
-        >
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit!
-        </Heading>
-        <div
-          className={css`
-            padding: ${spacing.m}px ${spacing.m}px 0 ${spacing.m}px;
-          `}
-        >
-          <Lemon fill={colors.black} width="80px" height="80px" />
-        </div>
-      </HomepageContainer>
-      <FluidImage
-        style={{ width: '100%', height: '240px' }}
-        image="bamboo-twocats2"
-        title="product homepage banner"
-        alt="product homepage banner"
-      />
-      <HomepageContainer>
-        <Slider>
-          <Slide image="ProductFive01" headingLeft="test" headingRight="test" />
-        </Slider>
-      </HomepageContainer>
-    </Generic>
+    <ThemeProvider>
+      <Link to="/products">
+        <Wrapper>
+          <FixedKaleidoscope fill={colors.white} />
+        </Wrapper>
+      </Link>
+    </ThemeProvider>
   )
 }
-
-export const query = graphql`
-  query IndexPageQuery {
-    pagesJson {
-      test
-    }
-  }
-`
 
 export default IndexPage

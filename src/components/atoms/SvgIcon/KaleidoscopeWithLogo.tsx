@@ -2,8 +2,8 @@ import * as React from 'react'
 
 interface PropTypes {
   fill: string
-  width: string
-  height: string
+  width?: string
+  height?: string
 }
 
 export const KaleidoscopeWithLogo = (props: PropTypes) => (

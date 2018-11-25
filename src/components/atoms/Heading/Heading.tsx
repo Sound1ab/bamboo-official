@@ -17,14 +17,12 @@ const Component = (
   text-align: ${textAlign};
   margin-top: 0;
   text-rendering: optimizeLegibility;
-  font-family: ${({ theme }) =>
-    theme.typography.fontFamily[fontFamily || heading]};
+  font-family: ${({ theme }) => theme.typography.fontFamily[fontFamily || heading]};
   font-size: ${({ theme }) => theme.typography.fontSize[heading]}px;
   font-weight: ${({ theme }) => theme.typography.fontWeight[heading]};
   letter-spacing: ${({ theme }) => theme.typography.letterSpacing[heading]}px;
   line-height: ${({ theme }) => theme.typography.lineHeight[heading]};
-  margin-bottom: ${({ theme }) =>
-    marginBottom ? theme.typography.marginBottom[heading] : 0}px;
+  margin-bottom: ${({ theme }) => (marginBottom ? theme.typography.marginBottom[heading] : 0)}px;
   color: ${color};
 `
 

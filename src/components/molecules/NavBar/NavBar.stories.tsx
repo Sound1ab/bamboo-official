@@ -23,32 +23,17 @@ const Nav = ({ isSticky = false }) => (
     {(isMenuOpen, closeBurgerMenuClick) => (
       <BurgerMenu isOpen={isMenuOpen} close={closeBurgerMenuClick}>
         <div>
-          <Heading
-            type="h6"
-            color={colors.white}
-            textTransform="uppercase"
-            button
-          >
+          <Heading type="h6" color={colors.white} textTransform="uppercase" button>
             Find us
           </Heading>
         </div>
         <div>
-          <Heading
-            type="h6"
-            color={colors.white}
-            textTransform="uppercase"
-            button
-          >
+          <Heading type="h6" color={colors.white} textTransform="uppercase" button>
             Products
           </Heading>
         </div>
         <div>
-          <Heading
-            type="h6"
-            color={colors.white}
-            textTransform="uppercase"
-            button
-          >
+          <Heading type="h6" color={colors.white} textTransform="uppercase" button>
             Restaurant
           </Heading>
         </div>
@@ -65,17 +50,13 @@ storiesOf('NavBar', module)
         <Container>
           <ScrollContainer>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              sagittis diam vitae diam bibendum feugiat. Quisque mauris lacus,
-              varius iaculis tempor eget, efficitur et felis. Aenean ac lectus
-              felis. Vestibulum eget sollicitudin arcu. Integer eget arcu
-              lobortis, hendrerit felis vel, posuere nulla. Maecenas molestie
-              ante at sapien eleifend maximus. Maecenas lacinia arcu urna, et
-              varius odio scelerisque id. Etiam viverra sapien felis, non
-              volutpat sapien lobortis aliquet. Etiam vulputate, odio eget
-              eleifend semper, felis nibh iaculis ipsum, nec dapibus libero
-              lectus auctor nisl. Nullam tristique ante mauris, sit amet
-              molestie quam accumsan euismod.{' '}
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sagittis diam vitae diam bibendum feugiat.
+              Quisque mauris lacus, varius iaculis tempor eget, efficitur et felis. Aenean ac lectus felis. Vestibulum
+              eget sollicitudin arcu. Integer eget arcu lobortis, hendrerit felis vel, posuere nulla. Maecenas molestie
+              ante at sapien eleifend maximus. Maecenas lacinia arcu urna, et varius odio scelerisque id. Etiam viverra
+              sapien felis, non volutpat sapien lobortis aliquet. Etiam vulputate, odio eget eleifend semper, felis nibh
+              iaculis ipsum, nec dapibus libero lectus auctor nisl. Nullam tristique ante mauris, sit amet molestie quam
+              accumsan euismod.{' '}
             </p>
           </ScrollContainer>
         </Container>
@@ -89,17 +70,13 @@ storiesOf('NavBar', module)
         <Container>
           <ScrollContainer>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-              sagittis diam vitae diam bibendum feugiat. Quisque mauris lacus,
-              varius iaculis tempor eget, efficitur et felis. Aenean ac lectus
-              felis. Vestibulum eget sollicitudin arcu. Integer eget arcu
-              lobortis, hendrerit felis vel, posuere nulla. Maecenas molestie
-              ante at sapien eleifend maximus. Maecenas lacinia arcu urna, et
-              varius odio scelerisque id. Etiam viverra sapien felis, non
-              volutpat sapien lobortis aliquet. Etiam vulputate, odio eget
-              eleifend semper, felis nibh iaculis ipsum, nec dapibus libero
-              lectus auctor nisl. Nullam tristique ante mauris, sit amet
-              molestie quam accumsan euismod.{' '}
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec sagittis diam vitae diam bibendum feugiat.
+              Quisque mauris lacus, varius iaculis tempor eget, efficitur et felis. Aenean ac lectus felis. Vestibulum
+              eget sollicitudin arcu. Integer eget arcu lobortis, hendrerit felis vel, posuere nulla. Maecenas molestie
+              ante at sapien eleifend maximus. Maecenas lacinia arcu urna, et varius odio scelerisque id. Etiam viverra
+              sapien felis, non volutpat sapien lobortis aliquet. Etiam vulputate, odio eget eleifend semper, felis nibh
+              iaculis ipsum, nec dapibus libero lectus auctor nisl. Nullam tristique ante mauris, sit amet molestie quam
+              accumsan euismod.{' '}
             </p>
           </ScrollContainer>
         </Container>

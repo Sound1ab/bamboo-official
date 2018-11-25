@@ -1,8 +1,7 @@
-import * as React from 'react'
 import { Link } from 'gatsby'
+import * as React from 'react'
 import styled from 'react-emotion'
-import { KaleidoscopeWithLogo } from '../components/atoms'
-import { ThemeProvider } from '../components/atoms'
+import { KaleidoscopeWithLogo, ThemeProvider } from '../components/atoms'
 import { colors } from '../theme'
 
 const Wrapper = styled('div')`

@@ -1,4 +1,5 @@
 import * as React from 'react'
+import { Link } from 'gatsby'
 import { slide as Menu } from 'react-burger-menu'
 import { colors, spacing, styled } from '../../../theme'
 import { Close, Logo, ShoppingCart } from '../../atoms'
@@ -71,25 +72,10 @@ interface Props {
   close: () => void
 }
 
-export const BurgerMenu = ({
-  children,
-  isOpen = false,
-  width = 375,
-  close,
-}: Props) => (
-  <MediaQuery
-    matchStyles={{ width: '100%' }}
-    nonMatchStyles={{ width: `${width}px` }}
-    maxWidth={width}
-  >
+export const BurgerMenu = ({ children, isOpen = false, width = 375, close }: Props) => (
+  <MediaQuery matchStyles={{ width: '100%' }} nonMatchStyles={{ width: `${width}px` }} maxWidth={width}>
     {mediaStyles => (
-      <Menu
-        styles={styles}
-        width={mediaStyles.width}
-        isOpen={isOpen}
-        customBurgerIcon={false}
-        customCrossIcon={false}
-      >
+      <Menu styles={styles} width={mediaStyles.width} isOpen={isOpen} customBurgerIcon={false} customCrossIcon={false}>
         <LeftButton onClick={close}>
           <Close fill={colors.white} width="28px" height="28px" />
         </LeftButton>
@@ -97,7 +83,9 @@ export const BurgerMenu = ({
           <Logo fill={colors.white} width="60px" height="60px" />
         </CenterButton>
         <RightButton>
-          <ShoppingCart fill={colors.white} width="22px" height="22px" />
+          <Link to="/basket">
+            <ShoppingCart fill={colors.white} width="22px" height="22px" />
+          </Link>
         </RightButton>
         {children}
       </Menu>

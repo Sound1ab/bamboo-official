@@ -57,7 +57,7 @@ const Basket = (props: Props) => (
               <Heading type="h6">Total: £{cartTotal().prettyTotal}</Heading>
             </PriceWrapper>
             <CheckoutWrapper>
-              <Button onClick={checkout} type="secondary" doublePadding>
+              <Button onClick={checkout} type="secondary" doublePadding marginBottom>
                 <Heading type="h4">check out</Heading>
               </Button>
             </CheckoutWrapper>

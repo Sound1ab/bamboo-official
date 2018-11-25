@@ -1,4 +1,4 @@
-import { graphql, StaticQuery } from 'gatsby'
+import { graphql, StaticQuery, Link } from 'gatsby'
 import 'modern-normalize'
 import * as React from 'react'
 import styled from 'react-emotion'
@@ -58,10 +58,10 @@ export const Generic = ({ children, navbarIsSticky = false, navbarIsLight = fals
             meta={[
               {
                 content: data.site.siteMetadata.description,
-                name: 'description',
+                name: 'The official site for Bam Boo London',
               },
               {
-                content: 'gatsbyjs, gatsby, javascript, sample, something',
+                content: 'Bam Boo, Products, Restaurant, London',
                 name: 'keywords',
               },
             ]}
@@ -72,20 +72,24 @@ export const Generic = ({ children, navbarIsSticky = false, navbarIsLight = fals
                 <NavBar isSticky={navbarIsSticky} isLight={navbarIsLight}>
                   {(isMenuOpen, closeBurgerMenuClick) => (
                     <BurgerMenu isOpen={isMenuOpen} close={closeBurgerMenuClick}>
+                      {/*<div>*/}
+                      {/*<Heading type="h6" color={colors.white} textTransform="uppercase" button>*/}
+                      {/*Find us*/}
+                      {/*</Heading>*/}
+                      {/*</div>*/}
                       <div>
-                        <Heading type="h6" color={colors.white} textTransform="uppercase" button>
-                          Find us
-                        </Heading>
+                        <Link to="/products">
+                          <Heading type="h6" color={colors.white} textTransform="uppercase" button>
+                            Products
+                          </Heading>
+                        </Link>
                       </div>
                       <div>
-                        <Heading type="h6" color={colors.white} textTransform="uppercase" button>
-                          Products
-                        </Heading>
-                      </div>
-                      <div>
-                        <Heading type="h6" color={colors.white} textTransform="uppercase" button>
-                          Restaurant
-                        </Heading>
+                        <Link to="/">
+                          <Heading type="h6" color={colors.white} textTransform="uppercase" button>
+                            Restaurant
+                          </Heading>
+                        </Link>
                       </div>
                     </BurgerMenu>
                   )}

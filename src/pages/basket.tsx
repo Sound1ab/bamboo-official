@@ -28,7 +28,7 @@ interface Props {
 const Basket = (props: Props) => (
   <Generic navbarIsSticky>
     <Container>
-      <Heading type="h2" textTransform="lowercase" textAlign="center" marginBottom>
+      <Heading type="h2" textTransform="lowercase" textAlign="center" marginBottom marginTop>
         Your Basket
       </Heading>
       <Cart.CartContext.Consumer>

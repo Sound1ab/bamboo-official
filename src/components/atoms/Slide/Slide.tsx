@@ -1,8 +1,8 @@
 import Img from 'gatsby-image'
 import * as React from 'react'
 import { css } from 'react-emotion'
-import { Heading } from '../Heading'
 import { spacing } from '../../../theme'
+import { Heading } from '../Heading'
 
 interface Props {
   image: any

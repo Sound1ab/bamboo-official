@@ -35,7 +35,7 @@ const options = {
 const Basket = ({ data: { contentfulPage } }: Props) => (
   <Generic navbarIsSticky>
     <Container>
-      <Heading type="h2" textTransform="lowercase" textAlign="center" marginBottom>
+      <Heading type="h2" textTransform="lowercase" textAlign="center" marginBottom marginTop>
         {contentfulPage.title}
       </Heading>
     </Container>

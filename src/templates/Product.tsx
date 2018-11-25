@@ -50,7 +50,13 @@ const Product = ({ navbarIsSticky = true, data: { contentfulProduct, allContentf
                 flex: 1;
               `}
             >
-              <Img fluid={contentfulProduct.image[0].fluid} />
+              <div
+                className={css`
+                  margin-bottom: ${spacing.s}px;
+                `}
+              >
+                <Img fluid={contentfulProduct.image[0].fluid} />
+              </div>
               {isMatchMedia && (
                 <StickyBuyer
                   reviews={contentfulProduct.reviews}
@@ -62,27 +68,16 @@ const Product = ({ navbarIsSticky = true, data: { contentfulProduct, allContentf
                   hasNoProductInformation
                 />
               )}
-              {!isMatchMedia && (
-                <React.Fragment>
-                  <div
-                    className={css`
-                      padding: ${spacing.m}px;
-                      text-align: center;
-                    `}
-                  >
-                    <Ricebowl fill={colors.black} width="80px" height="80px" />
-                  </div>
-                  {contentfulProduct.moreInformation.map((moreInformation, index) => (
-                    <ImageTextContainer
-                      key={moreInformation.description}
-                      reverse={index % 2 === 0}
-                      firstChild={<Img fluid={moreInformation.image.fluid} />}
-                      secondChild={<div>{moreInformation.description}</div>}
-                      marginBottom
-                    />
-                  ))}
-                </React.Fragment>
-              )}
+              {!isMatchMedia &&
+                contentfulProduct.moreInformation.map((moreInformation, index) => (
+                  <ImageTextContainer
+                    key={moreInformation.description}
+                    reverse={index % 2 === 0}
+                    firstChild={<Img fluid={moreInformation.image.fluid} />}
+                    secondChild={<div>{moreInformation.description}</div>}
+                    marginBottom
+                  />
+                ))}
             </div>
             {!isMatchMedia && (
               <div

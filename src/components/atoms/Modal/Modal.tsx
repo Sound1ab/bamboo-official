@@ -22,6 +22,7 @@ const modalStyles = {
     min-height: ${spacing.xl * 2}px;
     width: 80%;
     opacity: 0;
+    z-index: 12;
   `,
   // tslint:disable-next-line
   afterOpen: css`
@@ -40,6 +41,7 @@ const portalStyles = css`
   left: 0;
   right: 0;
   bottom: 0;
+  z-index: 12;
   & :-moz-focusring {
     color: transparent;
     text-shadow: 0 0 0 #000;

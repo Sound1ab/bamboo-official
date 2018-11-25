@@ -3,6 +3,8 @@ import * as React from 'react'
 import styled from 'react-emotion'
 import { KaleidoscopeWithLogo, ThemeProvider } from '../components/atoms'
 import { colors } from '../theme'
+import 'modern-normalize'
+import '../theme/normalize'
 
 const Wrapper = styled('div')`
   position: relative;

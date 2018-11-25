@@ -4,6 +4,7 @@ import { css } from 'react-emotion'
 import { FindUs } from '../../../modals'
 import { colors, styled } from '../../../theme'
 import { Heading, Logo, Menu, Modal, ShoppingCart } from '../../atoms'
+import * as Cart from '../../atoms/Cart'
 import { fixed, page, sticky } from '../../atoms/Container'
 
 const FlexContainer = styled('nav')<{ isSticky: boolean }>`
@@ -126,11 +127,35 @@ export class NavBar extends React.Component<Props, State> {
                 </button>
               )}
             </Modal>
-            <Link to="/basket/">
-              <button>
-                <ShoppingCart fill={this.props.isLight ? colors.white : colors.black} width="28px" height="28px" />
-              </button>
-            </Link>
+            <Cart.CartContext.Consumer>
+              {({ numberOfItemsInCart }) => (
+                <div
+                  className={css`
+                    position: relative;
+                  `}
+                >
+                  <Link to="/basket/">
+                    <button>
+                      <ShoppingCart
+                        fill={this.props.isLight ? colors.white : colors.black}
+                        width="28px"
+                        height="28px"
+                      />
+                    </button>
+                  </Link>
+                  <span
+                    className={css`
+                      position: absolute;
+                      top: 0;
+                      left: 0;
+                      color: ${this.props.isLight ? colors.white : colors.black};
+                    `}
+                  >
+                    {numberOfItemsInCart}
+                  </span>
+                </div>
+              )}
+            </Cart.CartContext.Consumer>
           </RightColumn>
         </FlexContainer>
       </React.Fragment>

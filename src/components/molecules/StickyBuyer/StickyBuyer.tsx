@@ -76,9 +76,9 @@ export const StickyBuyer = ({
               ))}
           </ButtonWrapper>
           <CartContext.Consumer>
-            {({ replaceInCart }) => (
+            {({ addToCart }) => (
               <Button
-                onClick={replaceInCart.bind(null, {
+                onClick={addToCart.bind(null, {
                   id: productId,
                   price,
                   quantity: selectedValue + 1,

@@ -16,8 +16,9 @@ interface RenderProps {
   subtractFromCart: FullItem
   replaceInCart: FullItem
   deleteFromCart: PartialItem
-  cartTotal: CartTotal
+  cartTotal: number
   checkout: () => void
+  numberOfItemsInCart: number
 }
 
 interface Props {
@@ -49,8 +50,10 @@ export class Cart extends React.Component<Props, State> {
     this.loadCart()
   }
 
-  public componentWillUnmount() {
-    this.saveCart()
+  public componentDidUpdate(prevProps: Readonly<Props>, prevState: Readonly<State>, snapshot?: any): void {
+    if (this.state !== prevState) {
+      this.saveCart()
+    }
   }
 
   public replaceInCart = ({ id, price, quantity }: Item) => {
@@ -68,16 +71,18 @@ export class Cart extends React.Component<Props, State> {
 
   public addToCart = ({ id, price, quantity = 1 }: Item) => {
     const cartItem = this.state.items.find(item => item.id === id)
-    if (!cartItem) {
-      return
-    }
-    const updateItem = {
-      ...cartItem,
-      price,
-      quantity: cartItem.quantity + quantity,
-    }
+    const updateItem = cartItem
+      ? {
+          ...cartItem,
+          price,
+          quantity: cartItem.quantity + quantity,
+        }
+      : { id, price, quantity }
+
     this.setState({
-      items: this.state.items.map(item => (item.id === id ? updateItem : item)),
+      items: cartItem
+        ? this.state.items.map(item => (item.id === id ? updateItem : item))
+        : [...this.state.items, updateItem],
     })
   }
 
@@ -127,9 +132,10 @@ export class Cart extends React.Component<Props, State> {
         value={{
           addToCart: this.addToCart,
           cartItems: items,
-          cartTotal: this.cartTotal,
+          cartTotal: this.cartTotal().prettyTotal,
           checkout: this.checkout,
           deleteFromCart: this.deleteFromCart,
+          numberOfItemsInCart: this.state.items.reduce((total, item) => 1 * item.quantity + total, 0),
           replaceInCart: this.replaceInCart,
           subtractFromCart: this.subtractFromCart,
         }}

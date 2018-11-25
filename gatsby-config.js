@@ -22,6 +22,28 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
     {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        // Setting a color is optional.
+        color: '#e97f89',
+        // Disable the loading spinner.
+        showSpinner: false,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Bam Boo`,
+        short_name: `Bam Boo`,
+        start_url: `/`,
+        background_color: '#000',
+        theme_color: '#e97f89',
+        display: `minimal-ui`,
+        icon: `src/assets/images/icon.png`, // This path is relative to the root of the site.
+      },
+    },
+    { resolve: 'gatsby-plugin-offline', options: { cacheId: `bam-boo.com` } },
+    {
       resolve: `gatsby-source-contentful`,
       options: {
         spaceId: process.env.SPACE_ID,

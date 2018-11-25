@@ -156,13 +156,11 @@ export class Cart extends React.Component<Props, State> {
 
   private configureStripe = () => {
     this.stripeHandler = (window as any).StripeCheckout.configure({
-      // You’ll need to add your own Stripe public key to the `checkout.js` file.
-      // key: 'pk_test_STRIPE_PUBLISHABLE_KEY',
-      key: 'pk_test_9L63TDVY2WFCZK16HMjpDGiB',
-      locale: 'auto',
       closed: (event: any) => {
         return event
       },
+      key: 'pk_test_9L63TDVY2WFCZK16HMjpDGiB',
+      locale: 'auto',
     })
   }
 }

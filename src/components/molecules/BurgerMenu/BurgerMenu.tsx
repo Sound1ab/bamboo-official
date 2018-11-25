@@ -1,5 +1,5 @@
-import * as React from 'react'
 import { Link } from 'gatsby'
+import * as React from 'react'
 import { slide as Menu } from 'react-burger-menu'
 import { colors, spacing, styled } from '../../../theme'
 import { Close, Logo, ShoppingCart } from '../../atoms'

@@ -17,6 +17,7 @@ interface Props {
 
 export const BasketItem = ({
   id,
+  image,
   onAdd = (): null => null,
   quantity = 0,
   onDelete = (): null => null,
@@ -24,13 +25,13 @@ export const BasketItem = ({
   price,
   productName,
   slug,
-  image,
 }: Props) => {
   return (
     <MediaQuery>
       {(_, isMatchMedia) =>
         React.createElement(isMatchMedia ? BasketItemMobile : BasketItemDesktop, {
           id,
+          image,
           onAdd,
           onDelete,
           onSubtract,
@@ -38,7 +39,6 @@ export const BasketItem = ({
           productName,
           quantity,
           slug,
-          image,
         })
       }
     </MediaQuery>

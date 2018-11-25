@@ -1,4 +1,4 @@
-import { graphql, StaticQuery, Link } from 'gatsby'
+import { graphql, Link, StaticQuery } from 'gatsby'
 import 'modern-normalize'
 import * as React from 'react'
 import styled from 'react-emotion'

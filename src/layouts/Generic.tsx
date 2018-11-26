@@ -1,13 +1,15 @@
-import { graphql, Link, StaticQuery } from 'gatsby'
+import '../theme/normalize'
 import 'modern-normalize'
+
+import { graphql, Link, StaticQuery } from 'gatsby'
 import * as React from 'react'
 import styled from 'react-emotion'
 import Helmet from 'react-helmet'
+
 import { Heading, ThemeProvider } from '../components/atoms'
 import * as Cart from '../components/atoms/Cart'
 import { BurgerMenu, Footer, NavBar } from '../components/molecules'
 import { colors } from '../theme'
-import '../theme/normalize'
 
 const Root = styled('div')`
   display: flex;

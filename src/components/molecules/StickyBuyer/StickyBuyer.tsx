@@ -1,9 +1,10 @@
 import * as React from 'react'
 import styled from 'react-emotion'
+
+import { Rating } from '..'
 import { colors, spacing } from '../../../theme'
 import { Button, CartContext, Heading, StickyContainer } from '../../atoms'
 import { QuantityChooser } from '../../utility'
-import { Rating } from '../index'
 
 const Wrapper = styled(StickyContainer)<{ isStatic: boolean }>`
   max-width: ${spacing.xl * 2 + spacing.s}px;

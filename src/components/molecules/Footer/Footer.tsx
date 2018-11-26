@@ -1,6 +1,7 @@
 import { graphql, Link, StaticQuery } from 'gatsby'
 import * as React from 'react'
 import styled from 'react-emotion'
+
 import { AllContentfulSocial } from '../../../interfaces/contentful'
 import { colors, spacing } from '../../../theme'
 import { Container, Facebook, Instagram, Twitter } from '../../atoms'

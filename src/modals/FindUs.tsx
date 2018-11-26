@@ -3,6 +3,7 @@ import * as ContentfulRichTextTypes from '@contentful/rich-text-types'
 import { graphql, StaticQuery } from 'gatsby'
 import * as React from 'react'
 import * as ReactDOMServer from 'react-dom/server'
+
 import { Container } from '../components/atoms/Container'
 import { Heading } from '../components/atoms/Heading'
 import { ThemeProvider } from '../components/atoms/ThemeProvider'

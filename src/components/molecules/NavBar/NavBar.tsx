@@ -1,6 +1,7 @@
 import { Link } from 'gatsby'
 import * as React from 'react'
 import { css } from 'react-emotion'
+
 import { FindUs } from '../../../modals'
 import { colors, styled } from '../../../theme'
 import { Heading, Logo, Menu, Modal, ShoppingCart } from '../../atoms'

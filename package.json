@@ -12,7 +12,6 @@
   "scripts": {
     "build": "gatsby build && yarn storybook:build",
     "clean": "rimraf public",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "develop": "gatsby develop",
     "start": "concurrently \"gatsby develop\" \"yarn storybook\" \"lint:watch\"",
     "lint": "tslint 'src/**/*.{ts,tsx}' --project tsconfig.json --format stylish",

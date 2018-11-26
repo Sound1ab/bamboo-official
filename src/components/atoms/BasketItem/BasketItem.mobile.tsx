@@ -2,6 +2,7 @@ import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import * as React from 'react'
 import { css } from 'react-emotion'
+
 import { styled } from '../../../theme'
 import * as Cart from '../Cart'
 import { Heading } from '../Heading'

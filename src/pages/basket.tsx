@@ -1,5 +1,6 @@
 import { graphql } from 'gatsby'
 import * as React from 'react'
+
 import { BasketItem, Button, Container, Heading } from '../components/atoms'
 import * as Cart from '../components/atoms/Cart'
 import { AllContentfulProduct } from '../interfaces/contentful'

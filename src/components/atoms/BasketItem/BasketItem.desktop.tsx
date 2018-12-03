@@ -54,11 +54,11 @@ const PriceChild = styled('div')`
   justify-content: flex-end;
 `
 
-const Add = styled(Heading)`
+const Add = styled(Heading)<{ onClick: (e: React.MouseEvent) => void }>`
   margin-left: ${({ theme }) => theme.spacing.m}px;
 `
 
-const Subtract = styled(Heading)`
+const Subtract = styled(Heading)<{ onClick: (e: React.MouseEvent) => void }>`
   margin-right: ${({ theme }) => theme.spacing.m}px;
 `
 

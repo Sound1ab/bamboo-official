@@ -1,71 +1,47 @@
 import * as React from 'react'
-import { colors, styled } from '../../../theme'
+import styled from 'react-emotion'
 
 type headingType = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
 type textTransformType = 'lowercase' | 'uppercase' | 'none'
 type textAlignType = 'left' | 'center' | 'right'
 
-const Component = (
-  heading: headingType,
-  textTransform: textTransformType,
-  textAlign: textAlignType,
-  marginBottom: boolean,
-  marginTop: boolean,
-  color: string,
-  fontFamily: string,
-) => styled(heading as any)`
-  text-transform: ${textTransform};
-  text-align: ${textAlign};
-  text-rendering: optimizeLegibility;
-  font-family: ${({ theme }) => theme.typography.fontFamily[fontFamily || heading]};
-  font-size: ${({ theme }) => theme.typography.fontSize[heading]}px;
-  font-weight: ${({ theme }) => theme.typography.fontWeight[heading]};
-  letter-spacing: ${({ theme }) => theme.typography.letterSpacing[heading]}px;
-  line-height: ${({ theme }) => theme.typography.lineHeight[heading]};
-  margin-bottom: ${({ theme }) => (marginBottom ? theme.typography.marginBottom[heading] : 0)}px;
-  margin-top: ${({ theme }) => (marginTop ? theme.typography.marginBottom[heading] : 0)}px;
-  color: ${color};
-`
-
-interface PropTypes {
-  type?: headingType
-  props?: {}
-  children: React.ReactNode
+interface Props {
+  button?: boolean
   textTransform?: textTransformType
   textAlign?: textAlignType
+  fontFamily?: string
+  type: headingType
   marginBottom?: boolean
   marginTop?: boolean
-  button?: boolean
-  className?: string
   color?: string
-  onClick?: () => void
-  fontFamily?: string
+  className?: string
 }
 
-export const Heading = ({
-  type = 'h1',
-  props = {},
-  children,
-  textTransform = 'none',
-  textAlign = 'left',
-  marginBottom = false,
-  marginTop = false,
-  button = false,
-  className = '',
-  color = colors.black,
-  onClick,
-  fontFamily,
-}: PropTypes) => {
-  const HeadingComponent = React.createElement(
-    Component(type, textTransform, textAlign, marginBottom, marginTop, color, fontFamily),
-    { className },
-    children,
-  )
-  return button ? (
-    <button onClick={onClick} className={className}>
-      {HeadingComponent}
+const StyledHeading = styled('h1')<Props>`
+  text-transform: ${({ textTransform }) => textTransform};
+  text-align: ${({ textAlign }) => textAlign};
+  text-rendering: optimizeLegibility;
+  font-family: ${({ theme, fontFamily, type }) => theme.typography.fontFamily[fontFamily || type]};
+  font-size: ${({ theme, type }) => theme.typography.fontSize[type]}px;
+  font-weight: ${({ theme, type }) => theme.typography.fontWeight[type]};
+  letter-spacing: ${({ theme, type }) => theme.typography.letterSpacing[type]}px;
+  line-height: ${({ theme, type }) => theme.typography.lineHeight[type]};
+  margin-bottom: ${({ theme, type, marginBottom }) => (marginBottom ? theme.typography.marginBottom[type] : 0)}px;
+  margin-top: ${({ theme, type, marginTop }) => (marginTop ? theme.typography.marginBottom[type] : 0)}px;
+  color: ${({ color }) => color};
+`
+
+let Base: any
+
+export const Heading = (props: Props) => {
+  if (!Base) {
+    Base = StyledHeading.withComponent(props.type) as any
+  }
+  return props.button ? (
+    <button>
+      <Base {...props} />
     </button>
   ) : (
-    HeadingComponent
+    <Base {...props} />
   )
 }

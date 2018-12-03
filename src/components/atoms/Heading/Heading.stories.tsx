@@ -1,11 +1,12 @@
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
+
 import { Heading } from './Heading'
 
 storiesOf('Heading', module).add('All', () => {
   return (
     <React.Fragment>
-      <Heading>Heading 1</Heading>
+      <Heading type="h1">Heading 1</Heading>
       <Heading type="h2" marginBottom>
         Heading 2
       </Heading>

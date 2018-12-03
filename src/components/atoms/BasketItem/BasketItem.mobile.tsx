@@ -59,12 +59,12 @@ const headingBase = css`
   display: inline-flex;
 `
 
-const Add = styled(Heading)`
+const Add = styled(Heading)<{ onClick: (e: React.MouseEvent) => void }>`
   ${headingBase};
   margin-left: ${({ theme }) => theme.spacing.m}px;
 `
 
-const Subtract = styled(Heading)`
+const Subtract = styled(Heading)<{ onClick: (e: React.MouseEvent) => void }>`
   ${headingBase};
   margin-right: ${({ theme }) => theme.spacing.m}px;
 `

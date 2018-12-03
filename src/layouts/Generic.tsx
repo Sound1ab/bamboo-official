@@ -1,5 +1,5 @@
-import '../theme/normalize'
 import 'modern-normalize'
+import '../theme/normalize'
 
 import { graphql, Link, StaticQuery } from 'gatsby'
 import * as React from 'react'

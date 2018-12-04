@@ -73,10 +73,18 @@ run at compile time.
 
 ## Gatsby Config
 
+Gatsby uses a plugin architecture to provide functionality such as typescript, image transform, stripe etc. Here you will also find the site's meta data and manifest.
+
 ## Design
 
 ##### Atomic Design
 
+The site uses the principles laid down by Brad Frost of [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/) to split the component hierarchy.
+
 ##### Styled Components
 
+All components are [styled components](https://emotion.sh/docs/styled) using the Emotion library.
+
 ## Environment Variables
+
+All secret keys and sensitive information are kept inside a `.env` file and added to `process.env` using [dotenv](https://github.com/motdotla/dotenv). Never, ever commit the `.env` file or add any sensitive information to a committed file! Email info@phillipparker.io if you require this information.

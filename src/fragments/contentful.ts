@@ -10,7 +10,7 @@ export const contentfulProductFragment = graphql`
       description
       image {
         fluid(maxWidth: 1250) {
-          ...GatsbyContentfulFluid_tracedSVG
+          ...GatsbyContentfulFluid_withWebp
         }
       }
     }
@@ -30,7 +30,7 @@ export const contentfulProductFragment = graphql`
     }
     image {
       fluid(maxWidth: 1250) {
-        ...GatsbyContentfulFluid_tracedSVG
+        ...GatsbyContentfulFluid_withWebp
       }
     }
     floatingCat
@@ -51,7 +51,7 @@ export const allContentfulProductFragment = graphql`
         slug
         image {
           fluid(maxWidth: 1250) {
-            ...GatsbyContentfulFluid_tracedSVG
+            ...GatsbyContentfulFluid_withWebp
           }
         }
         floatingCat
@@ -79,12 +79,12 @@ export const contentfulPageFragment = graphql`
     }
     banner {
       fluid(maxWidth: 1250) {
-        ...GatsbyContentfulFluid_tracedSVG
+        ...GatsbyContentfulFluid_withWebp
       }
     }
     secondaryBanner {
       fluid(maxWidth: 1250) {
-        ...GatsbyContentfulFluid_tracedSVG
+        ...GatsbyContentfulFluid_withWebp
       }
     }
     floatingCat

@@ -16,9 +16,9 @@ Test: `yarn test`
 
 ## Preview Links
 
-[Staging](http://bamboo-staging.s3-website.eu-west-2.amazonaws.com/products/)
+[Staging](http://bamboo-staging.s3-website.eu-west-2.amazonaws.com/)
 
-[Master](http://bamboo-master.s3-website.eu-west-2.amazonaws.com/products/)
+[Master](http://bamboo-master.s3-website.eu-west-2.amazonaws.com/)
 
 ## CircleCI
 

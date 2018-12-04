@@ -46,6 +46,7 @@ const QuantityChild = styled('div')`
   flex: 2 1;
   flex-direction: row;
   align-items: flex-start;
+  justify-content: space-between;
 `
 
 const PriceChild = styled('div')`
@@ -54,11 +55,11 @@ const PriceChild = styled('div')`
   justify-content: flex-end;
 `
 
-const Add = styled(Heading)<{ onClick: (e: React.MouseEvent) => void }>`
+const Add = styled(Heading)`
   margin-left: ${({ theme }) => theme.spacing.m}px;
 `
 
-const Subtract = styled(Heading)<{ onClick: (e: React.MouseEvent) => void }>`
+const Subtract = styled(Heading)`
   margin-right: ${({ theme }) => theme.spacing.m}px;
 `
 

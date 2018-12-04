@@ -15,6 +15,7 @@ interface Props {
   marginTop?: boolean
   color?: string
   className?: string
+  onClick?: (e: React.MouseEvent) => void
 }
 
 const StyledHeading = styled('h1')<Props>`
@@ -38,7 +39,7 @@ export const Heading = (props: Props) => {
     Base = StyledHeading.withComponent(props.type) as any
   }
   return props.button ? (
-    <button>
+    <button onClick={props.onClick}>
       <Base {...props} />
     </button>
   ) : (

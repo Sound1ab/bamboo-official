@@ -10,7 +10,10 @@ import * as Cart from '../components/atoms/Cart'
 import { BurgerMenu, Footer, NavBar } from '../components/molecules'
 import { colors } from '../theme'
 
-require('intersection-observer')
+if (typeof window !== 'undefined') {
+  require(`intersection-observer`)
+}
+
 require('../theme/normalize')
 
 const Root = styled('div')`

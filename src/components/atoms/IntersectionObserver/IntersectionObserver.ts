@@ -31,14 +31,16 @@ export class Observer extends Component<Props, State> {
       threshold: [0, 0.1, 0.5, 0.75, 0.99, 1],
     }
 
-    const observer = new IntersectionObserver(this.intersectionCallback, options)
+    if (typeof window !== 'undefined') {
+      const observer = new IntersectionObserver(this.intersectionCallback, options)
 
-    this.props.targets
-      .map((target: string) => `#${target}`)
-      .forEach((target: string) => {
-        const targetElement = document.querySelector(target)
-        observer.observe(targetElement)
-      })
+      this.props.targets
+        .map((target: string) => `#${target}`)
+        .forEach((target: string) => {
+          const targetElement = document.querySelector(target)
+          observer.observe(targetElement)
+        })
+    }
 
     this.setState({
       activeElement: this.props.targets[0],

@@ -50,6 +50,7 @@
     "gatsby-source-contentful": "^2.0.14",
     "gatsby-source-filesystem": "^2.0.8",
     "gatsby-transformer-sharp": "^2.1.1-rc.2",
+    "intersection-observer": "^0.5.1",
     "modern-normalize": "^0.5.0",
     "nuka-carousel": "^4.4.0",
     "polished": "^1.9.3",

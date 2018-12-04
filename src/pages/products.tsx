@@ -83,17 +83,21 @@ const navBarIsLight: { [key: string]: boolean } = {
   [OBSERVER_TARGETS.GALLERY]: false,
 }
 
+const targets = [
+  OBSERVER_TARGETS.BANNER,
+  OBSERVER_TARGETS.TEXT_CONTAINER,
+  OBSERVER_TARGETS.BANNER_TWO,
+  OBSERVER_TARGETS.GALLERY,
+]
+
 const ProductsPage = ({ data: { allContentfulProduct, contentfulPage } }: Props) => (
-  <Observer
-    targets={[
-      OBSERVER_TARGETS.BANNER,
-      OBSERVER_TARGETS.TEXT_CONTAINER,
-      OBSERVER_TARGETS.BANNER_TWO,
-      OBSERVER_TARGETS.GALLERY,
-    ]}
-  >
+  <Observer targets={targets}>
     {activeElement => (
-      <Generic navbarIsLight={navBarIsLight[activeElement]}>
+      <Generic
+        navbarIsLight={navBarIsLight[activeElement]}
+        floatingCatText={contentfulPage.floatingCat}
+        activeElementIndex={targets.findIndex(target => target === activeElement)}
+      >
         <ArtContainer top={900} left={0}>
           <ChopstickSushi fill={colors.black} width="250px" height="250px" />
         </ArtContainer>

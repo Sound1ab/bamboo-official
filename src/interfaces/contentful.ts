@@ -28,6 +28,7 @@ export interface ContentfulProduct {
       fluid: object
     }
   ]
+  floatingCat: string[]
 }
 
 export interface AllContentfulProduct {
@@ -46,6 +47,7 @@ export interface AllContentfulProduct {
           fluid: object
         }
       ]
+      floatingCat: string[]
     }
   }[]
 }
@@ -76,4 +78,5 @@ export interface ContentfulPage {
   secondaryBanner: {
     fluid: object
   }
+  floatingCat: string[]
 }

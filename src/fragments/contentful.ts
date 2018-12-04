@@ -33,6 +33,7 @@ export const contentfulProductFragment = graphql`
         ...GatsbyContentfulFluid_tracedSVG
       }
     }
+    floatingCat
   }
 `
 
@@ -53,6 +54,7 @@ export const allContentfulProductFragment = graphql`
             ...GatsbyContentfulFluid_tracedSVG
           }
         }
+        floatingCat
       }
     }
   }
@@ -85,6 +87,7 @@ export const contentfulPageFragment = graphql`
         ...GatsbyContentfulFluid_tracedSVG
       }
     }
+    floatingCat
   }
 `
 

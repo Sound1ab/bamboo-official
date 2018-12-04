@@ -24,7 +24,7 @@ enum mediaQuery {
 }
 
 const Product = ({ navbarIsSticky = true, data: { contentfulProduct, allContentfulProduct } }: Props) => (
-  <Generic navbarIsSticky={navbarIsSticky}>
+  <Generic navbarIsSticky={navbarIsSticky} floatingCatText={contentfulProduct.floatingCat} activeElementIndex={0}>
     <MediaQuery maxWidth={mediaQuery.MAX_WIDTH}>
       {(_, isMatchMedia) => (
         <React.Fragment>

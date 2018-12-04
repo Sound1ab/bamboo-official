@@ -7,6 +7,7 @@ import { colors, styled } from '../../../theme'
 import { Heading, Logo, Menu, Modal, ShoppingCart } from '../../atoms'
 import * as Cart from '../../atoms/Cart'
 import { fixed, page, sticky } from '../../atoms/Container'
+import { StickyCat } from '../../molecules'
 
 const FlexContainer = styled('nav')<{ isSticky: boolean }>`
   display: flex;
@@ -75,6 +76,8 @@ interface Props {
   children?: (isMenuOpen: boolean, closeBurgerMenuClick: () => void) => void
   isLight?: boolean
   isSticky?: boolean
+  floatingCatText?: string[]
+  activeElementIndex?: number
 }
 
 interface State {
@@ -97,6 +100,13 @@ export class NavBar extends React.Component<Props, State> {
         {this.props.children(this.state.isMenuOpen, this.closeBurgerMenuClick)}
         <FlexContainer isSticky={this.props.isSticky}>
           <LeftColumn>
+            {this.props.floatingCatText && (
+              <StickyCat
+                activeElementIndex={this.props.activeElementIndex}
+                text={this.props.floatingCatText}
+                color={this.props.isLight ? colors.white : colors.black}
+              />
+            )}
             <MobileButton onClick={this.openBurgerMenuClick}>
               <Menu fill={this.props.isLight ? colors.white : colors.black} width={'28px'} height={'28px'} />
             </MobileButton>

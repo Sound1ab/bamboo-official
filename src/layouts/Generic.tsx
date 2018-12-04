@@ -1,5 +1,4 @@
 import 'modern-normalize'
-import '../theme/normalize'
 
 import { graphql, Link, StaticQuery } from 'gatsby'
 import * as React from 'react'
@@ -10,6 +9,8 @@ import { Heading, ThemeProvider } from '../components/atoms'
 import * as Cart from '../components/atoms/Cart'
 import { BurgerMenu, Footer, NavBar } from '../components/molecules'
 import { colors } from '../theme'
+
+require('../theme/normalize')
 
 const Root = styled('div')`
   display: flex;
@@ -28,6 +29,8 @@ interface Props {
   navbarIsSticky?: boolean
   navbarIsLight?: boolean
   children: any
+  floatingCatText?: string[]
+  activeElementIndex?: number
 }
 
 interface StaticQueryProps {
@@ -39,7 +42,13 @@ interface StaticQueryProps {
   }
 }
 
-export const Generic = ({ children, navbarIsSticky = false, navbarIsLight = false }: Props) => (
+export const Generic = ({
+  children,
+  navbarIsSticky = false,
+  navbarIsLight = false,
+  floatingCatText,
+  activeElementIndex,
+}: Props) => (
   <StaticQuery
     query={graphql`
       query SiteMetaQuery {
@@ -71,7 +80,12 @@ export const Generic = ({ children, navbarIsSticky = false, navbarIsLight = fals
           <Cart.Cart>
             {() => (
               <React.Fragment>
-                <NavBar isSticky={navbarIsSticky} isLight={navbarIsLight}>
+                <NavBar
+                  isSticky={navbarIsSticky}
+                  isLight={navbarIsLight}
+                  floatingCatText={floatingCatText}
+                  activeElementIndex={activeElementIndex}
+                >
                   {(isMenuOpen, closeBurgerMenuClick) => (
                     <BurgerMenu isOpen={isMenuOpen} close={closeBurgerMenuClick}>
                       {/*<div>*/}

@@ -6,21 +6,12 @@ import * as React from 'react'
 import * as ReactDOMServer from 'react-dom/server'
 import styled, { css } from 'react-emotion'
 
-import {
-  Beatroot,
-  ChopstickSushi,
-  Container,
-  Heading,
-  Leaf,
-  Lemon,
-  Observer,
-  Slide,
-  ThemeProvider,
-} from '../components/atoms'
+import { Beatroot, ChopstickSushi, Heading, Lemon, Observer, Shell, Slide, ThemeProvider } from '../components/atoms'
+import { HomepageContainer } from '../components/atoms/Container/HomepageContainer'
 import { Slider } from '../components/atoms/Slider'
 import { AllContentfulProduct, ContentfulPage } from '../interfaces/contentful'
 import { Generic } from '../layouts'
-import { colors, padding, spacing } from '../theme'
+import { colors, spacing } from '../theme'
 
 interface Props {
   data: {
@@ -28,16 +19,6 @@ interface Props {
     contentfulPage: ContentfulPage
   }
 }
-
-const HomepageContainer = styled(Container)`
-  padding: ${padding.xxl.vertical}px ${padding.xxl.horizontal}px;
-  @media (max-width: 800px) {
-    padding: ${padding.m.vertical}px ${padding.m.horizontal}px;
-  }
-  @media (max-width: 400px) {
-    padding: ${padding.s.vertical}px ${padding.s.horizontal}px;
-  }
-`
 
 const options = {
   renderNode: {
@@ -61,13 +42,6 @@ const options = {
     },
   },
 }
-
-const ArtContainer = styled('div')<{ top?: number; left?: number; right?: number }>`
-  position: absolute;
-  ${({ top }) => `top: ${top}px`};
-  ${({ left }) => `left: ${left}px`};
-  ${({ right }) => `right: ${right}px`};
-`
 
 enum OBSERVER_TARGETS {
   BANNER = 'banner',
@@ -98,15 +72,6 @@ const ProductsPage = ({ data: { allContentfulProduct, contentfulPage } }: Props)
         floatingCatText={contentfulPage.floatingCat}
         activeElementIndex={targets.findIndex(target => target === activeElement)}
       >
-        <ArtContainer top={900} left={0}>
-          <ChopstickSushi fill={colors.black} width="250px" height="250px" />
-        </ArtContainer>
-        <ArtContainer top={550} right={0}>
-          <Beatroot fill={colors.black} width="150px" height="150px" />
-        </ArtContainer>
-        <ArtContainer top={1200} right={0}>
-          <Leaf fill={colors.black} width="100px" height="100px" />
-        </ArtContainer>
         <span id={OBSERVER_TARGETS.BANNER}>
           <Img
             style={{ width: '100%', height: '560px' }}
@@ -115,7 +80,7 @@ const ProductsPage = ({ data: { allContentfulProduct, contentfulPage } }: Props)
             alt="BamBoo products"
           />
         </span>
-        <HomepageContainer textAlign="center" id={OBSERVER_TARGETS.TEXT_CONTAINER}>
+        <HomepageContainer icons={[Beatroot, ChopstickSushi]} textAlign="center" id={OBSERVER_TARGETS.TEXT_CONTAINER}>
           <span
             dangerouslySetInnerHTML={{
               __html: ContentfulRichTextRenderer.documentToHtmlString(contentfulPage.description, options),
@@ -138,7 +103,7 @@ const ProductsPage = ({ data: { allContentfulProduct, contentfulPage } }: Props)
             alt="BamBoo products"
           />
         </span>
-        <HomepageContainer id={OBSERVER_TARGETS.GALLERY}>
+        <HomepageContainer icons={[Shell]} id={OBSERVER_TARGETS.GALLERY}>
           <Slider>
             {allContentfulProduct.edges.map(({ node }) => (
               <Link to={`/products/${node.slug}`}>

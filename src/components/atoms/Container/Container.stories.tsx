@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/react'
 import * as React from 'react'
+
 import { styled } from '../../../theme'
-import { Container, ScrollContainer, StickyContainer } from './Container'
+import { Container, ScrollContainer, StickyContainer } from '../../atoms'
 
 const LargeContainer = styled('div')`
   width: 100%;

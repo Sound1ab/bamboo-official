@@ -4,9 +4,8 @@ import { css } from 'react-emotion'
 
 import { FindUs } from '../../../modals'
 import { colors, styled } from '../../../theme'
-import { Heading, Logo, Menu, Modal, ShoppingCart } from '../../atoms'
+import { fixed, Heading, Logo, Menu, Modal, page, ShoppingCart, sticky } from '../../atoms'
 import * as Cart from '../../atoms/Cart'
-import { fixed, page, sticky } from '../../atoms/Container'
 import { StickyCat } from '../../molecules'
 
 const FlexContainer = styled('nav')<{ isSticky: boolean }>`

@@ -15,6 +15,9 @@ const Wrapper = styled('div')`
   position: absolute;
   bottom: 0;
   transform: translateY(100%);
+  @media (max-width: 400px) {
+    display: none;
+  }
 `
 
 const Text = styled('p')<{ color: string; opacity: number }>`

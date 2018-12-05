@@ -1,36 +1,19 @@
 import * as React from 'react'
-import styled, { css } from 'react-emotion'
-import { spacing } from '../../../theme'
+import styled from 'react-emotion'
 
-export const relative = css`
-  position: relative;
+import { colors, spacing } from '../../../theme'
+import { MediaQuery } from '../../utility'
+import { page, relative } from './styles'
+
+const ArtContainer = styled('div')<{ top?: number; left?: number; right?: number; bottom?: number }>`
+  position: absolute;
+  ${({ top }) => `top: ${top}px`};
+  ${({ left }) => `left: ${left}px`};
+  ${({ right }) => `right: ${right}px`};
+  ${({ bottom }) => `bottom: ${bottom}px`};
 `
 
-export const scroll = css`
-  overflow: scroll;
-`
-
-export const sticky = css`
-  position: sticky;
-  top: 0;
-  z-index: 10;
-`
-
-export const fixed = css`
-  position: fixed;
-  top: 0;
-  z-index: 10;
-`
-
-export const page = css`
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 1000px;
-  padding: 0 0;
-  width: 90%;
-`
-
-export const Container = styled('section')<{
+export const Section = styled('section')<{
   textAlign?: string
   isContainerSticky?: boolean
   marginBottom?: boolean
@@ -44,51 +27,70 @@ export const Container = styled('section')<{
   ${({ marginTop = false }) => marginTop && `margin-top: ${spacing.s}px`};
 `
 
-const firstChildElement = ({ firstChild }: { firstChild: any }) => <div key="firstChild">{firstChild}</div>
-const secondChildElement = ({ secondChild }: { secondChild: any }) => (
-  <div
-    key="secondChild"
-    className={css`
-      margin-left: ${spacing.xs}px;
-    `}
-  >
-    {secondChild}
-  </div>
-)
-
-export const ImageTextContainer = ({
-  firstChild,
-  secondChild,
-  marginBottom = false,
-  reverse = false,
+const RandomIcon = ({
+  Icon,
+  top,
+  left,
+  bottom,
+  right,
+  dimensions,
 }: {
-  firstChild: any
-  secondChild: any
-  marginBottom?: boolean
-  reverse?: boolean
+  Icon: any
+  top?: number
+  left?: number
+  bottom?: number
+  right?: number
+  dimensions: number
 }) => (
-  <div
-    className={css`
-      display: flex;
-      justify-content: space-around;
-      align-items: stretch;
-      ${marginBottom && `margin-bottom: ${spacing.s}px`};
-      & > div {
-        flex: 1 1;
-      }
-    `}
-  >
-    {reverse
-      ? [firstChildElement({ firstChild }), secondChildElement({ secondChild })]
-      : [secondChildElement({ secondChild }), firstChildElement({ firstChild })]}
-  </div>
+  <ArtContainer top={top} left={left} bottom={bottom} right={right}>
+    <Icon fill={colors.black} height={`${dimensions}px`} width={`${dimensions}px`} />
+  </ArtContainer>
 )
 
-export const StickyContainer = styled('div')`
-  ${sticky};
-`
+interface Props {
+  children?: any
+  id?: string
+  className?: string
+  textAlign?: string
+  isContainerSticky?: boolean
+  marginBottom?: boolean
+  marginTop?: boolean
+  icons?: any[]
+  dangerouslySetInnerHTML?: any
+}
 
-export const ScrollContainer = styled('div')`
-  ${relative};
-  ${scroll};
-`
+export const Container = ({
+  children,
+  id,
+  className,
+  dangerouslySetInnerHTML,
+  textAlign,
+  isContainerSticky,
+  marginBottom,
+  marginTop,
+  icons,
+}: Props) => (
+  <Section
+    id={id}
+    className={className}
+    textAlign={textAlign}
+    isContainerSticky={isContainerSticky}
+    marginBottom={marginBottom}
+    marginTop={marginTop}
+    dangerouslySetInnerHTML={dangerouslySetInnerHTML}
+  >
+    {icons && (
+      <MediaQuery maxWidth={400}>
+        {(_, isMatchMedia) =>
+          !isMatchMedia && (
+            <React.Fragment>
+              {icons[0] && <RandomIcon Icon={icons[0]} dimensions={100} top={0} right={0} />}
+              {icons[1] && <RandomIcon Icon={icons[1]} dimensions={120} bottom={0} left={-50} />}
+            </React.Fragment>
+          )
+        }
+      </MediaQuery>
+    )}
+    {children}
+  </Section>
+)

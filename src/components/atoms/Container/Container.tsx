@@ -1,5 +1,5 @@
 import * as React from 'react'
-import styled from 'react-emotion'
+import styled, { css } from 'react-emotion'
 
 import { colors, spacing } from '../../../theme'
 import { MediaQuery } from '../../utility'
@@ -73,14 +73,10 @@ export const Container = ({
   marginTop,
   icons,
 }: Props) => (
-  <Section
-    id={id}
-    className={className}
-    textAlign={textAlign}
-    isContainerSticky={isContainerSticky}
-    marginBottom={marginBottom}
-    marginTop={marginTop}
-    dangerouslySetInnerHTML={dangerouslySetInnerHTML}
+  <div
+    className={css`
+      position: relative;
+    `}
   >
     {icons && (
       <MediaQuery maxWidth={400}>
@@ -88,12 +84,22 @@ export const Container = ({
           !isMatchMedia && (
             <React.Fragment>
               {icons[0] && <RandomIcon Icon={icons[0]} dimensions={100} top={0} right={0} />}
-              {icons[1] && <RandomIcon Icon={icons[1]} dimensions={120} bottom={0} left={-50} />}
+              {icons[1] && <RandomIcon Icon={icons[1]} dimensions={120} bottom={0} left={0} />}
             </React.Fragment>
           )
         }
       </MediaQuery>
     )}
-    {children}
-  </Section>
+    <Section
+      id={id}
+      className={className}
+      textAlign={textAlign}
+      isContainerSticky={isContainerSticky}
+      marginBottom={marginBottom}
+      marginTop={marginTop}
+      dangerouslySetInnerHTML={dangerouslySetInnerHTML}
+    >
+      {children}
+    </Section>
+  </div>
 )

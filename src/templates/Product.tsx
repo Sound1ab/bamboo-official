@@ -3,8 +3,9 @@ import Img from 'gatsby-image'
 import * as React from 'react'
 import { css } from 'react-emotion'
 
-import { Container, Heading, Ricebowl, sticky } from '../components/atoms'
-import { ImageTextContainer } from '../components/atoms/Container'
+import { Heading, Ricebowl } from '../components/atoms'
+import { Container } from '../components/atoms/Container/Container'
+import { ImageTextContainer } from '../components/atoms/Container/ImageTextContainer'
 import { StickyBuyer } from '../components/molecules'
 import { MediaQuery } from '../components/utility'
 import { AllContentfulProduct, ContentfulProduct } from '../interfaces/contentful'
@@ -89,7 +90,9 @@ const Product = ({ navbarIsSticky = true, data: { contentfulProduct, allContentf
               >
                 <div
                   className={css`
-                    ${sticky};
+                    position: sticky;
+                    top: 0;
+                    z-index: 10;
                     top: 124px;
                   `}
                 >

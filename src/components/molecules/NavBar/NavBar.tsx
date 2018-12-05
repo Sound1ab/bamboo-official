@@ -4,21 +4,34 @@ import { css } from 'react-emotion'
 
 import { FindUs } from '../../../modals'
 import { colors, styled } from '../../../theme'
-import { fixed, Heading, Logo, Menu, Modal, page, ShoppingCart, sticky } from '../../atoms'
+import { Heading, Logo, Menu, Modal, Section, ShoppingCart } from '../../atoms'
 import * as Cart from '../../atoms/Cart'
 import { StickyCat } from '../../molecules'
 
-const FlexContainer = styled('nav')<{ isSticky: boolean }>`
+const fixed = css`
+  position: fixed;
+  top: 0;
+  z-index: 10;
+`
+
+const sticky = css`
+  position: sticky;
+  top: 0;
+  z-index: 10;
+`
+
+const FlexContainer = styled(Section)<{ isSticky: boolean }>`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   left: 0;
   right: 0;
-  ${page};
   ${({ isSticky }) => (isSticky ? sticky : fixed)};
   z-index: 11;
 `
+
+const Nav = FlexContainer.withComponent('nav')
 
 const columnBase = css`
   flex: 1 1;
@@ -97,7 +110,7 @@ export class NavBar extends React.Component<Props, State> {
     return (
       <React.Fragment>
         {this.props.children(this.state.isMenuOpen, this.closeBurgerMenuClick)}
-        <FlexContainer isSticky={this.props.isSticky}>
+        <Nav isSticky={this.props.isSticky}>
           <LeftColumn>
             {this.props.floatingCatText && (
               <StickyCat
@@ -168,7 +181,7 @@ export class NavBar extends React.Component<Props, State> {
               )}
             </Cart.CartContext.Consumer>
           </RightColumn>
-        </FlexContainer>
+        </Nav>
       </React.Fragment>
     )
   }

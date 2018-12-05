@@ -3,7 +3,6 @@ import styled from 'react-emotion'
 
 import { colors, spacing } from '../../../theme'
 import { MediaQuery } from '../../utility'
-import { page, relative } from './styles'
 
 const ArtContainer = styled('div')<{ top?: number; left?: number; right?: number; bottom?: number }>`
   position: absolute;
@@ -19,8 +18,12 @@ export const Section = styled('section')<{
   marginBottom?: boolean
   marginTop?: boolean
 }>`
-  ${relative};
-  ${page};
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1000px;
+  padding: 0 0;
+  width: 90%;
   ${({ textAlign = 'left' }) => `text-align: ${textAlign}`};
   ${({ isContainerSticky }) => isContainerSticky && `padding-right: ${spacing.xl * 2 + spacing.s}px;`};
   ${({ marginBottom = false }) => marginBottom && `margin-bottom: ${spacing.s}px`};

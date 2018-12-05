@@ -1,7 +1,7 @@
 import styled from 'react-emotion'
 
-import { sticky } from './styles'
-
 export const StickyContainer = styled('div')`
-  ${sticky};
+  position: sticky;
+  top: 0;
+  z-index: 10;
 `

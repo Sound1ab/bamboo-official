@@ -20,6 +20,16 @@ const TopBorderContainer = styled(Container)`
   padding: ${spacing.s}px 0;
   display: flex;
   justify-content: space-between;
+  & > div {
+    flex: 1;
+    display: flex;
+    &:nth-child(2) {
+      justify-content: center;
+    }
+    &:nth-child(3) {
+      justify-content: flex-end;
+    }
+  }
 `
 
 const FooterWrapper = TopBorderContainer.withComponent('footer')
@@ -32,6 +42,7 @@ const SpacedWrapper = styled('div')`
 
 const UppercaseParagraph = styled('p')`
   text-transform: uppercase;
+  margin-bottom: 0;
 `
 
 interface Data {
@@ -42,7 +53,9 @@ const findEdge = ({ edges }: AllContentfulSocial, name: string) => edges.find(({
 
 export const Footer = () => (
   <FooterWrapper>
-    <UppercaseParagraph>© Bam • Boo 2018</UppercaseParagraph>
+    <div>
+      <UppercaseParagraph>© Bam • Boo 2018</UppercaseParagraph>
+    </div>
     <SpacedWrapper>
       <StaticQuery query={query}>
         {({ allContentfulSocial }: Data) => {
@@ -71,12 +84,14 @@ export const Footer = () => (
         }}
       </StaticQuery>
     </SpacedWrapper>
-    <MediaQuery maxWidth={400}>
-      {(_, isMatchMedia) => (
-        <Link to="/terms-and-conditions">
-          <UppercaseParagraph>{isMatchMedia ? 'T+Cs' : 'Terms and Conditions'}</UppercaseParagraph>
-        </Link>
-      )}
-    </MediaQuery>
+    <div>
+      <MediaQuery maxWidth={400}>
+        {(_, isMatchMedia) => (
+          <Link to="/terms-and-conditions">
+            <UppercaseParagraph>{isMatchMedia ? 'T+Cs' : 'Terms and Conditions'}</UppercaseParagraph>
+          </Link>
+        )}
+      </MediaQuery>
+    </div>
   </FooterWrapper>
 )

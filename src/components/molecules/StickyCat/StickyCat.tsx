@@ -15,7 +15,7 @@ const Wrapper = styled('div')`
   position: absolute;
   bottom: 0;
   transform: translateY(100%);
-  @media (max-width: 400px) {
+  @media (max-width: 600px) {
     display: none;
   }
 `

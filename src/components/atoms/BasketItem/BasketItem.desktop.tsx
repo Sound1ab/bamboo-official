@@ -88,9 +88,11 @@ export const BasketItemDesktop = ({
   return (
     <Wrapper>
       <ImageChild>
-        <ImagePlaceholder>
-          <Img fluid={image} style={{ width: '100%', height: '100%' }} imgStyle={{ objectFit: 'contain' }} />
-        </ImagePlaceholder>
+        <Link to={`/products/${slug}`}>
+          <ImagePlaceholder>
+            <Img fluid={image} style={{ width: '100%', height: '100%' }} imgStyle={{ objectFit: 'contain' }} />
+          </ImagePlaceholder>
+        </Link>
       </ImageChild>
       <DetailChild>
         <Link to={`/products/${slug}`}>

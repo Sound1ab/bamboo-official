@@ -83,11 +83,11 @@ export const BurgerMenu = ({ children, isOpen = false, width = 375, close }: Pro
         <CenterButton>
           <Logo fill={colors.white} width="60px" height="60px" />
         </CenterButton>
-        <RightButton>
-          <Link to="/basket">
+        <Link to="/basket/">
+          <RightButton>
             <ShoppingCart fill={colors.white} width="22px" height="22px" />
-          </Link>
-        </RightButton>
+          </RightButton>
+        </Link>
         {children}
       </Menu>
     )}

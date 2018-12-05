@@ -6,8 +6,17 @@ import * as React from 'react'
 import * as ReactDOMServer from 'react-dom/server'
 import styled, { css } from 'react-emotion'
 
-import { Beatroot, ChopstickSushi, Heading, Lemon, Observer, Shell, Slide, ThemeProvider } from '../components/atoms'
-import { HomepageContainer } from '../components/atoms/Container/HomepageContainer'
+import {
+  Beatroot,
+  ChopstickSushi,
+  Heading,
+  HomepageContainer,
+  Lemon,
+  Observer,
+  Shell,
+  Slide,
+  ThemeProvider,
+} from '../components/atoms'
 import { Slider } from '../components/atoms/Slider'
 import { AllContentfulProduct, ContentfulPage } from '../interfaces/contentful'
 import { Generic } from '../layouts'

@@ -4,9 +4,7 @@ import { graphql, StaticQuery } from 'gatsby'
 import * as React from 'react'
 import * as ReactDOMServer from 'react-dom/server'
 
-import { Container } from '../components/atoms/Container'
-import { Heading } from '../components/atoms/Heading'
-import { ThemeProvider } from '../components/atoms/ThemeProvider'
+import { Container, Heading, ThemeProvider } from '../components/atoms'
 import { ContentfulPage } from '../interfaces/contentful'
 
 const query = graphql`
@@ -43,13 +41,13 @@ const options = {
 export const FindUs = () => (
   <StaticQuery query={query}>
     {({ contentfulPage }: Props) => (
-      <Container
-        marginTop
-        marginBottom
-        dangerouslySetInnerHTML={{
-          __html: ContentfulRichTextRenderer.documentToHtmlString(contentfulPage.description, options),
-        }}
-      />
+      <Container marginTop marginBottom>
+        <span
+          dangerouslySetInnerHTML={{
+            __html: ContentfulRichTextRenderer.documentToHtmlString(contentfulPage.description, options),
+          }}
+        />
+      </Container>
     )}
   </StaticQuery>
 )

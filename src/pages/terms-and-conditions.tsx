@@ -18,10 +18,11 @@ const options = {
   renderNode: {
     [ContentfulRichTextTypes.BLOCKS.HEADING_5]: ({ content }: any) => {
       const [copy] = content
+      const { value } = copy
       return ReactDOMServer.renderToString(
         <ThemeProvider>
           <Heading type="h6" textTransform="lowercase" textAlign="left" marginBottom>
-            {copy.value}
+            {value}
           </Heading>
         </ThemeProvider>,
       )
@@ -40,11 +41,13 @@ const Basket = ({ data: { contentfulPage } }: Props) => (
         {contentfulPage.title}
       </Heading>
     </Container>
-    <Container
-      dangerouslySetInnerHTML={{
-        __html: ContentfulRichTextRenderer.documentToHtmlString(contentfulPage.description, options),
-      }}
-    />
+    <Container>
+      <span
+        dangerouslySetInnerHTML={{
+          __html: ContentfulRichTextRenderer.documentToHtmlString(contentfulPage.description, options),
+        }}
+      />
+    </Container>
   </Generic>
 )
 

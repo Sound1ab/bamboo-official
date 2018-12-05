@@ -4,7 +4,7 @@ import styled from 'react-emotion'
 
 import { AllContentfulSocial } from '../../../interfaces/contentful'
 import { colors, spacing } from '../../../theme'
-import { Container, Facebook, Instagram, Twitter } from '../../atoms'
+import { Facebook, Instagram, Section, Twitter } from '../../atoms'
 import { MediaQuery } from '../../utility'
 
 const query = graphql`
@@ -15,7 +15,7 @@ const query = graphql`
   }
 `
 
-const TopBorderContainer = styled(Container)`
+const TopBorderContainer = styled(Section)`
   box-shadow: inset 0 3px 0 0 rgba(0, 0, 0, 0.75);
   padding: ${spacing.s}px 0;
   display: flex;

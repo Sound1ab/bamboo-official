@@ -1,6 +1,7 @@
 import * as React from 'react'
 import styled, { css } from 'react-emotion'
 import * as ReactModal from 'react-modal'
+
 import { colors, spacing } from '../../../theme'
 import { Close } from '../SvgIcon'
 
@@ -55,6 +56,7 @@ const RightButton = styled('button')`
   top: 0;
   right: 0;
   margin: ${spacing.xs}px;
+  z-index: 13;
 `
 
 interface Props {

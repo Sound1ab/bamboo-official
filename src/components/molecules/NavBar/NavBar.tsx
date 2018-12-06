@@ -38,9 +38,6 @@ const columnBase = css`
   display: flex;
   flex-direction: row;
   align-items: center;
-  & * {
-    transition: all 1s ease-in-out;
-  }
 `
 
 const LeftColumn = styled('div')`

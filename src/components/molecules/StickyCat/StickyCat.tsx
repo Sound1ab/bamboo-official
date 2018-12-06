@@ -26,6 +26,7 @@ const Text = styled('p')<{ color: string; opacity: number }>`
   color: ${({ color }) => color};
   opacity: ${({ opacity }) => opacity};
   position: absolute;
+  transition: all 0.5s ease-in-out;
 `
 
 export const StickyCat = ({ color = colors.black, text = [], activeElementIndex = 0 }: StickyCatProps) => (

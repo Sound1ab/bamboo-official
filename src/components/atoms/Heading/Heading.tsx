@@ -30,6 +30,7 @@ const StyledHeading = styled('h1')<Props>`
   margin-bottom: ${({ theme, type, marginBottom }) => (marginBottom ? theme.typography.marginBottom[type] : 0)}px;
   margin-top: ${({ theme, type, marginTop }) => (marginTop ? theme.typography.marginBottom[type] : 0)}px;
   color: ${({ color }) => color};
+  transition: all 0.5s ease-in-out;
 `
 
 let Base: any

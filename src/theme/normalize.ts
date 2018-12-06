@@ -1,4 +1,5 @@
 import { injectGlobal } from 'emotion'
+
 import { FontType } from './types'
 import { colors, fontFamily, typography } from './variables'
 

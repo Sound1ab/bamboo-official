@@ -124,6 +124,7 @@ export class NavBar extends React.Component<Props, State> {
                 type="h4"
                 textTransform="uppercase"
                 color={this.props.isLight ? colors.white : colors.black}
+                transition
               >
                 Products
               </DesktopHeading>
@@ -142,6 +143,7 @@ export class NavBar extends React.Component<Props, State> {
                     type="h4"
                     textTransform="lowercase"
                     color={this.props.isLight ? colors.white : colors.black}
+                    transition
                   >
                     find us
                   </DesktopHeading>
@@ -170,6 +172,7 @@ export class NavBar extends React.Component<Props, State> {
                       top: 0;
                       left: 0;
                       color: ${this.props.isLight ? colors.white : colors.black};
+                      transition: all 0.2s ease-in-out;
                     `}
                   >
                     {numberOfItemsInCart ? numberOfItemsInCart : ''}

@@ -1,12 +1,12 @@
 import * as React from 'react'
-import { css, cx } from 'react-emotion'
-import { colors, spacing, styled, typography } from '../../../theme'
 
-const Primary = (doublePadding: boolean, marginBottom: boolean) => styled('button')`
+import { colors, spacing, styled } from '../../../theme'
+
+const Primary = styled('button')<{ marginBottom: boolean; doublePadding: boolean }>`
   background-color: ${({ theme }) => theme.colors.brand};
   color: white;
-  margin-bottom: ${({ theme }) => (marginBottom ? theme.spacing.xs : 0)}px;
-  padding: ${({ theme }) => `${doublePadding ? theme.spacing.s : theme.spacing.xs}px ${spacing.m}`}px;
+  margin-bottom: ${({ theme, marginBottom }) => (marginBottom ? theme.spacing.xs : 0)}px;
+  padding: ${({ theme, doublePadding }) => `${doublePadding ? theme.spacing.s : theme.spacing.xs}px ${spacing.m}`}px;
   text-transform: lowercase;
   min-width: ${({ theme }) => theme.spacing.m * 4}px;
   &:hover {
@@ -14,7 +14,7 @@ const Primary = (doublePadding: boolean, marginBottom: boolean) => styled('butto
   }
 `
 
-const Secondary = css`
+const Secondary = styled(Primary)`
   box-shadow: inset 0 0 0 3px rgba(0, 0, 0, 0.75);
   background-color: transparent;
   color: black;
@@ -30,13 +30,15 @@ const Secondary = css`
   }
 `
 
-const Figure = css`
-  font-family: ${typography.fontFamily.h3};
-  font-size: ${typography.fontSize.p}px;
+const Figure = styled(Secondary)<{ backgroundColor: string; color: string }>`
+  font-family: ${({ theme }) => theme.typography.fontFamily.h3};
+  font-size: ${({ theme }) => theme.typography.fontSize.p}px;
   padding: 0;
   min-width: 0;
-  width: ${spacing.m}px;
-  height: ${spacing.m}px;
+  width: ${({ theme }) => theme.spacing.m}px;
+  height: ${({ theme }) => theme.spacing.m}px;
+  background-color: ${({ backgroundColor }) => backgroundColor};
+  color: ${({ color }) => color};
 `
 
 interface PropTypes {
@@ -59,28 +61,33 @@ export const Button: React.SFC<PropTypes> = ({
   color,
 }) => {
   let component
-  const PrimaryComponent = React.createElement(
-    Primary(doublePadding, marginBottom),
-    {
-      onClick,
-    },
-    children,
-  )
   switch (type) {
     case 'primary':
-      component = PrimaryComponent
+      component = (
+        <Primary doublePadding={doublePadding} marginBottom={marginBottom} onClick={onClick}>
+          {children}
+        </Primary>
+      )
       break
     case 'secondary':
-      component = React.cloneElement(PrimaryComponent, {
-        className: Secondary,
-      })
+      component = (
+        <Secondary doublePadding={doublePadding} marginBottom={marginBottom} onClick={onClick}>
+          {children}
+        </Secondary>
+      )
       break
     case 'number':
-      component = React.cloneElement(PrimaryComponent, {
-        className: cx(Secondary, Figure),
-        style: { backgroundColor: fill ? fill : 'transparent', color },
-      })
-      break
+      component = (
+        <Figure
+          doublePadding={doublePadding}
+          marginBottom={marginBottom}
+          onClick={onClick}
+          backgroundColor={fill ? fill : 'transparent'}
+          color={color}
+        >
+          {children}
+        </Figure>
+      )
   }
   return component
 }
